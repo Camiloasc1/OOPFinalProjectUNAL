@@ -1,11 +1,8 @@
 
 package util;
 
-import java.util.ArrayList;
-import java.util.TreeSet;
-
 /**
- * @author Code from POO project
+ * @author Camilo Sanchez
  * @param min
  *            Lowest number
  * @param max
@@ -13,6 +10,7 @@ import java.util.TreeSet;
  * @return
  *         (Math.random() * ((max - min) + 1) + min)
  */
+
 public class RandomNum
 {
 	public static byte getByte()
@@ -78,11 +76,5 @@ public class RandomNum
 	public static boolean getBool()
 	{
 		return (getByte(0, Byte.MAX_VALUE) % 2 == 0);
-	}
-	
-	public static Object fromTreeSet(TreeSet<Object> tree)
-	{
-		ArrayList<Object> array = new ArrayList<Object>(tree);
-		return array.get(getInt(array.size() - 1));
 	}
 }
