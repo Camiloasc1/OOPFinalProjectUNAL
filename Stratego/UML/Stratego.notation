@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML">
+  <notation:Diagram xmi:id="_B5zGwFSHEeO8J8izyGChZg" type="PapyrusUMLClassDiagram" name="Class" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_h5eyoFSLEeO8J8izyGChZg" type="2008" fontName="Cantarell" fontHeight="11" lineColor="0">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_h5eyolSLEeO8J8izyGChZg" source="ShadowFigure">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_h5eyo1SLEeO8J8izyGChZg" key="ShadowFigure_Value" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_h5fZsFSLEeO8J8izyGChZg" source="displayNameLabelIcon">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_h5fZsVSLEeO8J8izyGChZg" key="displayNameLabelIcon_value" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_h5fZslSLEeO8J8izyGChZg" source="QualifiedName">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_h5fZs1SLEeO8J8izyGChZg" key="QualifiedNameDepth" value="1000"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_h5fZtFSLEeO8J8izyGChZg" type="5029"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_h5fZtVSLEeO8J8izyGChZg" type="7017">
+        <children xmi:type="notation:Shape" xmi:id="_oRdoYFSLEeO8J8izyGChZg" type="3012" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Property" href="Stratego.uml#_bVlAxFSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_oRdoYVSLEeO8J8izyGChZg" x="39" y="13"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_osZQ4FSLEeO8J8izyGChZg" type="3012" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Property" href="Stratego.uml#_bVlAx1SLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_osZQ4VSLEeO8J8izyGChZg" x="78" y="26"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_pISisFSLEeO8J8izyGChZg" type="3012" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Property" href="Stratego.uml#_bVlAylSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_pISisVSLEeO8J8izyGChZg" x="107" y="33"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_h5fZtlSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_h5fZt1SLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_h5fZuFSLEeO8J8izyGChZg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h5fZuVSLEeO8J8izyGChZg"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_h5fZulSLEeO8J8izyGChZg" type="7018">
+        <children xmi:type="notation:Shape" xmi:id="_qsm1IFSLEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlAzlSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_qsm1IVSLEeO8J8izyGChZg" x="17" y="14"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_rAxuUFSLEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlAz1SLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_rAxuUVSLEeO8J8izyGChZg" x="22" y="20"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_rWVuoFSLEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlA01SLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_rWVuoVSLEeO8J8izyGChZg" x="31" y="32"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_h5fZu1SLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_h5fZvFSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_h5fZvVSLEeO8J8izyGChZg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h5fZvlSLEeO8J8izyGChZg"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_h5fZv1SLEeO8J8izyGChZg" type="7019">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_h5fZwFSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_h5fZwVSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_h5fZwlSLEeO8J8izyGChZg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h5fZw1SLEeO8J8izyGChZg"/>
+      </children>
+      <element xmi:type="uml:Class" href="Stratego.uml#_bVlAw1SLEeO8J8izyGChZg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_h5eyoVSLEeO8J8izyGChZg" x="35" y="15"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_sDgWoFSLEeO8J8izyGChZg" type="2008" fontName="Cantarell" fontHeight="11" lineColor="0">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sDgWolSLEeO8J8izyGChZg" source="ShadowFigure">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sDg9sFSLEeO8J8izyGChZg" key="ShadowFigure_Value" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sDg9sVSLEeO8J8izyGChZg" source="displayNameLabelIcon">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sDg9slSLEeO8J8izyGChZg" key="displayNameLabelIcon_value" value="false"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sDg9s1SLEeO8J8izyGChZg" source="QualifiedName">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sDg9tFSLEeO8J8izyGChZg" key="QualifiedNameDepth" value="1000"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_sDg9tVSLEeO8J8izyGChZg" type="5029"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_sDg9tlSLEeO8J8izyGChZg" type="7017">
+        <children xmi:type="notation:Shape" xmi:id="_zu3DUFSMEeO8J8izyGChZg" type="3012" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Property" href="Stratego.uml#_bVlA2FSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_zu3DUVSMEeO8J8izyGChZg" x="39" y="21"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_0B230FSMEeO8J8izyGChZg" type="3012" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Property" href="Stratego.uml#_bVlA21SLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_0B230VSMEeO8J8izyGChZg" x="70" y="26"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_0Xg-wFSMEeO8J8izyGChZg" type="3012" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Property" href="Stratego.uml#_bVlA3lSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_0Xg-wVSMEeO8J8izyGChZg" x="60" y="23"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_sDg9t1SLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_sDg9uFSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_sDg9uVSLEeO8J8izyGChZg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sDg9ulSLEeO8J8izyGChZg"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_sDhkwFSLEeO8J8izyGChZg" type="7018">
+        <children xmi:type="notation:Shape" xmi:id="_1g5osFSMEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlA4lSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_1g5osVSMEeO8J8izyGChZg" x="11" y="8"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_12s5kFSMEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlA6VSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_12s5kVSMEeO8J8izyGChZg" x="46" y="19"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_2ILEEFSMEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlA7VSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_2ILEEVSMEeO8J8izyGChZg" x="77" y="28"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_2iXFsFSMEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlA9FSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_2iXFsVSMEeO8J8izyGChZg" x="54" y="49"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_20zgkFSMEeO8J8izyGChZg" type="3013" fontName="Cantarell" fontHeight="11" lineColor="0">
+          <element xmi:type="uml:Operation" href="Stratego.uml#_bVlA-FSLEeO8J8izyGChZg"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_20zgkVSMEeO8J8izyGChZg" x="60" y="54"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_sDhkwVSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_sDhkwlSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_sDhkw1SLEeO8J8izyGChZg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sDhkxFSLEeO8J8izyGChZg"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_sDhkxVSLEeO8J8izyGChZg" type="7019">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_sDhkxlSLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:SortingStyle" xmi:id="_sDhkx1SLEeO8J8izyGChZg"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_sDhkyFSLEeO8J8izyGChZg"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sDhkyVSLEeO8J8izyGChZg"/>
+      </children>
+      <element xmi:type="uml:Class" href="Stratego.uml#_bVlA11SLEeO8J8izyGChZg"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sDgWoVSLEeO8J8izyGChZg" x="285" y="15"/>
+    </children>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_B5zGwVSHEeO8J8izyGChZg"/>
+    <element xmi:type="uml:Model" href="Stratego.uml#_B5wqgFSHEeO8J8izyGChZg"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_B52KEFSHEeO8J8izyGChZg" type="UseCase" name="UseCase" measurementUnit="Pixel">
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_B52KEVSHEeO8J8izyGChZg"/>
+    <element xmi:type="uml:Model" href="Stratego.uml#_B5wqgFSHEeO8J8izyGChZg"/>
+  </notation:Diagram>
+</xmi:XMI>

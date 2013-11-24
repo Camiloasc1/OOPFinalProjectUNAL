@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" name="root model">
+  <packagedElement xsi:type="uml:Model" name="Stratego">
+    <packagedElement xsi:type="uml:Package" name="entities" visibility="public">
+      <packagedElement xsi:type="uml:Class" clientDependency="//@packagedElement.0/@packagedElement.0/@packagedElement.2" name="Board" visibility="public">
+        <ownedAttribute name="serialVersionUID" visibility="public" isStatic="true" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute name="gameBoard" visibility="public" isStatic="true" type="//@packagedElement.0/@packagedElement.0/@packagedElement.0" association="//@packagedElement.0/@packagedElement.0/@packagedElement.4">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute name="map" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="-1"/>
+        </ownedAttribute>
+        <interfaceRealization contract="//@packagedElement.1/@packagedElement.0/@packagedElement.0/@packagedElement.0"/>
+        <ownedOperation name="Board" visibility="private"/>
+        <ownedOperation name="getBoard" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.0/@packagedElement.0" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="clone" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.0" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="uml:Class" clientDependency="//@packagedElement.0/@packagedElement.0/@packagedElement.3" name="Piece" visibility="public">
+        <ownedAttribute name="serialVersionUID" visibility="public" isStatic="true" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute name="posX" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+        </ownedAttribute>
+        <ownedAttribute name="posY" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+          <lowerValue xsi:type="uml:LiteralInteger"/>
+          <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+        </ownedAttribute>
+        <interfaceRealization contract="//@packagedElement.1/@packagedElement.0/@packagedElement.0/@packagedElement.0"/>
+        <ownedOperation name="Piece" visibility="public">
+          <ownedParameter name="posX" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="posY" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getPosX" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="setPosX" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.5" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="posX" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getPosY" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="setPosY" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.5" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="posY" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xsi:type="uml:Dependency" client="//@packagedElement.0/@packagedElement.0/@packagedElement.0" supplier="//@packagedElement.1/@packagedElement.0/@packagedElement.0/@packagedElement.0"/>
+      <packagedElement xsi:type="uml:Dependency" client="//@packagedElement.0/@packagedElement.0/@packagedElement.1" supplier="//@packagedElement.1/@packagedElement.0/@packagedElement.0/@packagedElement.0"/>
+      <packagedElement xsi:type="uml:Association" memberEnd="//@packagedElement.0/@packagedElement.0/@packagedElement.0/@ownedAttribute.1 //@packagedElement.0/@packagedElement.0/@packagedElement.4/@ownedEnd.0">
+        <ownedEnd type="//@packagedElement.0/@packagedElement.0/@packagedElement.0" association="//@packagedElement.0/@packagedElement.0/@packagedElement.4"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Package" name="util" visibility="public">
+      <packagedElement xsi:type="uml:Class" name="RandomNum" visibility="public">
+        <ownedOperation name="getByte" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.8" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getByte" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.8" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getByte" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.8" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="min" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getShort" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.7" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getShort" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.7" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getShort" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.7" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="min" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getInt" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getInt" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getInt" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="min" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.0">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getLong" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getLong" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getLong" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="min" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+          <ownedParameter name="max" visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.1">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation name="getBool" visibility="public">
+          <ownedParameter visibility="public" type="//@packagedElement.0/@packagedElement.2/@packagedElement.4" direction="return">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedParameter>
+        </ownedOperation>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xsi:type="uml:Package" name="Common Java datatypes" visibility="public">
+      <packagedElement xsi:type="uml:PrimitiveType" name="int" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="long" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="float" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="double" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="boolean" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="void" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="char" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="short" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="byte" visibility="public"/>
+      <packagedElement xsi:type="uml:PrimitiveType" name="string" visibility="public"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Model" name="externals">
+    <packagedElement xsi:type="uml:Package" name="java" visibility="public">
+      <packagedElement xsi:type="uml:Package" name="io" visibility="public">
+        <packagedElement xsi:type="uml:Interface" name="Serializable" visibility="public"/>
+      </packagedElement>
+      <packagedElement xsi:type="uml:Package" name="lang" visibility="public">
+        <packagedElement xsi:type="uml:Class" name="Object" visibility="public">
+          <ownedOperation name="Object" visibility="public"/>
+        </packagedElement>
+        <packagedElement xsi:type="uml:Interface" name="Override" visibility="public"/>
+        <packagedElement xsi:type="uml:Class" name="Byte" visibility="public">
+          <generalization general="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.3"/>
+          <ownedAttribute name="MAX_VALUE" visibility="public">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedAttribute>
+          <interfaceRealization contract="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.4"/>
+        </packagedElement>
+        <packagedElement xsi:type="uml:Class" name="Number" visibility="public">
+          <interfaceRealization contract="//@packagedElement.1/@packagedElement.0/@packagedElement.0/@packagedElement.0"/>
+        </packagedElement>
+        <packagedElement xsi:type="uml:Interface" name="Comparable">
+          <ownedTemplateSignature xsi:type="uml:RedefinableTemplateSignature" name="Comparable&lt;T>">
+            <ownedParameter xsi:type="uml:ClassifierTemplateParameter">
+              <ownedParameteredElement xsi:type="uml:Class" name="T"/>
+            </ownedParameter>
+          </ownedTemplateSignature>
+        </packagedElement>
+        <packagedElement xsi:type="uml:Class" name="Math" visibility="public">
+          <ownedOperation name="random" visibility="public"/>
+        </packagedElement>
+        <packagedElement xsi:type="uml:Class" name="Short" visibility="public">
+          <generalization general="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.3"/>
+          <ownedAttribute name="MAX_VALUE" visibility="public">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedAttribute>
+          <interfaceRealization contract="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.4"/>
+        </packagedElement>
+        <packagedElement xsi:type="uml:Class" name="Integer" visibility="public">
+          <generalization general="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.3"/>
+          <ownedAttribute name="MAX_VALUE" visibility="public">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedAttribute>
+          <interfaceRealization contract="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.4"/>
+        </packagedElement>
+        <packagedElement xsi:type="uml:Class" name="Long" visibility="public">
+          <generalization general="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.3"/>
+          <ownedAttribute name="MAX_VALUE" visibility="public">
+            <lowerValue xsi:type="uml:LiteralInteger"/>
+            <upperValue xsi:type="uml:LiteralUnlimitedNatural" value="1"/>
+          </ownedAttribute>
+          <interfaceRealization contract="//@packagedElement.1/@packagedElement.0/@packagedElement.1/@packagedElement.4"/>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xsi:type="uml:Model" name="source references">
+    <packagedElement xsi:type="uml:Artifact" name="Board.java" visibility="public" fileName="/home/camiloasc1/git/StrategoPOOUnal/Stratego/src/entities/Board.java"/>
+    <packagedElement xsi:type="uml:Artifact" name="Piece.java" visibility="public" fileName="/home/camiloasc1/git/StrategoPOOUnal/Stratego/src/entities/Piece.java"/>
+    <packagedElement xsi:type="uml:Artifact" name="RandomNum.java" visibility="public" fileName="/home/camiloasc1/git/StrategoPOOUnal/Stratego/src/util/RandomNum.java"/>
+  </packagedElement>
+</uml:Model>
