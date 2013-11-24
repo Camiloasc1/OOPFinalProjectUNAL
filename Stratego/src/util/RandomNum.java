@@ -3,78 +3,147 @@ package util;
 
 /**
  * @author Camilo Sanchez
- * @param min
- *            Lowest number
- * @param max
- *            Highest number
- * @return
- *         (Math.random() * ((max - min) + 1) + min)
+ * 
  */
-
 public class RandomNum
 {
+	/**
+	 * @return
+	 *         Random byte
+	 */
 	public static byte getByte()
 	{
-		return getByte(Byte.MAX_VALUE - 1);
+		return getByte((byte) (Byte.MAX_VALUE - 1));
 	}
 	
-	public static byte getByte(int max)
+	/**
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random byte
+	 */
+	public static byte getByte(byte max)
 	{
-		return getByte(0, max);
+		return getByte((byte) 0, max);
 	}
 	
-	public static byte getByte(int min, int max)
+	/**
+	 * @param min
+	 *            Lowest number
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random byte
+	 */
+	public static byte getByte(byte min, byte max)
 	{
 		return (byte) (Math.random() * ((max - min) + 1) + min);
 	}
 	
+	/**
+	 * @return
+	 *         Random short
+	 */
 	public static short getShort()
 	{
-		return getShort(Short.MAX_VALUE - 1);
+		return getShort((short) (Short.MAX_VALUE - 1));
 	}
 	
-	public static short getShort(int max)
+	/**
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random short
+	 */
+	public static short getShort(short max)
 	{
-		return getShort(0, max);
+		return getShort((short) 0, max);
 	}
 	
-	public static short getShort(int min, int max)
+	/**
+	 * @param min
+	 *            Lowest number
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random short
+	 */
+	public static short getShort(short min, short max)
 	{
 		return (short) (Math.random() * ((max - min) + 1) + min);
 	}
 	
+	/**
+	 * @return
+	 *         Random integer
+	 */
 	public static int getInt()
 	{
-		return getInt(Integer.MAX_VALUE - 1);
+		return getInt((int) Integer.MAX_VALUE - 1);
 	}
 	
+	/**
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random integer
+	 */
 	public static int getInt(int max)
 	{
-		return getInt(0, max);
+		return getInt((int) 0, max);
 	}
 	
+	/**
+	 * @param min
+	 *            Lowest number
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random integer
+	 */
 	public static int getInt(int min, int max)
 	{
 		return (int) (Math.random() * ((max - min) + 1) + min);
 	}
 	
+	/**
+	 * @return
+	 *         Random long
+	 */
 	public static long getLong()
 	{
-		return getLong(Long.MAX_VALUE - 1);
+		return getLong((long) Long.MAX_VALUE - 1);
 	}
 	
+	/**
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random long
+	 */
 	public static long getLong(long max)
 	{
-		return getLong(0, max);
+		return getLong((long) 0, max);
 	}
 	
+	/**
+	 * @param min
+	 *            Lowest number
+	 * @param max
+	 *            Highest number
+	 * @return
+	 *         Random long
+	 */
 	public static long getLong(long min, long max)
 	{
 		return (long) (Math.random() * ((max - min) + 1) + min);
 	}
 	
+	/**
+	 * @return Random boolean
+	 */
 	public static boolean getBool()
 	{
-		return (getByte(0, Byte.MAX_VALUE) % 2 == 0);
+		return (getByte((byte) 0, Byte.MAX_VALUE) % 2 == 0);
 	}
 }

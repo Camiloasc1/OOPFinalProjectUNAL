@@ -21,12 +21,12 @@
   </class>  
   <package id="3" language="java" name="entities" project="Stratego" file="/Stratego/src/entities" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="432" y="91"/>    
+    <position height="-1" width="-1" x="463" y="32"/>    
     <display autosize="true" stereotype="true" accessors="true"/>  
   </package>  
   <package id="4" language="java" name="util" project="Stratego" file="/Stratego/src/util" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="75" y="91"/>    
+    <position height="-1" width="-1" x="69" y="35"/>    
     <display autosize="true" stereotype="true" accessors="true"/>  
   </package>  
   <class id="5" language="java" name="util.RandomNum" project="Stratego" file="/Stratego/src/util/RandomNum.java" 
