@@ -148,6 +148,7 @@ public class Board implements Serializable
 	 * @param xf
 	 * @param yf
 	 * @return Successful
+	 * @deprecated
 	 */
 	public boolean move(byte xi, byte yi, byte xf, byte yf)
 	{
@@ -165,7 +166,7 @@ public class Board implements Serializable
 	 */
 	public boolean move(Piece piece, byte x, byte y)
 	{
-		if (piece == null)
+		if (piece == null || !piece.isValidMove(x, y))
 			return false;
 		if (!isEmptyPos(x, y))
 			return false;
