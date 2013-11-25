@@ -59,7 +59,6 @@ public class MathUtil
 	{
 		return ((compareDouble(a, b)) < 1E-4);
 	}
-
 	
 	/**
 	 * @param a
@@ -70,7 +69,6 @@ public class MathUtil
 	{
 		return ((compareDouble(a, b)) < 1E-8);
 	}
-
 	
 	/**
 	 * @param a
