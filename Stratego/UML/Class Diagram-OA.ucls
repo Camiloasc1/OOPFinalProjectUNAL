@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="entities.Piece" project="Stratego" file="/Stratego/src/entities/Piece.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="185" width="146" x="982" y="362"/>    
+    <position height="167" width="131" x="982" y="362"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="entities.pieces.Miner" project="Stratego" 
     file="/Stratego/src/entities/pieces/Miner.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="41" y="587"/>    
+    <position height="113" width="131" x="41" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="entities.pieces.Major" project="Stratego" 
     file="/Stratego/src/entities/pieces/Major.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="212" y="587"/>    
+    <position height="113" width="131" x="212" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="entities.pieces.General" project="Stratego" 
     file="/Stratego/src/entities/pieces/General.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="383" y="587"/>    
+    <position height="113" width="131" x="383" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,7 +57,7 @@
   </class>  
   <class id="7" language="java" name="entities.pieces.Colonel" project="Stratego" 
     file="/Stratego/src/entities/pieces/Colonel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="725" y="587"/>    
+    <position height="113" width="131" x="725" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <class id="8" language="java" name="entities.pieces.Captain" project="Stratego" 
     file="/Stratego/src/entities/pieces/Captain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="554" y="587"/>    
+    <position height="113" width="131" x="554" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </class>  
   <class id="9" language="java" name="entities.pieces.Bomb" project="Stratego" 
     file="/Stratego/src/entities/pieces/Bomb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1067" y="587"/>    
+    <position height="113" width="131" x="1067" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="entities.pieces.Flag" project="Stratego" 
     file="/Stratego/src/entities/pieces/Flag.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1238" y="587"/>    
+    <position height="113" width="131" x="1238" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="entities.pieces.Scout" project="Stratego" 
     file="/Stratego/src/entities/pieces/Scout.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1409" y="587"/>    
+    <position height="113" width="131" x="1409" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="entities.pieces.Marshal" project="Stratego" 
     file="/Stratego/src/entities/pieces/Marshal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1580" y="587"/>    
+    <position height="113" width="131" x="1580" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="entities.pieces.Lieutenant" project="Stratego" 
     file="/Stratego/src/entities/pieces/Lieutenant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="896" y="587"/>    
+    <position height="113" width="131" x="896" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="entities.pieces.Spy" project="Stratego" 
     file="/Stratego/src/entities/pieces/Spy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1751" y="587"/>    
+    <position height="113" width="131" x="1751" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="entities.pieces.Sergeant" project="Stratego" 
     file="/Stratego/src/entities/pieces/Sergeant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1922" y="587"/>    
+    <position height="113" width="131" x="1922" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,7 +138,7 @@
   </class>  
   <class id="16" language="java" name="game.Rules" project="Stratego" file="/Stratego/src/game/Rules.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="95" width="186" x="1695" y="37"/>    
+    <position height="95" width="186" x="1733" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -147,7 +147,7 @@
   </class>  
   <class id="17" language="java" name="game.Engine" project="Stratego" file="/Stratego/src/game/Engine.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="77" width="87" x="1397" y="37"/>    
+    <position height="95" width="201" x="1359" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
