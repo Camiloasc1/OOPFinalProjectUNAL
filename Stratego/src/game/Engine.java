@@ -15,6 +15,7 @@ public class Engine
 	/**
 	 * Moves the piece to the specified position
 	 * 
+	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return true if piece has moved to (x,y)
