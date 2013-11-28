@@ -1,6 +1,8 @@
 
 package entities;
 
+import game.Rules;
+
 import java.io.Serializable;
 
 /*
@@ -37,9 +39,9 @@ public class Board implements Serializable
 	{
 		super();
 		map = new Piece[SIZE][SIZE];
-		for (int i = 0; i < map.length; i++)
+		for (int i = 0; i < SIZE; i++)
 		{
-			for (int j = 0; j < map[i].length; j++)
+			for (int j = 0; j < SIZE; j++)
 			{
 				map[i][j] = null;
 			}
@@ -97,9 +99,9 @@ public class Board implements Serializable
 		if (piece == null)
 			return -1;
 		
-		for (byte i = 0; i < map.length; i++)
+		for (byte i = 0; i < SIZE; i++)
 		{
-			for (byte j = 0; j < map[i].length; j++)
+			for (byte j = 0; j < SIZE; j++)
 			{
 				if (isPieceAt(piece, i, j))
 				{
@@ -119,9 +121,9 @@ public class Board implements Serializable
 		if (piece == null)
 			return -1;
 		
-		for (byte i = 0; i < map.length; i++)
+		for (byte i = 0; i < SIZE; i++)
 		{
-			for (byte j = 0; j < map[i].length; j++)
+			for (byte j = 0; j < SIZE; j++)
 			{
 				if (isPieceAt(piece, i, j))
 				{
@@ -166,7 +168,8 @@ public class Board implements Serializable
 	 */
 	public boolean move(Piece piece, byte x, byte y)
 	{
-		if (piece == null || !piece.isValidMove(x, y))
+//		if (piece == null || !piece.isValidMove(x, y))
+			if (piece == null || !Rules.isValidMove(piece, x, y))
 			return false;
 		if (!isEmptyPos(x, y))
 			return false;
