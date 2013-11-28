@@ -1,8 +1,6 @@
 
 package entities;
 
-import game.Rules;
-
 import java.io.Serializable;
 
 /*
@@ -145,36 +143,13 @@ public class Board implements Serializable
 	}
 	
 	/**
-	 * @param xi
-	 * @param yi
-	 * @param xf
-	 * @param yf
-	 * @return Successful
-	 * @deprecated
-	 */
-	public boolean move(byte xi, byte yi, byte xf, byte yf)
-	{
-		if (isEmptyPos(xi, yi))
-			return false;
-		
-		return move(getPieceAt(xi, yi), xf, yf);
-	}
-	
-	/**
-	 * @param piece
 	 * @param x
 	 * @param y
 	 * @return Successful
 	 */
-	public boolean move(Piece piece, byte x, byte y)
+	public boolean movePiece(Piece piece, byte x, byte y)
 	{
-//		if (piece == null || !piece.isValidMove(x, y))
-			if (piece == null || !Rules.isValidMove(piece, x, y))
-			return false;
-		if (!isEmptyPos(x, y))
-			return false;
-		
-		map[getPieceX(piece)][getPieceY(piece)] = null;
+		map[Board.getBoard().getPieceX(piece)][Board.getBoard().getPieceY(piece)] = null;
 		map[x][y] = piece;
 		return true;
 	}
