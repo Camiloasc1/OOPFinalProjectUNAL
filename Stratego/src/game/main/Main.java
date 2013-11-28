@@ -1,5 +1,5 @@
 
-package game;
+package game.main;
 
 import java.util.TreeSet;
 

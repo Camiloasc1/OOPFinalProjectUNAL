@@ -27,7 +27,7 @@ public class Engine
 		
 		Board board = Board.getBoard();
 		
-		if (!board.isEmptyPos(x, y))
+		if (!board.isEmptyPos(x, y)) // Is a Battle
 		{
 			if (!battle(piece, board.getPieceAt(x, y)))
 				return false;
