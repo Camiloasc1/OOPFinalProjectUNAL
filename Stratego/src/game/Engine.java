@@ -3,6 +3,8 @@ package game;
 
 import entities.Board;
 import entities.Piece;
+import entities.pieces.Bomb;
+import entities.pieces.*;
 
 /**
  * Engine for Stratego game
@@ -12,6 +14,22 @@ import entities.Piece;
  */
 public class Engine
 {
+	/**
+	 * Initialize the game
+	 */
+	public static void initGame()
+	{
+		
+	}
+	
+	/**
+	 * Ends the game
+	 */
+	public static void endGame()
+	{
+		
+	}
+	
 	/**
 	 * Moves the piece to the specified position
 	 * 
@@ -31,7 +49,6 @@ public class Engine
 		{
 			if (!battle(piece, board.getPieceAt(x, y)))
 				return false;
-			board.removePiece(board.getPieceAt(x, y));
 		}
 		
 		return board.movePiece(piece, x, y);
@@ -68,9 +85,41 @@ public class Engine
 	 */
 	public static boolean battle(Piece ally, Piece enemy)
 	{
-		
 		if (ally.getOwner() == enemy.getOwner())
 			return false;
-		return ((ally.getLevel() - enemy.getLevel()) > 0);
+		
+		Board board = Board.getBoard();
+		boolean result;
+		
+		result = ((ally.getLevel() - enemy.getLevel()) < 0);
+		
+		if (enemy instanceof Bomb)
+		{
+			if (ally instanceof Miner)
+				result = true;
+			else
+				result = false;
+		}
+		
+		if (ally instanceof Spy)
+		{
+			if (enemy instanceof Marshal)
+				result = true;
+			else
+				result = false;
+		}
+		
+		if (enemy instanceof Flag) // Game ends
+		{
+			result = true;
+			endGame();
+		}
+		
+		if (result)
+			board.removePiece(enemy);
+		else
+			board.removePiece(ally);
+		
+		return result;
 	}
 }
