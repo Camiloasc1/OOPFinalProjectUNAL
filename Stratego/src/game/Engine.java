@@ -3,7 +3,6 @@ package game;
 
 import entities.Board;
 import entities.Piece;
-import entities.pieces.Bomb;
 import entities.pieces.*;
 
 /**
@@ -76,6 +75,7 @@ public class Engine
 	
 	/**
 	 * Simulates a battle between ally piece an enemy piece
+	 * When flag is captured the game ends
 	 * 
 	 * @param ally
 	 * @param enemy
