@@ -65,6 +65,14 @@ public class Board implements Serializable
 	}
 	
 	/**
+	 * @return the size
+	 */
+	public static int getSize()
+	{
+		return SIZE;
+	}
+
+	/**
 	 * @param x
 	 * @param y
 	 * @return true if position (x,y) is empty
@@ -155,6 +163,28 @@ public class Board implements Serializable
 		map[Board.getBoard().getPieceX(piece)][Board.getBoard().getPieceY(piece)] = null;
 		map[x][y] = piece;
 		return true;
+	}
+	
+	/**
+	 * @param piece
+	 * @return true if piece added
+	 */
+	public boolean addPiece(Piece piece)
+	{
+		for (byte i = 0; i < SIZE; i++)
+		{
+			if (i == 4 || i == 5)
+				continue;
+			for (byte j = 0; j < SIZE; j++)
+			{
+				if (isEmptyPos(i, j))
+				{
+					map[i][j] = piece;
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 	/**
