@@ -91,7 +91,7 @@ public class Engine
 		Board board = Board.getBoard();
 		boolean result;
 		
-		result = ((ally.getLevel() - enemy.getLevel()) < 0);
+		result = (ally.getLevel() <= enemy.getLevel());
 		
 		if (enemy instanceof Bomb)
 		{
