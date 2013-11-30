@@ -13,14 +13,4 @@ public class Scout extends Piece
 	{
 		super(LEVEL, owner);
 	}
-	
-	/**
-	 * @see entities.Piece#isValidMove(int, int)
-	 */
-	@Override
-	public boolean isValidMove(int x, int y)
-	{
-		return (Board.getBoard().getPieceX(this) == x || Board.getBoard().getPieceY(this) == y);
-	}
-	
 }

@@ -3,8 +3,6 @@ package entities;
 
 import java.io.Serializable;
 
-import util.MathUtil;
-
 /**
  * Piece for Stratego game
  * 
@@ -30,37 +28,18 @@ public class Piece implements Serializable
 	}
 	
 	/**
-	 * @param x
-	 * @param y
-	 * @return Successful
+	 * @return the level
 	 */
-	public boolean move(byte x, byte y)
+	public byte getLevel()
 	{
-		if (!isValidMove(x, y))
-			return false;
-		return Board.getBoard().move(this, x, y);
+		return level;
 	}
 	
 	/**
-	 * @param enemy
-	 *            The enemy piece
-	 * @return true if this wins in battle versus enemy
+	 * @return the owner
 	 */
-	public boolean battle(Piece enemy)
+	public boolean getOwner()
 	{
-		if (this.owner == enemy.owner)
-			return false;
-		return ((this.level - enemy.level) > 0);
-	}
-	
-	/**
-	 * @param x
-	 * @param y
-	 * @return Is a valid move for this piece
-	 */
-	public boolean isValidMove(int x, int y)
-	{
-		return MathUtil.isEqualsDouble2(
-				MathUtil.getDistance(Board.getBoard().getPieceX(this), Board.getBoard().getPieceY(this), x, y), 1);
+		return owner;
 	}
 }

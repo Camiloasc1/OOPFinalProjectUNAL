@@ -12,13 +12,4 @@ public class Bomb extends Piece
 	{
 		super(LEVEL, owner);
 	}
-	
-	/**
-	 * @see entities.Piece#isValidMove(int, int)
-	 */
-	@Override
-	public boolean isValidMove(int x, int y)
-	{
-		return false;
-	}
 }

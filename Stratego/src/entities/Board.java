@@ -28,7 +28,7 @@ public class Board implements Serializable
 	private static final int SIZE = 10;
 	private static Board gameBoard;
 	
-	Piece[][] map;
+	private Piece[][] map;
 	
 	/**
 	 * Constructor of the unique instance of Board
@@ -37,9 +37,9 @@ public class Board implements Serializable
 	{
 		super();
 		map = new Piece[SIZE][SIZE];
-		for (int i = 0; i < map.length; i++)
+		for (int i = 0; i < SIZE; i++)
 		{
-			for (int j = 0; j < map[i].length; j++)
+			for (int j = 0; j < SIZE; j++)
 			{
 				map[i][j] = null;
 			}
@@ -67,10 +67,13 @@ public class Board implements Serializable
 	/**
 	 * @param x
 	 * @param y
-	 * @return isEmptyPos(x,y)
+	 * @return true if position (x,y) is empty
 	 */
 	public boolean isEmptyPos(byte x, byte y)
 	{
+		if ((y == 4 || y == 5) && (x == 2 || x == 3 || x == 6 || x == 7))
+			return false;
+		
 		return (map[x][y] == null);
 	}
 	
@@ -78,7 +81,7 @@ public class Board implements Serializable
 	 * @param piece
 	 * @param x
 	 * @param y
-	 * @return isPieceAt(x,y)
+	 * @return true if piece is at (x,y)
 	 */
 	public boolean isPieceAt(Piece piece, byte x, byte y)
 	{
@@ -97,9 +100,9 @@ public class Board implements Serializable
 		if (piece == null)
 			return -1;
 		
-		for (byte i = 0; i < map.length; i++)
+		for (byte i = 0; i < SIZE; i++)
 		{
-			for (byte j = 0; j < map[i].length; j++)
+			for (byte j = 0; j < SIZE; j++)
 			{
 				if (isPieceAt(piece, i, j))
 				{
@@ -119,9 +122,9 @@ public class Board implements Serializable
 		if (piece == null)
 			return -1;
 		
-		for (byte i = 0; i < map.length; i++)
+		for (byte i = 0; i < SIZE; i++)
 		{
-			for (byte j = 0; j < map[i].length; j++)
+			for (byte j = 0; j < SIZE; j++)
 			{
 				if (isPieceAt(piece, i, j))
 				{
@@ -143,36 +146,37 @@ public class Board implements Serializable
 	}
 	
 	/**
-	 * @param xi
-	 * @param yi
-	 * @param xf
-	 * @param yf
-	 * @return Successful
-	 * @deprecated
+	 * @param x
+	 * @param y
+	 * @return true if piece has moved to (x,y)
 	 */
-	public boolean move(byte xi, byte yi, byte xf, byte yf)
+	public boolean movePiece(Piece piece, byte x, byte y)
 	{
-		if (isEmptyPos(xi, yi))
-			return false;
-		
-		return move(getPieceAt(xi, yi), xf, yf);
+		map[Board.getBoard().getPieceX(piece)][Board.getBoard().getPieceY(piece)] = null;
+		map[x][y] = piece;
+		return true;
 	}
 	
 	/**
 	 * @param piece
-	 * @param x
-	 * @param y
-	 * @return Successful
+	 * @return true if piece has removed
 	 */
-	public boolean move(Piece piece, byte x, byte y)
+	public boolean removePiece(Piece piece)
 	{
-		if (piece == null || !piece.isValidMove(x, y))
-			return false;
-		if (!isEmptyPos(x, y))
+		if (piece == null)
 			return false;
 		
-		map[getPieceX(piece)][getPieceY(piece)] = null;
-		map[x][y] = piece;
+		map[Board.getBoard().getPieceX(piece)][Board.getBoard().getPieceY(piece)] = null;
 		return true;
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @return true if piece at (x,y) has removed
+	 */
+	public boolean removePiece(byte x, byte y)
+	{
+		return removePiece(getPieceAt(x, y));
 	}
 }

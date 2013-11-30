@@ -12,13 +12,4 @@ public class Flag extends Piece
 	{
 		super(LEVEL, owner);
 	}
-	
-	/**
-	 * @see entities.Piece#isValidMove(int, int)
-	 */
-	@Override
-	public boolean isValidMove(int x, int y)
-	{
-		return false;
-	}
 }

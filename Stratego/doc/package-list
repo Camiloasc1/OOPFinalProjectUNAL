@@ -1,3 +1,6 @@
 entities
 entities.pieces
+game
+game.main
+net
 util
