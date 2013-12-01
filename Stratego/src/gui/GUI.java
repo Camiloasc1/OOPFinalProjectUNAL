@@ -56,7 +56,7 @@ public class GUI implements Serializable
 				if (tmp == null)
 					System.out.print("[##]");
 				else
-					System.out.println("[" + tmp.getLevel() + "]");
+					System.out.print("[" + tmp.getLevel() + "]");
 			}
 			System.out.println();
 		}

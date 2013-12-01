@@ -25,7 +25,7 @@ import java.io.Serializable;
 public class Board implements Serializable
 {
 	private static final long serialVersionUID = -333970939198499361L;
-	private static final int SIZE = 10;
+	private static final byte SIZE = 10;
 	private static Board gameBoard;
 	
 	private Piece[][] map;
@@ -67,11 +67,32 @@ public class Board implements Serializable
 	/**
 	 * @return the size
 	 */
-	public static int getSize()
+	public static byte getSize()
 	{
 		return SIZE;
 	}
-
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @return matrix file for x coordinate
+	 */
+	protected byte convertX(byte x, byte y)
+	{
+		return (byte) (SIZE - y - 1);
+		
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @return matrix column for y coordinate
+	 */
+	protected byte convertY(byte x, byte y)
+	{
+		return x;
+	}
+	
 	/**
 	 * @param x
 	 * @param y
@@ -81,8 +102,7 @@ public class Board implements Serializable
 	{
 		if ((y == 4 || y == 5) && (x == 2 || x == 3 || x == 6 || x == 7))
 			return false;
-		
-		return (map[x][y] == null);
+		return (map[convertX(x, y)][convertY(x, y)] == null);
 	}
 	
 	/**
@@ -96,7 +116,7 @@ public class Board implements Serializable
 		if (piece == null)
 			return false;
 		
-		return (map[x][y] == piece);
+		return (map[convertX(x, y)][convertY(x, y)] == piece);
 	}
 	
 	/**
@@ -150,7 +170,7 @@ public class Board implements Serializable
 	 */
 	public Piece getPieceAt(byte x, byte y)
 	{
-		return map[x][y];
+		return map[convertX(x, y)][convertY(x, y)];
 	}
 	
 	/**
@@ -161,7 +181,7 @@ public class Board implements Serializable
 	public boolean movePiece(Piece piece, byte x, byte y)
 	{
 		map[Board.getBoard().getPieceX(piece)][Board.getBoard().getPieceY(piece)] = null;
-		map[x][y] = piece;
+		map[convertX(x, y)][convertY(x, y)] = piece;
 		return true;
 	}
 	
@@ -171,15 +191,15 @@ public class Board implements Serializable
 	 */
 	public boolean addPiece(Piece piece)
 	{
-		for (byte i = 0; i < SIZE; i++)
+		for (byte j = 0; j < SIZE; j++)
 		{
-			if (i == 4 || i == 5)
+			if (j == 4 || j == 5)
 				continue;
-			for (byte j = 0; j < SIZE; j++)
+			for (byte i = 0; i < SIZE; i++)
 			{
 				if (isEmptyPos(i, j))
 				{
-					map[i][j] = piece;
+					map[convertX(i, j)][convertY(i, j)] = piece;
 					return true;
 				}
 			}
