@@ -1,6 +1,9 @@
 
 package game.main;
 
+import entities.Board;
+import gui.Sprite;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +26,7 @@ public class MainClient
 	private static final String WINDOW_TITLE = "Stratego";
 	private static boolean EXIT_GAME = false;
 	
-	private static ArrayList<Texture> textures = new ArrayList<Texture>();
+	private static ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 	
 	public static void main(String[] args)
 	{
@@ -70,6 +73,8 @@ public class MainClient
 		GL11.glOrtho(0, Display.getDisplayMode().getWidth(), Display.getDisplayMode().getHeight(), 0, -1, 1);
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		
+		GL11.glClearColor(0, 0, 0, 0);
+		
 		// Enable Texturing
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		
@@ -77,19 +82,19 @@ public class MainClient
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		
-		// TODO Load resources
 		try
 		{
 			String str;
 			Texture tex;
 			
-			str = "res/images/b.png";
+			str = "res/images/grid.png";
 			tex = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(str));
-			textures.add(tex);
-			
-			str = "res/images/s.png";
-			tex = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(str));
-			textures.add(tex);
+			sprites.add(new Sprite(tex));
+			/*
+			 * str = "res/images/oneplayer.png";
+			 * tex = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(str));
+			 * sprites.add(new Sprite(tex));
+			 */
 		}
 		catch (IOException e)
 		{
@@ -102,9 +107,9 @@ public class MainClient
 	
 	private static void cleanup()
 	{
-		for (Texture tex : textures)
+		for (Sprite spr : sprites)
 		{
-			tex.release();
+			spr.getTexture().release();
 		}
 		Display.destroy();
 		// System.exit(0);
@@ -149,23 +154,15 @@ public class MainClient
 		// glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		
 		// GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, textures.get(1).getTextureID());
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-		GL11.glBegin(GL11.GL_QUADS);
+		
+		// Draw basic (Board, icons, etc ...)
+		for (Sprite spr : sprites)
 		{
-			GL11.glTexCoord2f(0, 0);
-			GL11.glVertex2f(0, 0);
-			
-			GL11.glTexCoord2f(0, 1);
-			GL11.glVertex2f(0, 100);
-			
-			GL11.glTexCoord2f(1, 1);
-			GL11.glVertex2f(100, 100);
-			
-			GL11.glTexCoord2f(1, 0);
-			GL11.glVertex2f(100, 0);
+			spr.draw(0, 0);
 		}
-		GL11.glEnd();
+		
+		// Draw the pieces
+		Board board = Board.getBoard();
 	}
 	
 	private static void logic()

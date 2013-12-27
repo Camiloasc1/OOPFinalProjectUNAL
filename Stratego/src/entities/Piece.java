@@ -1,6 +1,8 @@
 
 package entities;
 
+import gui.Sprite;
+
 import java.io.Serializable;
 
 /**
@@ -15,6 +17,7 @@ public class Piece implements Serializable
 	
 	private byte level;
 	private boolean owner;
+	private Sprite sprite;
 	
 	/**
 	 * @param level
@@ -42,4 +45,13 @@ public class Piece implements Serializable
 	{
 		return owner;
 	}
+	
+	/**
+	 * @return the sprite
+	 */
+	public Sprite getSprite()
+	{
+		return sprite;
+	}
+	
 }

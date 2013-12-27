@@ -21,66 +21,6 @@ public class Sprite implements Serializable
 		this.texture = texture;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode()
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((texture == null) ? 0 : texture.hashCode());
-		return result;
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj)
-	{
-		if (this == obj)
-		{
-			return true;
-		}
-		if (obj == null)
-		{
-			return false;
-		}
-		if (!(obj instanceof Sprite))
-		{
-			return false;
-		}
-		Sprite other = (Sprite) obj;
-		if (texture == null)
-		{
-			if (other.texture != null)
-			{
-				return false;
-			}
-		}
-		else if (!texture.equals(other.texture))
-		{
-			return false;
-		}
-		return true;
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		return "Sprite [texture=" + texture + "]";
-	}
-	
 	/**
 	 * @return the texture
 	 */

@@ -2,6 +2,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 /*
  * RecomendacionesSingleton
@@ -22,7 +23,7 @@ import java.io.Serializable;
  * @author Camilo Sanchez
  * 
  */
-public class Board implements Serializable
+public class Board implements Serializable, Iterable<Piece>
 {
 	private static final long serialVersionUID = -333970939198499361L;
 	private static final int SIZE = 10;
@@ -178,5 +179,12 @@ public class Board implements Serializable
 	public boolean removePiece(byte x, byte y)
 	{
 		return removePiece(getPieceAt(x, y));
+	}
+
+	@Override
+	public Iterator<Piece> iterator()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
