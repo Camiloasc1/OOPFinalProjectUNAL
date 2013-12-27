@@ -22,12 +22,14 @@ public class Piece implements Serializable
 	/**
 	 * @param level
 	 * @param owner
+	 * @param sprite
 	 */
-	protected Piece(byte level, boolean owner)
+	public Piece(byte level, boolean owner, Sprite sprite)
 	{
 		super();
 		this.level = level;
 		this.owner = owner;
+		this.sprite = sprite;
 	}
 	
 	/**
@@ -54,4 +56,15 @@ public class Piece implements Serializable
 		return sprite;
 	}
 	
+	/**
+	 * draws the sprite
+	 */
+	public void draw()
+	{
+		Board board = Board.getBoard();
+		int x = board.getPieceX(this);
+		int y = board.getPieceY(this);
+		sprite.draw(x * sprite.getWidth(), y * sprite.getHeight());
+		return;
+	}
 }

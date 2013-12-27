@@ -2,6 +2,8 @@
 package game.main;
 
 import entities.Board;
+import entities.Piece;
+import entities.pieces.Bomb;
 import gui.Sprite;
 
 import java.io.File;
@@ -20,7 +22,7 @@ import org.newdawn.slick.util.ResourceLoader;
 public class MainClient
 {
 	private static final int WIDTH = 640;
-	private static final int HEIGHT = 480;
+	private static final int HEIGHT = 640;
 	private static final int FRAMERATE = 60;
 	private static final boolean FULL_SCREEN = false;
 	private static final String WINDOW_TITLE = "Stratego";
@@ -52,6 +54,13 @@ public class MainClient
 		
 		// Init
 		initGL();
+		
+		// TODO delete this
+		Board board = Board.getBoard();
+		for (int i = 0; i < 100; i++)
+		{
+			board.addPiece(new Bomb(true));
+		}
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !EXIT_GAME)
@@ -162,7 +171,12 @@ public class MainClient
 		}
 		
 		// Draw the pieces
+		// TODO Get the board from socket
 		Board board = Board.getBoard();
+		for (Piece piece : board)
+		{
+			piece.draw();
+		}
 	}
 	
 	private static void logic()

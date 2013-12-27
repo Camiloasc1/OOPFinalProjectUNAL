@@ -1,10 +1,13 @@
 
 package gui;
 
+import java.io.IOException;
 import java.io.Serializable;
 
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
+import org.newdawn.slick.opengl.TextureLoader;
+import org.newdawn.slick.util.ResourceLoader;
 
 public class Sprite implements Serializable
 {
@@ -94,5 +97,31 @@ public class Sprite implements Serializable
 		
 		// restore the model view matrix to prevent contamination
 		GL11.glPopMatrix();
+	}
+	
+	public static Sprite getSpriteByLevel(byte level)
+	{
+		String str;
+		Texture tex;
+		Sprite sprite = null;
+		
+		try
+		{
+			str = "res/images/" + level + ".png";
+			tex = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(str));
+			sprite = new Sprite(tex);
+		}
+		catch (IOException e)
+		{
+			System.err.println("Failed to load resources");
+			e.printStackTrace();
+			// MainClient.cleanup();
+			System.exit(1);
+		}
+		finally
+		{
+			// return sprite;
+		}
+		return sprite;
 	}
 }
