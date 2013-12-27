@@ -2,10 +2,11 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/camiloasc1/git/StrategoPOOUnal/lwjgl-2.9.0/jar/lwjgl.jar">
+	<classpathentry kind="lib" path="/home/camiloasc1/git/StrategoPOOUnal/Stratego/lib/lwjgl.jar">
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/camiloasc1/git/StrategoPOOUnal/lwjgl-2.9.0/native/linux"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/camiloasc1/git/StrategoPOOUnal/Stratego/lib/slick-util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
