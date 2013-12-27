@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -57,9 +58,10 @@ public class MainClient
 		
 		// TODO delete this
 		Board board = Board.getBoard();
-		for (int i = 0; i < 100; i++)
+		for (int i = 0; i < 40; i++)
 		{
 			board.addPiece(new Bomb(true));
+			board.addPiece(new Bomb(false));
 		}
 		
 		// Main Loop
@@ -167,7 +169,7 @@ public class MainClient
 		// Draw basic (Board, icons, etc ...)
 		for (Sprite spr : sprites)
 		{
-			spr.draw(0, 0);
+			spr.draw(0, 0, false);
 		}
 		
 		// Draw the pieces
@@ -181,9 +183,15 @@ public class MainClient
 	
 	private static void logic()
 	{
+		int x, y;
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 		{
 			EXIT_GAME = true;
+		}
+		if (Mouse.isButtonDown(0))
+		{
+			x = Mouse.getX();
+			y = Mouse.getY();
 		}
 	}
 }

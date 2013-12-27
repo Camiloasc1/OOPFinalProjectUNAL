@@ -12,6 +12,7 @@ import org.newdawn.slick.util.ResourceLoader;
 public class Sprite implements Serializable
 {
 	private static final long serialVersionUID = -5820243227474305917L;
+	private static final Sprite PIECE = getSpriteByLevel((byte) -2);
 	
 	private Texture texture;
 	
@@ -68,15 +69,17 @@ public class Sprite implements Serializable
 	 *            The x location at which to draw this sprite
 	 * @param y
 	 *            The y location at which to draw this sprite
+	 * @param selected
+	 *            if is actually selected
 	 */
-	public void draw(int x, int y)
+	public void draw(int x, int y, boolean selected)
 	{
 		// store the current model matrix
 		GL11.glPushMatrix();
 		
 		// bind to the appropriate texture for this sprite
-		// texture.bind();
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, texture.getTextureID());
+		GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
 		
 		// translate to the right location and prepare to draw
 		GL11.glTranslatef(x, y, 0);
@@ -95,8 +98,41 @@ public class Sprite implements Serializable
 		}
 		GL11.glEnd();
 		
+		if (selected)
+		{
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+			GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) 128);
+			GL11.glBegin(GL11.GL_QUADS);
+			{
+				GL11.glTexCoord2f(0, 0);
+				GL11.glVertex2f(0, 0);
+				GL11.glTexCoord2f(0, texture.getHeight());
+				GL11.glVertex2f(0, texture.getImageHeight());
+				GL11.glTexCoord2f(texture.getWidth(), texture.getHeight());
+				GL11.glVertex2f(texture.getImageWidth(), texture.getImageHeight());
+				GL11.glTexCoord2f(texture.getWidth(), 0);
+				GL11.glVertex2f(texture.getImageWidth(), 0);
+			}
+			GL11.glEnd();
+		}
+		
 		// restore the model view matrix to prevent contamination
 		GL11.glPopMatrix();
+	}
+	
+	/**
+	 * Draw the sprite at the specified location
+	 * 
+	 * @param x
+	 *            The x location at which to draw this sprite
+	 * @param y
+	 *            The y location at which to draw this sprite
+	 * @param selected
+	 *            if is actually selected
+	 */
+	public static void drawPiece(int x, int y, boolean selected)
+	{
+		PIECE.draw(x, y, selected);
 	}
 	
 	public static Sprite getSpriteByLevel(byte level)
