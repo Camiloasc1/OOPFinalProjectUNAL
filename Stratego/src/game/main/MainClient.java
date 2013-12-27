@@ -32,6 +32,8 @@ public class MainClient
 	private static boolean EXIT_GAME = false;
 	private static int selectedX = 0;
 	private static int selectedY = 0;
+	private static byte selectedAlpha = 127; // (0 - 127)
+	private static boolean selectedAlphaStatus = false;
 	private static long lastFrame;
 	
 	private static ArrayList<Sprite> sprites = new ArrayList<Sprite>();
@@ -222,11 +224,30 @@ public class MainClient
 		int x = (selectedX / (WIDTH / 10));
 		int y = ((HEIGHT - selectedY) / (HEIGHT / 10));
 		
+		if (selectedAlphaStatus)
+		{
+			selectedAlpha += 5;
+			if (selectedAlpha > 96)
+			{
+				selectedAlpha = 96;
+				selectedAlphaStatus = !selectedAlphaStatus;
+			}
+		}
+		else
+		{
+			selectedAlpha -= 5;
+			if (selectedAlpha < 32)
+			{
+				selectedAlpha = 32;
+				selectedAlphaStatus = !selectedAlphaStatus;
+			}
+		}
+		
 		Texture tex = Sprite.getPieceSprite().getTexture();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x * tex.getImageWidth(), y * tex.getImageHeight(), 0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-		GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) 128);
+		GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) selectedAlpha);
 		GL11.glBegin(GL11.GL_QUADS);
 		{
 			GL11.glTexCoord2f(0, 0);
