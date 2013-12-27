@@ -72,7 +72,7 @@ public class Sprite implements Serializable
 	 * @param selected
 	 *            if is actually selected
 	 */
-	public void draw(int x, int y, boolean selected)
+	public void draw(int x, int y)
 	{
 		// store the current model matrix
 		GL11.glPushMatrix();
@@ -98,24 +98,6 @@ public class Sprite implements Serializable
 		}
 		GL11.glEnd();
 		
-		if (selected)
-		{
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-			GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) 128);
-			GL11.glBegin(GL11.GL_QUADS);
-			{
-				GL11.glTexCoord2f(0, 0);
-				GL11.glVertex2f(0, 0);
-				GL11.glTexCoord2f(0, texture.getHeight());
-				GL11.glVertex2f(0, texture.getImageHeight());
-				GL11.glTexCoord2f(texture.getWidth(), texture.getHeight());
-				GL11.glVertex2f(texture.getImageWidth(), texture.getImageHeight());
-				GL11.glTexCoord2f(texture.getWidth(), 0);
-				GL11.glVertex2f(texture.getImageWidth(), 0);
-			}
-			GL11.glEnd();
-		}
-		
 		// restore the model view matrix to prevent contamination
 		GL11.glPopMatrix();
 	}
@@ -130,9 +112,14 @@ public class Sprite implements Serializable
 	 * @param selected
 	 *            if is actually selected
 	 */
-	public static void drawPiece(int x, int y, boolean selected)
+	public static void drawPiece(int x, int y)
 	{
-		PIECE.draw(x, y, selected);
+		PIECE.draw(x, y);
+	}
+	
+	public static Sprite getPieceSprite()
+	{
+		return PIECE;
 	}
 	
 	public static Sprite getSpriteByLevel(byte level)

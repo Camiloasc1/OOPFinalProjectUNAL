@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
@@ -27,7 +28,11 @@ public class MainClient
 	private static final int FRAMERATE = 60;
 	private static final boolean FULL_SCREEN = false;
 	private static final String WINDOW_TITLE = "Stratego";
+	
 	private static boolean EXIT_GAME = false;
+	private static int selectedX = 0;
+	private static int selectedY = 0;
+	private static long lastFrame;
 	
 	private static ArrayList<Sprite> sprites = new ArrayList<Sprite>();
 	
@@ -55,6 +60,7 @@ public class MainClient
 		
 		// Init
 		initGL();
+		getDelta();
 		
 		// TODO delete this
 		Board board = Board.getBoard();
@@ -126,6 +132,39 @@ public class MainClient
 		// System.exit(0);
 	}
 	
+	/**
+	 * Get the time in milliseconds
+	 * 
+	 * @return The system time in milliseconds
+	 */
+	public static long getTime()
+	{
+		return System.nanoTime() / 1000000;
+	}
+	
+	/**
+	 * Get the time in milliseconds
+	 * 
+	 * @return The system time in milliseconds
+	 */
+	public static long getTime2()
+	{
+		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
+	}
+	
+	/**
+	 * @return Delta time
+	 */
+	public static int getDelta()
+	{
+		long time = getTime();
+		// long time = getTime2();
+		int delta = (int) (time - lastFrame);
+		lastFrame = time;
+		
+		return delta;
+	}
+	
 	private static void run()
 	{
 		// Only bother rendering if the window is active, visible or dirty
@@ -169,7 +208,7 @@ public class MainClient
 		// Draw basic (Board, icons, etc ...)
 		for (Sprite spr : sprites)
 		{
-			spr.draw(0, 0, false);
+			spr.draw(0, 0);
 		}
 		
 		// Draw the pieces
@@ -179,19 +218,134 @@ public class MainClient
 		{
 			piece.draw();
 		}
+		
+		int x = (selectedX / (WIDTH / 10));
+		int y = ((HEIGHT - selectedY) / (HEIGHT / 10));
+		
+		Texture tex = Sprite.getPieceSprite().getTexture();
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x * tex.getImageWidth(), y * tex.getImageHeight(), 0);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+		GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) 128);
+		GL11.glBegin(GL11.GL_QUADS);
+		{
+			GL11.glTexCoord2f(0, 0);
+			GL11.glVertex2f(0, 0);
+			GL11.glTexCoord2f(0, tex.getHeight());
+			GL11.glVertex2f(0, tex.getImageHeight());
+			GL11.glTexCoord2f(tex.getWidth(), tex.getHeight());
+			GL11.glVertex2f(tex.getImageWidth(), tex.getImageHeight());
+			GL11.glTexCoord2f(tex.getWidth(), 0);
+			GL11.glVertex2f(tex.getImageWidth(), 0);
+		}
+		GL11.glEnd();
+		GL11.glPopMatrix();
 	}
 	
 	private static void logic()
 	{
-		int x, y;
+		int delta = getDelta();
+		
+		// Keyboard Events
+		
+		// Polled
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 		{
 			EXIT_GAME = true;
 		}
+		//@formatter:off
+		/**/
+		if (Keyboard.isKeyDown(Keyboard.KEY_LEFT))
+		{
+			selectedX -= 0.25f * delta;
+		}
+		if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
+		{
+			selectedX += 0.25f * delta;
+		}
+		
+		if (Keyboard.isKeyDown(Keyboard.KEY_UP))
+		{
+			selectedY += 0.25f * delta;
+		}
+		if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
+		{
+			selectedY -= 0.25f * delta;
+		}
+		/**/
+		//@formatter:on
+		// Queued
+		while (Keyboard.next())
+		{
+			if (Keyboard.getEventKeyState())
+			{
+				// Pressed
+				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
+				{
+					EXIT_GAME = true;
+				}
+				//@formatter:off
+				/*
+				if (Keyboard.getEventKey() == Keyboard.KEY_RIGHT)
+				{
+					selectedX += 1;
+				}
+				if (Keyboard.getEventKey() == Keyboard.KEY_LEFT)
+				{
+					selectedX -= 1;
+				}
+				if (Keyboard.getEventKey() == Keyboard.KEY_DOWN)
+				{
+					selectedY += 1;
+				}
+				if (Keyboard.getEventKey() == Keyboard.KEY_UP)
+				{
+					selectedY -= 1;
+				}
+				*/
+				//@formatter:on
+			}
+			else
+			{
+				// Released
+			}
+		}
+		
+		// Mouse Events
+		
+		// Polled
 		if (Mouse.isButtonDown(0))
 		{
-			x = Mouse.getX();
-			y = Mouse.getY();
+			selectedX = Mouse.getX();
+			selectedY = Mouse.getY();
 		}
+		// Queued
+		while (Mouse.next())
+		{
+			if (Mouse.getEventButtonState())
+			{
+				// Pressed
+				if (Mouse.getEventButton() == 0)
+				{
+					selectedX = Mouse.getX();
+					selectedY = Mouse.getY();
+				}
+			}
+			else
+			{
+				// Released
+			}
+		}
+		
+		// Verifications
+		
+		if (selectedX < 0)
+			selectedX = 0 + 1;
+		if (selectedX > WIDTH)
+			selectedX = WIDTH - 1;
+		if (selectedY < 0)
+			selectedY = 0 + 1;
+		if (selectedY > HEIGHT)
+			selectedY = HEIGHT - 1;
 	}
 }

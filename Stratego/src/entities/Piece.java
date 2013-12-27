@@ -66,11 +66,11 @@ public class Piece implements Serializable
 		int y = board.getPieceY(this) * sprite.getHeight();
 		if (owner)
 		{
-			sprite.draw(x, y,true);
+			sprite.draw(x, y);
 		}
 		else
 		{
-			Sprite.drawPiece(x, y,false);
+			Sprite.drawPiece(x, y);
 		}
 		return;
 	}
