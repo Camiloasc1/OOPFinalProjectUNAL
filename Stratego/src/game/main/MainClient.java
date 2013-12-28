@@ -30,9 +30,12 @@ public class MainClient
 	private static final String WINDOW_TITLE = "Stratego";
 	
 	private static boolean EXIT_GAME = false;
+	private static int activeX = 1;
+	private static int activeY = 1;
 	private static int selectedX = 0;
 	private static int selectedY = 0;
-	private static byte selectedAlpha = 127; // (0 - 127)
+	private static byte flashAlpha = 96; // (32 - 96)
+	private static byte flashdA = 5;
 	private static boolean selectedAlphaStatus = false;
 	private static long lastFrame;
 	
@@ -221,33 +224,57 @@ public class MainClient
 			piece.draw();
 		}
 		
-		int x = (selectedX / (WIDTH / 10));
-		int y = ((HEIGHT - selectedY) / (HEIGHT / 10));
-		
 		if (selectedAlphaStatus)
 		{
-			selectedAlpha += 5;
-			if (selectedAlpha > 96)
+			flashAlpha += flashdA;
+			if (flashAlpha > 96)
 			{
-				selectedAlpha = 96;
+				flashAlpha = 96;
 				selectedAlphaStatus = !selectedAlphaStatus;
 			}
 		}
 		else
 		{
-			selectedAlpha -= 5;
-			if (selectedAlpha < 32)
+			flashAlpha -= flashdA;
+			if (flashAlpha < 32)
 			{
-				selectedAlpha = 32;
+				flashAlpha = 32;
 				selectedAlphaStatus = !selectedAlphaStatus;
 			}
 		}
 		
+		int x;
+		int y;
 		Texture tex = Sprite.getPieceSprite().getTexture();
+		// Active Piece
+		x = (activeX / (WIDTH / Board.SIZE));
+		y = ((HEIGHT - activeY) / (HEIGHT / Board.SIZE));
+		
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x * tex.getImageWidth(), y * tex.getImageHeight(), 0);
 		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-		GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) selectedAlpha);
+		GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) flashAlpha);
+		GL11.glBegin(GL11.GL_QUADS);
+		{
+			GL11.glTexCoord2f(0, 0);
+			GL11.glVertex2f(0, 0);
+			GL11.glTexCoord2f(0, tex.getHeight());
+			GL11.glVertex2f(0, tex.getImageHeight());
+			GL11.glTexCoord2f(tex.getWidth(), tex.getHeight());
+			GL11.glVertex2f(tex.getImageWidth(), tex.getImageHeight());
+			GL11.glTexCoord2f(tex.getWidth(), 0);
+			GL11.glVertex2f(tex.getImageWidth(), 0);
+		}
+		GL11.glEnd();
+		GL11.glPopMatrix();
+		// Selected Piece
+		x = (selectedX / (WIDTH / Board.SIZE));
+		y = ((HEIGHT - selectedY) / (HEIGHT / Board.SIZE));
+		
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x * tex.getImageWidth(), y * tex.getImageHeight(), 0);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+		GL11.glColor4ub((byte) 255, (byte) 0, (byte) 0, (byte) flashAlpha);
 		GL11.glBegin(GL11.GL_QUADS);
 		{
 			GL11.glTexCoord2f(0, 0);
@@ -265,6 +292,7 @@ public class MainClient
 	
 	private static void logic()
 	{
+		@SuppressWarnings("unused")
 		int delta = getDelta();
 		
 		// Keyboard Events
@@ -275,7 +303,7 @@ public class MainClient
 			EXIT_GAME = true;
 		}
 		//@formatter:off
-		/**/
+		/*
 		if (Keyboard.isKeyDown(Keyboard.KEY_LEFT))
 		{
 			selectedX -= 0.25f * delta;
@@ -293,7 +321,7 @@ public class MainClient
 		{
 			selectedY -= 0.25f * delta;
 		}
-		/**/
+		*/
 		//@formatter:on
 		// Queued
 		while (Keyboard.next())
@@ -305,25 +333,39 @@ public class MainClient
 				{
 					EXIT_GAME = true;
 				}
+				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
+				{
+					if (selectedX == 0 && selectedY == 0)
+					{
+						selectedX = activeX;
+						selectedY = activeY;
+					}
+					else
+					{
+						// TODO Movement event handler
+						selectedX = 0;
+						selectedY = 0;
+					}
+				}
 				//@formatter:off
-				/*
+				/**/
 				if (Keyboard.getEventKey() == Keyboard.KEY_RIGHT)
 				{
-					selectedX += 1;
+					activeX += Sprite.getPieceSprite().getWidth();
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_LEFT)
 				{
-					selectedX -= 1;
+					activeX -= Sprite.getPieceSprite().getWidth();
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_DOWN)
 				{
-					selectedY += 1;
+					activeY -= Sprite.getPieceSprite().getHeight();
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_UP)
 				{
-					selectedY -= 1;
+					activeY += Sprite.getPieceSprite().getHeight();
 				}
-				*/
+				/**/
 				//@formatter:on
 			}
 			else
@@ -337,8 +379,8 @@ public class MainClient
 		// Polled
 		if (Mouse.isButtonDown(0))
 		{
-			selectedX = Mouse.getX();
-			selectedY = Mouse.getY();
+			activeX = Mouse.getX();
+			activeY = Mouse.getY();
 		}
 		// Queued
 		while (Mouse.next())
@@ -348,8 +390,25 @@ public class MainClient
 				// Pressed
 				if (Mouse.getEventButton() == 0)
 				{
-					selectedX = Mouse.getX();
-					selectedY = Mouse.getY();
+					activeX = Mouse.getX();
+					activeY = Mouse.getY();
+				}
+				if (Mouse.getEventButton() == 1)
+				{
+					if (selectedX == 0 && selectedY == 0)
+					{
+						activeX = Mouse.getX();
+						activeY = Mouse.getY();
+						
+						selectedX = Mouse.getX();
+						selectedY = Mouse.getY();
+					}
+					else
+					{
+						// TODO Movement event handler
+						selectedX = 0;
+						selectedY = 0;
+					}
 				}
 			}
 			else
@@ -360,13 +419,13 @@ public class MainClient
 		
 		// Verifications
 		
-		if (selectedX < 0)
-			selectedX = 0 + 1;
-		if (selectedX > WIDTH)
-			selectedX = WIDTH - 1;
-		if (selectedY < 0)
-			selectedY = 0 + 1;
-		if (selectedY > HEIGHT)
-			selectedY = HEIGHT - 1;
+		if (activeX < 0)
+			activeX = 0 + 1;
+		if (activeX > WIDTH)
+			activeX = WIDTH - 1;
+		if (activeY < 0)
+			activeY = 0 + 1;
+		if (activeY > HEIGHT)
+			activeY = HEIGHT - 1;
 	}
 }

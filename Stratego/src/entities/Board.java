@@ -27,7 +27,7 @@ import java.util.Iterator;
 public class Board implements Serializable, Iterable<Piece>
 {
 	private static final long serialVersionUID = -333970939198499361L;
-	private static final byte SIZE = 10;
+	public static final byte SIZE = 10;
 	private static Board gameBoard;
 	
 	private Piece[][] map;
