@@ -28,7 +28,7 @@ public class Board implements Serializable, Iterable<Piece>
 {
 	private static final long serialVersionUID = -333970939198499361L;
 	public static final byte SIZE = 10;
-	private static Board gameBoard;
+	private static Board INSTANCE = new Board();
 	
 	private Piece[][] map;
 	
@@ -51,19 +51,24 @@ public class Board implements Serializable, Iterable<Piece>
 	/**
 	 * @return The unique instance of Board
 	 */
-	public static synchronized Board getBoard()
+	public static Board getInstance()
 	{
+		//@formatter:off
+		/*
 		if (gameBoard == null)
 		{
 			gameBoard = new Board();
 		}
-		return gameBoard;
+		*/
+		//@formatter:on
+		return INSTANCE;
 	}
 	
 	@Override
-	public Object clone()
+	public Object clone() throws CloneNotSupportedException
 	{
-		return getBoard();
+		throw new CloneNotSupportedException();
+		// return getInstance();
 	}
 	
 	/**
@@ -185,7 +190,7 @@ public class Board implements Serializable, Iterable<Piece>
 	 */
 	public boolean movePiece(Piece piece, byte x, byte y)
 	{
-		map[Board.getBoard().getPieceX(piece)][Board.getBoard().getPieceY(piece)] = null;
+		map[Board.getInstance().getPieceX(piece)][Board.getInstance().getPieceY(piece)] = null;
 		map[convertX(x, y)][convertY(x, y)] = piece;
 		return true;
 	}
@@ -221,7 +226,7 @@ public class Board implements Serializable, Iterable<Piece>
 		if (piece == null)
 			return false;
 		
-		map[Board.getBoard().getPieceX(piece)][Board.getBoard().getPieceY(piece)] = null;
+		map[Board.getInstance().getPieceX(piece)][Board.getInstance().getPieceY(piece)] = null;
 		return true;
 	}
 	

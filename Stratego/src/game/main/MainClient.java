@@ -16,7 +16,7 @@ public class MainClient
 		GUI.init();
 		
 		// TODO delete this
-		Board board = Board.getBoard();
+		Board board = Board.getInstance();
 		for (int i = 0; i < 40; i++)
 		{
 			board.addPiece(new Bomb(true));
@@ -47,7 +47,7 @@ public class MainClient
 				}
 				case GameStates.INGAME:
 				{
-					InGame.run();
+					InGame.getInstance().run();
 					break;
 				}
 			}

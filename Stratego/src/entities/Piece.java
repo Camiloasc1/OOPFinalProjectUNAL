@@ -61,7 +61,7 @@ public class Piece implements Serializable
 	 */
 	public void draw()
 	{
-		Board board = Board.getBoard();
+		Board board = Board.getInstance();
 		int x = board.getPieceX(this) * sprite.getWidth();
 		int y = board.getPieceY(this) * sprite.getHeight();
 		if (owner)

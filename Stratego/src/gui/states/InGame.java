@@ -12,8 +12,10 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 
-public class InGame
+public final class InGame extends GameState
 {
+	private static GameState INSTANCE = new InGame();
+	
 	private static int activeX = 1;
 	private static int activeY = 1;
 	private static int selectedX = 0;
@@ -22,7 +24,7 @@ public class InGame
 	private static byte flashdA = 5;
 	private static boolean selectedAlphaStatus = false;
 	
-	public static void run()
+	public void run()
 	{
 		// Only bother rendering if the window is active, visible or dirty
 		if (Display.isActive() || Display.isVisible() || Display.isDirty())
@@ -53,14 +55,12 @@ public class InGame
 		}
 	}
 	
-	private static void render()
+	protected void render()
 	{
 		// 2D
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		// 3D
 		// glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-		
-		// GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
 		
 		// Draw basic (Board, icons, etc ...)
 		for (Sprite spr : GUI.sprites)
@@ -70,7 +70,7 @@ public class InGame
 		
 		// Draw the pieces
 		// TODO Get the board from socket
-		Board board = Board.getBoard();
+		Board board = Board.getInstance();
 		for (Piece piece : board)
 		{
 			piece.draw();
@@ -142,7 +142,7 @@ public class InGame
 		GL11.glPopMatrix();
 	}
 	
-	private static void logic()
+	protected void logic()
 	{
 		@SuppressWarnings("unused")
 		int delta = GUI.getDelta();
@@ -280,4 +280,18 @@ public class InGame
 		if (activeY > GUI.HEIGHT)
 			activeY = GUI.HEIGHT - 1;
 	}
+
+	/**
+	 * 
+	 */
+	private InGame()
+	{
+		super();
+	}
+	
+	public static GameState getInstance()
+	{
+		return INSTANCE;
+	}
+	
 }

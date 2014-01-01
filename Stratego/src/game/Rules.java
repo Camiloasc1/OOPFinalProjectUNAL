@@ -31,11 +31,11 @@ public final class Rules
 		
 		if (piece instanceof Scout)
 		{
-			return (Board.getBoard().getPieceX(piece) == x || Board.getBoard().getPieceY(piece) == y);
+			return (Board.getInstance().getPieceX(piece) == x || Board.getInstance().getPieceY(piece) == y);
 		}
 		
 		return MathUtil.isEqualsDouble2(
-				MathUtil.getDistance(Board.getBoard().getPieceX(piece), Board.getBoard().getPieceY(piece), x, y), 1);
+				MathUtil.getDistance(Board.getInstance().getPieceX(piece), Board.getInstance().getPieceY(piece), x, y), 1);
 // return (Math.abs(Board.getBoard().getPieceX(piece) - x) == 1 || Math.abs(Board.getBoard().getPieceY(piece) - y) == 1);
 	}
 }

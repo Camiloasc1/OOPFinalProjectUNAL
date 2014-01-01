@@ -42,7 +42,7 @@ public class Engine
 		if (!Rules.isValidMove(piece, x, y))
 			return false;
 		
-		Board board = Board.getBoard();
+		Board board = Board.getInstance();
 		
 		if (!board.isEmptyPos(x, y)) // Is a Battle
 		{
@@ -65,7 +65,7 @@ public class Engine
 	 */
 	public static boolean movePiece(byte xi, byte yi, byte xf, byte yf)
 	{
-		Board board = Board.getBoard();
+		Board board = Board.getInstance();
 		
 		if (board.isEmptyPos(xi, yi))
 			return false;
@@ -88,7 +88,7 @@ public class Engine
 		if (ally.getOwner() == enemy.getOwner())
 			return false;
 		
-		Board board = Board.getBoard();
+		Board board = Board.getInstance();
 		boolean result;
 		
 		result = (ally.getLevel() <= enemy.getLevel());
