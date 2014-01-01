@@ -6,6 +6,10 @@ import entities.pieces.Bomb;
 import gui.GUI;
 import gui.states.GameStates;
 import gui.states.InGame;
+import gui.states.InitGame;
+import gui.states.MainMenu;
+import gui.states.PauseMenu;
+import gui.states.Setup;
 
 import org.lwjgl.opengl.Display;
 
@@ -31,18 +35,22 @@ public class MainClient
 			{
 				case GameStates.MAINMENU:
 				{
+					MainMenu.getInstance().run();
 					break;
 				}
 				case GameStates.PAUSEMENU:
 				{
+					PauseMenu.getInstance().run();
 					break;
 				}
 				case GameStates.SETUP:
 				{
+					Setup.getInstance().run();
 					break;
 				}
 				case GameStates.INITGAME:
 				{
+					InitGame.getInstance().run();
 					break;
 				}
 				case GameStates.INGAME:

@@ -24,6 +24,7 @@ public final class InGame extends GameState
 	private static byte flashdA = 5;
 	private static boolean selectedAlphaStatus = false;
 	
+	@Override
 	public void run()
 	{
 		// Only bother rendering if the window is active, visible or dirty
@@ -55,6 +56,7 @@ public final class InGame extends GameState
 		}
 	}
 	
+	@Override
 	protected void render()
 	{
 		// 2D
@@ -142,6 +144,7 @@ public final class InGame extends GameState
 		GL11.glPopMatrix();
 	}
 	
+	@Override
 	protected void logic()
 	{
 		@SuppressWarnings("unused")
@@ -280,13 +283,9 @@ public final class InGame extends GameState
 		if (activeY > GUI.HEIGHT)
 			activeY = GUI.HEIGHT - 1;
 	}
-
-	/**
-	 * 
-	 */
+	
 	private InGame()
 	{
-		super();
 	}
 	
 	public static GameState getInstance()
