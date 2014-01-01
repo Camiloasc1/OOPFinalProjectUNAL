@@ -152,7 +152,7 @@ public class InGame
 		// Polled
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 		{
-			GUI.EXIT_GAME = true;
+			GameStates.activateExitFlag();
 		}
 		//@formatter:off
 		/*
@@ -183,7 +183,7 @@ public class InGame
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-					GUI.EXIT_GAME = true;
+					GameStates.activateExitFlag();
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
 				{

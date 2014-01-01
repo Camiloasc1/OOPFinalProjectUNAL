@@ -1,6 +1,7 @@
 
 package gui;
 
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
@@ -22,10 +24,10 @@ public class GUI
 	private static final boolean FULL_SCREEN = false;
 	private static final String WINDOW_TITLE = "Stratego";
 	
-	public static boolean EXIT_GAME = false;
 	private static long lastFrame;
 	
 	public static ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+	public static ArrayList<TrueTypeFont> fonts = new ArrayList<TrueTypeFont>();
 	
 	/**
 	 * Get the time in milliseconds
@@ -86,6 +88,8 @@ public class GUI
 		initGL();
 		getDelta();
 		
+		// Load Resources
+		loadResources();
 	}
 	
 	private static void initGL()
@@ -104,8 +108,10 @@ public class GUI
 		// Enable Blending to support transparency
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		
-		// TODO Move these
+	}
+	
+	private static void loadResources()
+	{
 		try
 		{
 			String str;
@@ -122,6 +128,9 @@ public class GUI
 			cleanup();
 			System.exit(1);
 		}
+		
+		Font awtFont = new Font("Times New Roman", Font.PLAIN, 24);
+		fonts.add(new TrueTypeFont(awtFont, false));
 	}
 	
 	public static void cleanup()

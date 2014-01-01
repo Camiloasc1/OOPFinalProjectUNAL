@@ -4,14 +4,13 @@ package game.main;
 import entities.Board;
 import entities.pieces.Bomb;
 import gui.GUI;
+import gui.states.GameStates;
 import gui.states.InGame;
 
 import org.lwjgl.opengl.Display;
 
 public class MainClient
 {
-	public static boolean EXIT_GAME = false;
-	
 	public static void main(String[] args)
 	{
 		GUI.init();
@@ -23,18 +22,41 @@ public class MainClient
 			board.addPiece(new Bomb(true));
 			board.addPiece(new Bomb(false));
 		}
+		GameStates.setState(GameStates.INGAME);
 		
 		// Main Loop
-		while (!Display.isCloseRequested() && !EXIT_GAME)
+		while (!Display.isCloseRequested() && !GameStates.getExitFlag())
 		{
-			// TODO Switch different game states
-			InGame.run();
+			switch (GameStates.getState())
+			{
+				case GameStates.MAINMENU:
+				{
+					break;
+				}
+				case GameStates.PAUSEMENU:
+				{
+					break;
+				}
+				case GameStates.SETUP:
+				{
+					break;
+				}
+				case GameStates.INITGAME:
+				{
+					break;
+				}
+				case GameStates.INGAME:
+				{
+					InGame.run();
+					break;
+				}
+			}
 		}
 		
 		// Game Exit
 		GUI.cleanup();
 		
 		System.exit(0);
-// return;
+		// return;
 	}
 }
