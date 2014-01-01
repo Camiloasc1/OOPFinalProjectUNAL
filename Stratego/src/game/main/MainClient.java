@@ -26,38 +26,43 @@ public class MainClient
 			board.addPiece(new Bomb(true));
 			board.addPiece(new Bomb(false));
 		}
-		GameStates.setState(GameStates.INGAME);
+		
+		GameStates state = GameStates.getInstance();
 		
 		// Main Loop
-		while (!Display.isCloseRequested() && !GameStates.getExitFlag())
+		while (!Display.isCloseRequested() && !state.isExitFlag())
 		{
-			switch (GameStates.getState())
+			switch (state)
 			{
-				case GameStates.MAINMENU:
+				case MAINMENU:
 				{
 					MainMenu.getInstance().run();
 					break;
 				}
-				case GameStates.PAUSEMENU:
+				case PAUSEMENU:
 				{
 					PauseMenu.getInstance().run();
 					break;
 				}
-				case GameStates.SETUP:
+				case SETUP:
 				{
 					Setup.getInstance().run();
 					break;
 				}
-				case GameStates.INITGAME:
+				case INITGAME:
 				{
 					InitGame.getInstance().run();
 					break;
 				}
-				case GameStates.INGAME:
+				case INGAME:
 				{
 					InGame.getInstance().run();
 					break;
 				}
+				case EXITGAME:
+					break;
+				default:
+					break;
 			}
 		}
 		

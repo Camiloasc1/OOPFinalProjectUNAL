@@ -1,69 +1,31 @@
+/**
+ * 
+ */
 
 package gui.states;
 
-public final class GameStates
+/**
+ * @author camiloasc1
+ * 
+ */
+public enum GameStates
 {
-	public static final byte EXITGAME = -1;
-	public static final byte MAINMENU = 0;
-	public static final byte PAUSEMENU = 1;
-	public static final byte SETUP = 2;
-	public static final byte INITGAME = 3;
-	public static final byte INGAME = 4;
+	EXITGAME, MAINMENU, PAUSEMENU, SETUP, INITGAME, INGAME;
 	
-	/**
-	 * Actual game state
-	 */
-	private static byte state = 0;
+	private static GameStates INSTANCE = MAINMENU;
 	
-	/**
-	 * 
-	 */
-	private GameStates()
+	public void activateExitFlag()
 	{
-		super();
-		// this.state = 0;
+		INSTANCE = EXITGAME;
 	}
 	
-	/**
-	 * @return the state
-	 */
-	public static synchronized byte getState()
+	public boolean isExitFlag()
 	{
-		return state;
+		return (this == EXITGAME);
 	}
 	
-	/**
-	 * @param state
-	 * @return is successful set
-	 * @throws ExitGameFlag
-	 *             not allowed to set the EXITGAME status
-	 */
-	public static synchronized boolean setState(byte state)
+	public static GameStates getInstance()
 	{
-		if (state == GameStates.EXITGAME)
-		{
-			return false;
-		}
-		// this.state = state;
-		GameStates.state = state;
-		return true;
+		return INSTANCE;
 	}
-	
-	/**
-	 * @return is EXITGAME state set
-	 */
-	public static synchronized boolean getExitFlag()
-	{
-		return (state == GameStates.EXITGAME);
-	}
-	
-	/**
-	 * @param actives
-	 *            the EXITGAME state
-	 */
-	public static synchronized void activateExitFlag()
-	{
-		GameStates.state = GameStates.EXITGAME;
-	}
-	
 }

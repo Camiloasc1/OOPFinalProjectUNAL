@@ -8,7 +8,6 @@ import gui.Sprite;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 
@@ -23,38 +22,6 @@ public final class InGame extends GameState
 	private static byte flashAlpha = 96; // (32 - 96)
 	private static byte flashdA = 5;
 	private static boolean selectedAlphaStatus = false;
-	
-	@Override
-	public void run()
-	{
-		// Only bother rendering if the window is active, visible or dirty
-		if (Display.isActive() || Display.isVisible() || Display.isDirty())
-		{
-			// While no attempt to close the display is made..
-			// Put render code here.
-			logic();
-			render();
-			// Put input handling code here.
-			Display.update();
-			// Refresh the display and poll input.
-			Display.sync(GUI.FRAMERATE);
-			// Wait until 16.67 milliseconds have passed. (Maintain 60 frames-per-second)
-		}
-		else
-		{
-			
-			// The window is not in the foreground, so we can allow other stuff to run and
-			// infrequently update
-			try
-			{
-				Thread.sleep(100);
-			}
-			catch (InterruptedException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
 	
 	@Override
 	protected void render()
@@ -155,7 +122,7 @@ public final class InGame extends GameState
 		// Polled
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 		{
-			GameStates.activateExitFlag();
+			GameStates.getInstance().activateExitFlag();
 		}
 		//@formatter:off
 		/*
@@ -186,7 +153,7 @@ public final class InGame extends GameState
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-					GameStates.activateExitFlag();
+					GameStates.getInstance().activateExitFlag();
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
 				{
