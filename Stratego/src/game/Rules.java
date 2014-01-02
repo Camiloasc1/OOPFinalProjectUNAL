@@ -4,7 +4,9 @@ package game;
 import util.MathUtil;
 import entities.Board;
 import entities.Piece;
-import entities.pieces.*;
+import entities.pieces.Bomb;
+import entities.pieces.Flag;
+import entities.pieces.Scout;
 
 /**
  * Rules for Stratego game

@@ -4,8 +4,8 @@ package gui.states;
 import entities.Board;
 import entities.Piece;
 import gui.GUI;
-import gui.Sprite;
 import gui.ResourceManager;
+import gui.Sprite;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;

@@ -3,7 +3,11 @@ package game;
 
 import entities.Board;
 import entities.Piece;
-import entities.pieces.*;
+import entities.pieces.Bomb;
+import entities.pieces.Flag;
+import entities.pieces.Marshal;
+import entities.pieces.Miner;
+import entities.pieces.Spy;
 
 /**
  * Engine for Stratego game
