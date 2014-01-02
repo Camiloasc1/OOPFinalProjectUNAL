@@ -5,6 +5,7 @@ import entities.Board;
 import entities.Piece;
 import gui.GUI;
 import gui.Sprite;
+import gui.ResourceManager;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -15,13 +16,13 @@ public final class InGame extends GameState
 {
 	private static volatile GameState INSTANCE = new InGame();
 	
-	private static int activeX = 1;
-	private static int activeY = 1;
-	private static int selectedX = 0;
-	private static int selectedY = 0;
-	private static byte flashAlpha = 96; // (32 - 96)
-	private static byte flashdA = 5;
-	private static boolean selectedAlphaStatus = false;
+	private int activeX = 1;
+	private int activeY = 1;
+	private int selectedX = 0;
+	private int selectedY = 0;
+	private byte flashAlpha = 96; // (32 - 96)
+	private byte flashdA = 5;
+	private boolean selectedAlphaStatus = false;
 	
 	@Override
 	protected void render()
@@ -32,10 +33,7 @@ public final class InGame extends GameState
 		// glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		
 		// Draw basic (Board, icons, etc ...)
-		for (Sprite spr : GUI.sprites)
-		{
-			spr.draw(0, 0);
-		}
+		ResourceManager.getMap().get(ResourceManager.BOARD).draw(0, 0);
 		
 		// Draw the pieces
 		// TODO Get the board from socket

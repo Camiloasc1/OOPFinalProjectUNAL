@@ -3,7 +3,6 @@ package gui;
 
 import java.awt.Font;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.lwjgl.LWJGLException;
@@ -12,9 +11,6 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.TrueTypeFont;
-import org.newdawn.slick.opengl.Texture;
-import org.newdawn.slick.opengl.TextureLoader;
-import org.newdawn.slick.util.ResourceLoader;
 
 public class GUI
 {
@@ -26,7 +22,7 @@ public class GUI
 	
 	private static long lastFrame;
 	
-	public static ArrayList<Sprite> sprites = new ArrayList<Sprite>();
+	// Public Resources
 	public static ArrayList<TrueTypeFont> fonts = new ArrayList<TrueTypeFont>();
 	
 	/**
@@ -112,33 +108,15 @@ public class GUI
 	
 	private static void loadResources()
 	{
-		try
-		{
-			String str;
-			Texture tex;
-			
-			str = "res/images/grid.png";
-			tex = TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(str));
-			sprites.add(new Sprite(tex));
-		}
-		catch (IOException e)
-		{
-			System.err.println("Failed to load resources");
-			e.printStackTrace();
-			cleanup();
-			System.exit(1);
-		}
+		ResourceManager.getMap();
 		
-		Font awtFont = new Font("Times New Roman", Font.PLAIN, 24);
+		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
 		fonts.add(new TrueTypeFont(awtFont, false));
 	}
 	
 	public static void cleanup()
 	{
-		for (Sprite spr : sprites)
-		{
-			spr.getTexture().release();
-		}
+		ResourceManager.cleanup();
 		Display.destroy();
 	}
 }

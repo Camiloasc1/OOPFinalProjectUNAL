@@ -28,6 +28,7 @@ public class MainClient
 		}
 		
 		GameStates state = GameStates.getInstance();
+		state = GameStates.INGAME;
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !GameStates.isExitFlag())
