@@ -3,7 +3,7 @@ package gui.states;
 
 public final class InitGame extends GameState
 {
-	private static GameState INSTANCE = new InitGame();
+	private static volatile GameState INSTANCE = new InitGame();
 	
 	@Override
 	public void run()

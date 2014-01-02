@@ -13,7 +13,7 @@ import org.newdawn.slick.opengl.Texture;
 
 public final class InGame extends GameState
 {
-	private static GameState INSTANCE = new InGame();
+	private static volatile GameState INSTANCE = new InGame();
 	
 	private static int activeX = 1;
 	private static int activeY = 1;
@@ -122,7 +122,7 @@ public final class InGame extends GameState
 		// Polled
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 		{
-			GameStates.getInstance().activateExitFlag();
+			GameStates.activateExitFlag();
 		}
 		//@formatter:off
 		/*
@@ -153,7 +153,7 @@ public final class InGame extends GameState
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-					GameStates.getInstance().activateExitFlag();
+					GameStates.activateExitFlag();
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
 				{

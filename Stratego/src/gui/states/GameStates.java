@@ -12,16 +12,16 @@ public enum GameStates
 {
 	EXITGAME, MAINMENU, PAUSEMENU, SETUP, INITGAME, INGAME;
 	
-	private static GameStates INSTANCE = MAINMENU;
+	private static volatile GameStates INSTANCE = MAINMENU;
 	
-	public void activateExitFlag()
+	public static void activateExitFlag()
 	{
 		INSTANCE = EXITGAME;
 	}
 	
-	public boolean isExitFlag()
+	public static boolean isExitFlag()
 	{
-		return (this == EXITGAME);
+		return (INSTANCE == EXITGAME);
 	}
 	
 	public static GameStates getInstance()

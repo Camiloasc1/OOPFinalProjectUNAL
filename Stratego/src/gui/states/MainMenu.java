@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 public final class MainMenu extends GameState
 {
-	private static GameState INSTANCE = new MainMenu();
+	private static volatile GameState INSTANCE = new MainMenu();
 	
 	@Override
 	protected void render()

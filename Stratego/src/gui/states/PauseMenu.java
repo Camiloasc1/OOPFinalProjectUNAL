@@ -3,7 +3,7 @@ package gui.states;
 
 public final class PauseMenu extends GameState
 {
-	private static GameState INSTANCE = new PauseMenu();
+	private static volatile GameState INSTANCE = new PauseMenu();
 	
 	@Override
 	public void run()

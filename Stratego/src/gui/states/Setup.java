@@ -3,7 +3,7 @@ package gui.states;
 
 public final class Setup extends GameState
 {
-	private static GameState INSTANCE = new Setup();
+	private static volatile GameState INSTANCE = new Setup();
 	
 	@Override
 	public void run()

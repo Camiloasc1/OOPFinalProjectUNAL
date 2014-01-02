@@ -24,11 +24,11 @@ import java.util.Iterator;
  * @author Camilo Sanchez
  * 
  */
-public class Board implements Serializable, Iterable<Piece>
+public final class Board implements Serializable, Iterable<Piece>
 {
 	private static final long serialVersionUID = -333970939198499361L;
 	public static final byte SIZE = 10;
-	private static Board INSTANCE = new Board();
+	private static volatile Board INSTANCE = new Board();
 	
 	private Piece[][] map;
 	
@@ -53,14 +53,6 @@ public class Board implements Serializable, Iterable<Piece>
 	 */
 	public static Board getInstance()
 	{
-		//@formatter:off
-		/*
-		if (gameBoard == null)
-		{
-			gameBoard = new Board();
-		}
-		*/
-		//@formatter:on
 		return INSTANCE;
 	}
 	

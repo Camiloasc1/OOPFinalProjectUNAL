@@ -55,7 +55,7 @@ public abstract class GameState implements Cloneable
 	 */
 	protected abstract void logic();
 	
-	// private static GameState INSTANCE = new State();
+	// private static volatile GameState INSTANCE = new State();
 	// private State();
 	// public static GameState getInstance();
 	

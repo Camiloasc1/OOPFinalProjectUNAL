@@ -30,7 +30,7 @@ public class MainClient
 		GameStates state = GameStates.getInstance();
 		
 		// Main Loop
-		while (!Display.isCloseRequested() && !state.isExitFlag())
+		while (!Display.isCloseRequested() && !GameStates.isExitFlag())
 		{
 			switch (state)
 			{
