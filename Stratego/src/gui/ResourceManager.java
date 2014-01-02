@@ -13,7 +13,7 @@ import org.newdawn.slick.util.ResourceLoader;
  */
 public enum ResourceManager
 {
-	BOARD, PIECE, ETC;
+	BOARD, PIECE, BOMB, CAPTAIN, COLONEL, FLAG, GENERAL, LIEUTENTANT, MAJOR, MARSHAL, MINER, SCOUT, SERGEANT, SPY;
 	
 	/**
 	 * Need differed init or differed populate
@@ -23,7 +23,7 @@ public enum ResourceManager
 	/**
 	 * @return the EnumMap<ResourceManager, Sprite>
 	 */
-	public static synchronized EnumMap<ResourceManager, Sprite> getMap()
+	public static synchronized final EnumMap<ResourceManager, Sprite> getMap()
 	{
 		if (MAP.isEmpty())
 		{
@@ -32,7 +32,7 @@ public enum ResourceManager
 		return MAP;
 	}
 	
-	private static synchronized void populateMap()
+	private static synchronized final void populateMap()
 	{
 		if (!MAP.isEmpty())
 		{
@@ -41,11 +41,23 @@ public enum ResourceManager
 		
 		// TODO Load Resources
 		
-		loadResource("res/images/grid.png", BOARD);
-		
+		loadResource(BOARD, "res/images/grid.png");
+		loadResource(PIECE, "res/images/piece.png");
+		loadResource(BOMB, "res/images/b.png");
+		loadResource(CAPTAIN, "res/images/piece.png");
+		loadResource(COLONEL, "res/images/piece.png");
+		loadResource(FLAG, "res/images/f.png");
+		loadResource(GENERAL, "res/images/piece.png");
+		loadResource(LIEUTENTANT, "res/images/piece.png");
+		loadResource(MAJOR, "res/images/piece.png");
+		loadResource(MARSHAL, "res/images/piece.png");
+		loadResource(MINER, "res/images/piece.png");
+		loadResource(SCOUT, "res/images/piece.png");
+		loadResource(SERGEANT, "res/images/piece.png");
+		loadResource(SPY, "res/images/s.png");
 	}
 	
-	private static synchronized void loadResource(String file, ResourceManager key)
+	private static synchronized final void loadResource(ResourceManager key, String file)
 	{
 		try
 		{
@@ -54,13 +66,13 @@ public enum ResourceManager
 		catch (IOException e)
 		{
 			System.err.println("Failed to load resources");
-// e.printStackTrace();
+			// e.printStackTrace();
 			GUI.cleanup();
 			System.exit(1);
 		}
 	}
 	
-	public static synchronized void cleanup()
+	public static synchronized final void cleanup()
 	{
 		if (MAP.isEmpty())
 		{
