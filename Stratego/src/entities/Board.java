@@ -64,6 +64,15 @@ public final class Board implements Serializable, Iterable<Piece>
 	}
 	
 	/**
+	 * @return Board singleton even if was previously serialized
+	 */
+	@SuppressWarnings("unused")
+	private Board readResolve()
+	{
+		return INSTANCE;
+	}
+	
+	/**
 	 * @return the size
 	 */
 	public static byte getSize()
