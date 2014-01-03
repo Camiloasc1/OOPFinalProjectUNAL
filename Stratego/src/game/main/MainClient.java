@@ -11,7 +11,7 @@ import gui.states.LoadGame;
 import gui.states.MainMenu;
 import gui.states.PauseMenu;
 import gui.states.SaveGame;
-import gui.states.Setup;
+import gui.states.SetupGame;
 
 import java.io.File;
 
@@ -35,13 +35,12 @@ public class MainClient
 			board.addPiece(new Bomb(false));
 		}
 		
-		GameStates state = GameStates.getInstance();
-		state = GameStates.MAINMENU;
+		GameStates.SetState(GameStates.MAINMENU);
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !GameStates.isExitFlag())
 		{
-			switch (state)
+			switch (GameStates.getState())
 			{
 				case MAINMENU:
 				{
@@ -55,7 +54,7 @@ public class MainClient
 				}
 				case SETUPGAME:
 				{
-					Setup.getInstance().run();
+					SetupGame.getInstance().run();
 					break;
 				}
 				case LOADGAME:

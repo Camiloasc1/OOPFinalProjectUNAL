@@ -21,7 +21,7 @@ public enum GameStates
 		return (INSTANCE == EXITGAME);
 	}
 	
-	public static synchronized GameStates getInstance()
+	public static synchronized GameStates getState()
 	{
 		return INSTANCE;
 	}

@@ -1,15 +1,19 @@
 
 package gui.states;
 
-public final class Setup extends GameState
+import org.lwjgl.opengl.GL11;
+
+public final class SetupGame extends GameState
 {
-	private static volatile GameState INSTANCE = new Setup();
+	private static volatile GameState INSTANCE = new SetupGame();
 	
 	@Override
 	public void run()
 	{
-		// TODO Auto-generated method stub
-		
+		// 2D
+		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+		// 3D
+		// GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 	}
 	
 	@Override
@@ -26,7 +30,7 @@ public final class Setup extends GameState
 		
 	}
 	
-	private Setup()
+	private SetupGame()
 	{
 		// TODO Auto-generated constructor stub
 	}
