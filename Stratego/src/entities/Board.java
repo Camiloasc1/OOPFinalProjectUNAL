@@ -51,7 +51,7 @@ public final class Board implements Serializable, Iterable<Piece>
 	/**
 	 * @return The unique instance of Board
 	 */
-	public static Board getInstance()
+	public static synchronized Board getInstance()
 	{
 		return INSTANCE;
 	}

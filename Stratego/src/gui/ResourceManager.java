@@ -1,9 +1,11 @@
 
 package gui;
 
+import java.awt.Font;
 import java.io.IOException;
 import java.util.EnumMap;
 
+import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
@@ -13,55 +15,87 @@ import org.newdawn.slick.util.ResourceLoader;
  */
 public enum ResourceManager
 {
-	BOARD, PIECE, BOMB, CAPTAIN, COLONEL, FLAG, GENERAL, LIEUTENTANT, MAJOR, MARSHAL, MINER, SCOUT, SERGEANT, SPY;
+	//@formatter:off
+	BOARD,
+	PIECE, 
+	BOMB, CAPTAIN, COLONEL, FLAG, GENERAL, LIEUTENTANT, MAJOR, MARSHAL, MINER, SCOUT, SERGEANT, SPY,
+	NEWGAME, LOADGAME, SAVEGAME, DRAW, EXIT,
+	SPLASH,
+	FONT1, FONT2, FONT3, FONT4, FONT5;
+	//@formatter:on
 	
 	/**
 	 * Need differed init or differed populate
 	 */
-	private static volatile EnumMap<ResourceManager, Sprite> MAP = new EnumMap<ResourceManager, Sprite>(ResourceManager.class);
+	private static volatile EnumMap<ResourceManager, Sprite> SPRITEMAP = new EnumMap<ResourceManager, Sprite>(
+			ResourceManager.class);
+	private static volatile EnumMap<ResourceManager, TrueTypeFont> FONTMAP = new EnumMap<ResourceManager, TrueTypeFont>(
+			ResourceManager.class);
 	
 	/**
 	 * @return the EnumMap<ResourceManager, Sprite>
 	 */
-	public static synchronized final EnumMap<ResourceManager, Sprite> getMap()
+	public static synchronized final EnumMap<ResourceManager, Sprite> getSpriteMap()
 	{
-		if (MAP.isEmpty())
+		if (SPRITEMAP.isEmpty())
 		{
-			populateMap();
+			populateSpriteMap();
 		}
-		return MAP;
+		return SPRITEMAP;
 	}
 	
-	private static synchronized final void populateMap()
+	/**
+	 * @return the EnumMap<ResourceManager, TrueTypeFont>
+	 */
+	public static synchronized EnumMap<ResourceManager, TrueTypeFont> getFontMap()
 	{
-		if (!MAP.isEmpty())
+		if (FONTMAP.isEmpty())
+		{
+			populateFontMap();
+		}
+		return FONTMAP;
+	}
+	
+	private static synchronized final void populateSpriteMap()
+	{
+		if (!SPRITEMAP.isEmpty())
 		{
 			return;
 		}
 		
-		// TODO Load Resources
+		// Load Resources
 		
-		loadResource(BOARD, "res/images/grid.png");
-		loadResource(PIECE, "res/images/piece.png");
-		loadResource(BOMB, "res/images/b.png");
-		loadResource(CAPTAIN, "res/images/5.png");
-		loadResource(COLONEL, "res/images/3.png");
-		loadResource(FLAG, "res/images/f.png");
-		loadResource(GENERAL, "res/images/2.png");
-		loadResource(LIEUTENTANT, "res/images/6.png");
-		loadResource(MAJOR, "res/images/4.png");
-		loadResource(MARSHAL, "res/images/1.png");
-		loadResource(MINER, "res/images/8.png");
-		loadResource(SCOUT, "res/images/9.png");
-		loadResource(SERGEANT, "res/images/7.png");
-		loadResource(SPY, "res/images/s.png");
+		loadSprite(BOARD, "res/images/grid.png");
+		
+		loadSprite(PIECE, "res/images/piece.png");
+		
+		loadSprite(BOMB, "res/images/b.png");
+		loadSprite(CAPTAIN, "res/images/5.png");
+		loadSprite(COLONEL, "res/images/3.png");
+		loadSprite(FLAG, "res/images/f.png");
+		loadSprite(GENERAL, "res/images/2.png");
+		loadSprite(LIEUTENTANT, "res/images/6.png");
+		loadSprite(MAJOR, "res/images/4.png");
+		loadSprite(MARSHAL, "res/images/1.png");
+		loadSprite(MINER, "res/images/8.png");
+		loadSprite(SCOUT, "res/images/9.png");
+		loadSprite(SERGEANT, "res/images/7.png");
+		loadSprite(SPY, "res/images/s.png");
+		
+		loadSprite(NEWGAME, "res/images/web.png");
+		loadSprite(LOADGAME, "res/images/open.png");
+		loadSprite(SAVEGAME, "res/images/save.png");
+		loadSprite(DRAW, "res/images/draw.png");
+		loadSprite(EXIT, "res/images/skin.png");
+		
+		loadSprite(SPLASH, "res/images/splash.png");
 	}
 	
-	private static synchronized final void loadResource(ResourceManager key, String file)
+	private static synchronized final void loadSprite(ResourceManager key, String file)
 	{
 		try
 		{
-			MAP.put(key, new Sprite(TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(file))));
+			SPRITEMAP.put(key, new Sprite(TextureLoader.getTexture("PNG", ResourceLoader.getResourceAsStream(file))));
 		}
 		catch (IOException e)
 		{
@@ -72,18 +106,32 @@ public enum ResourceManager
 		}
 	}
 	
+	private static synchronized final void populateFontMap()
+	{
+		FONTMAP.put(FONT1, new TrueTypeFont(new Font("SansSerif", Font.BOLD, 32), false));
+		FONTMAP.put(FONT2, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONT3, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONT4, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONT5, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+	}
+	
 	public static synchronized final void cleanup()
 	{
-		if (MAP.isEmpty())
+		if (!SPRITEMAP.isEmpty())
 		{
-			return;
+			for (Sprite spr : SPRITEMAP.values())
+			{
+				spr.getTexture().release();
+			}
+			
+			SPRITEMAP.clear();
 		}
 		
-		for (Sprite spr : ResourceManager.getMap().values())
+		if (!FONTMAP.isEmpty())
 		{
-			spr.getTexture().release();
+			// for (TrueTypeFont ttf : FONTMAP.values())
+			
+			FONTMAP.clear();
 		}
-		
-		MAP.clear();
 	}
 }

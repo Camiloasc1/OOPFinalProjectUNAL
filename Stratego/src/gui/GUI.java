@@ -1,16 +1,11 @@
 
 package gui;
 
-import java.awt.Font;
-import java.io.File;
-import java.util.ArrayList;
-
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.TrueTypeFont;
 
 public class GUI
 {
@@ -21,9 +16,6 @@ public class GUI
 	private static final String WINDOW_TITLE = "Stratego";
 	
 	private static long lastFrame;
-	
-	// Public Resources
-	public static ArrayList<TrueTypeFont> fonts = new ArrayList<TrueTypeFont>();
 	
 	/**
 	 * Get the time in milliseconds
@@ -60,9 +52,6 @@ public class GUI
 	
 	public static void init()
 	{
-		// Init libraries
-		System.setProperty("org.lwjgl.librarypath", new File("lib/lwjgl-2.9.0/native/linux/").getAbsolutePath());
-		
 		// Creates the Window
 		try
 		{
@@ -108,10 +97,8 @@ public class GUI
 	
 	private static void loadResources()
 	{
-		ResourceManager.getMap();
+		ResourceManager.getSpriteMap();
 		
-		Font awtFont = new Font("Times New Roman", Font.BOLD, 24);
-		fonts.add(new TrueTypeFont(awtFont, false));
 	}
 	
 	public static void cleanup()

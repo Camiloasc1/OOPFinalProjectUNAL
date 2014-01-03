@@ -9,7 +9,7 @@ import org.newdawn.slick.opengl.Texture;
 public class Sprite implements Serializable
 {
 	private static final long serialVersionUID = -5820243227474305917L;
-	private static final Sprite PIECE = ResourceManager.getMap().get(ResourceManager.PIECE);
+	private static final Sprite PIECE = ResourceManager.getSpriteMap().get(ResourceManager.PIECE);
 	
 	private Texture texture;
 	

@@ -9,7 +9,7 @@ public class Flag extends Piece
 {
 	private static final long serialVersionUID = 705086647830144235L;
 	private static final byte LEVEL = -1;
-	private static final Sprite SPRITE = ResourceManager.getMap().get(ResourceManager.FLAG);
+	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.FLAG);
 	
 	public Flag(boolean owner)
 	{

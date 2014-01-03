@@ -30,10 +30,10 @@ public final class InGame extends GameState
 		// 2D
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		// 3D
-		// glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
+		// GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		
 		// Draw basic (Board, icons, etc ...)
-		ResourceManager.getMap().get(ResourceManager.BOARD).draw(0, 0);
+		ResourceManager.getSpriteMap().get(ResourceManager.BOARD).draw(0, 0);
 		
 		// Draw the pieces
 		// TODO Get the board from socket

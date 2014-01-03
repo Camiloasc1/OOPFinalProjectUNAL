@@ -9,7 +9,7 @@ public class General extends Piece
 {
 	private static final long serialVersionUID = -4961754200317154756L;
 	private static final byte LEVEL = 2;
-	private static final Sprite SPRITE = ResourceManager.getMap().get(ResourceManager.GENERAL);
+	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.GENERAL);
 	
 	public General(boolean owner)
 	{

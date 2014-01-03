@@ -9,7 +9,7 @@ public class Miner extends Piece
 {
 	private static final long serialVersionUID = -3591961735961800012L;
 	private static final byte LEVEL = 8;
-	private static final Sprite SPRITE = ResourceManager.getMap().get(ResourceManager.MINER);
+	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.MINER);
 	
 	public Miner(boolean owner)
 	{

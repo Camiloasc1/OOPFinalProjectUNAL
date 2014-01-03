@@ -1,6 +1,8 @@
 
 package game.main;
 
+import java.io.File;
+
 import entities.Board;
 import entities.pieces.Bomb;
 import gui.GUI;
@@ -17,6 +19,10 @@ public class MainClient
 {
 	public static void main(String[] args)
 	{
+		System.setProperty("java.library.path", "lib");
+		// Init libraries
+		System.setProperty("org.lwjgl.librarypath", new File("lib/lwjgl-2.9.0/native/linux/").getAbsolutePath());
+		
 		GUI.init();
 		
 		// TODO delete this
@@ -28,7 +34,7 @@ public class MainClient
 		}
 		
 		GameStates state = GameStates.getInstance();
-		state = GameStates.INGAME;
+		state = GameStates.MAINMENU;
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !GameStates.isExitFlag())

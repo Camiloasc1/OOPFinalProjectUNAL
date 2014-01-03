@@ -9,7 +9,7 @@ public class Marshal extends Piece
 {
 	private static final long serialVersionUID = -8968574065529804558L;
 	private static final byte LEVEL = 1;
-	private static final Sprite SPRITE = ResourceManager.getMap().get(ResourceManager.MARSHAL);
+	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.MARSHAL);
 	
 	public Marshal(boolean owner)
 	{
