@@ -43,24 +43,7 @@ public final class InGame extends GameState
 			piece.draw();
 		}
 		
-		if (selectedAlphaStatus)
-		{
-			flashAlpha += flashdA;
-			if (flashAlpha > 96)
-			{
-				flashAlpha = 96;
-				selectedAlphaStatus = !selectedAlphaStatus;
-			}
-		}
-		else
-		{
-			flashAlpha -= flashdA;
-			if (flashAlpha < 32)
-			{
-				flashAlpha = 32;
-				selectedAlphaStatus = !selectedAlphaStatus;
-			}
-		}
+		flashAlpha();
 		
 		int x;
 		int y;
@@ -257,5 +240,26 @@ public final class InGame extends GameState
 	{
 		return INSTANCE;
 	}
-	
+
+	private void flashAlpha()
+	{
+		if (selectedAlphaStatus)
+		{
+			flashAlpha += flashdA;
+			if (flashAlpha > 96)
+			{
+				flashAlpha = 96;
+				selectedAlphaStatus = !selectedAlphaStatus;
+			}
+		}
+		else
+		{
+			flashAlpha -= flashdA;
+			if (flashAlpha < 32)
+			{
+				flashAlpha = 32;
+				selectedAlphaStatus = !selectedAlphaStatus;
+			}
+		}
+	}
 }
