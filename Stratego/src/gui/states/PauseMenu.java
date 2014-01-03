@@ -6,13 +6,6 @@ public final class PauseMenu extends GameState
 	private static volatile GameState INSTANCE = new PauseMenu();
 	
 	@Override
-	public void run()
-	{
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
 	protected void render()
 	{
 		// TODO Auto-generated method stub
