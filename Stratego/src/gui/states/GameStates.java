@@ -7,7 +7,7 @@ package gui.states;
  */
 public enum GameStates
 {
-	EXITGAME, MAINMENU, PAUSEMENU, SETUP, INITGAME, INGAME;
+	EXITGAME, MAINMENU, PAUSEMENU, SETUPGAME, LOADGAME, SAVEGAME, INITGAME, INGAME;
 	
 	private static volatile GameStates INSTANCE = MAINMENU;
 	
@@ -24,5 +24,14 @@ public enum GameStates
 	public static synchronized GameStates getInstance()
 	{
 		return INSTANCE;
+	}
+	
+	public static synchronized void SetState(GameStates state)
+	{
+		if (state == EXITGAME)
+		{
+			return;
+		}
+		INSTANCE = state;
 	}
 }

@@ -1,17 +1,19 @@
 
 package game.main;
 
-import java.io.File;
-
 import entities.Board;
 import entities.pieces.Bomb;
 import gui.GUI;
 import gui.states.GameStates;
 import gui.states.InGame;
 import gui.states.InitGame;
+import gui.states.LoadGame;
 import gui.states.MainMenu;
 import gui.states.PauseMenu;
+import gui.states.SaveGame;
 import gui.states.Setup;
+
+import java.io.File;
 
 import org.lwjgl.opengl.Display;
 
@@ -51,9 +53,19 @@ public class MainClient
 					PauseMenu.getInstance().run();
 					break;
 				}
-				case SETUP:
+				case SETUPGAME:
 				{
 					Setup.getInstance().run();
+					break;
+				}
+				case LOADGAME:
+				{
+					LoadGame.getInstance().run();
+					break;
+				}
+				case SAVEGAME:
+				{
+					SaveGame.getInstance().run();
 					break;
 				}
 				case INITGAME:

@@ -80,6 +80,8 @@ public final class MainMenu extends GameState
 	@Override
 	protected void logic()
 	{
+		// Keyboard
+		
 		// Keyboard Events
 		
 		// Polled
@@ -191,15 +193,16 @@ public final class MainMenu extends GameState
 	
 	private void selectMenu()
 	{
-		// TODO selection handler
 		switch (activeMenu)
 		{
 			case 0:
 			{
+				GameStates.SetState(GameStates.SETUPGAME);
 				break;
 			}
 			case 1:
 			{
+				GameStates.SetState(GameStates.LOADGAME);
 				break;
 			}
 			case 2:

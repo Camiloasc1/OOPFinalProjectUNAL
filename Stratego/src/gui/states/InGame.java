@@ -95,8 +95,7 @@ public final class InGame extends GameState
 	@Override
 	protected void logic()
 	{
-		@SuppressWarnings("unused")
-		int delta = GUI.getDelta();
+		// Keyboard
 		
 		// Keyboard Events
 		
@@ -177,6 +176,8 @@ public final class InGame extends GameState
 			}
 		}
 		
+		// Mouse
+		
 		// Mouse Events
 		
 		// Polled
@@ -240,7 +241,7 @@ public final class InGame extends GameState
 	{
 		return INSTANCE;
 	}
-
+	
 	private void flashAlpha()
 	{
 		if (selectedAlphaStatus)
