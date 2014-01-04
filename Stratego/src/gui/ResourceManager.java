@@ -21,7 +21,8 @@ public enum ResourceManager
 	BOMB, CAPTAIN, COLONEL, FLAG, GENERAL, LIEUTENTANT, MAJOR, MARSHAL, MINER, SCOUT, SERGEANT, SPY,
 	NEWGAME, LOADGAME, SAVEGAME, DRAW, EXIT, PLAYER,
 	SPLASH,
-	FONTMENU1, FONTMENU2, FONTMENU3, FONTMENU4, FONTMENU5;
+	FONTMENU1, FONTMENU2, FONTMENU3, FONTMENU4, FONTMENU5,
+	FONTBOARDMSG;
 	//@formatter:on
 	
 	/**
@@ -114,6 +115,7 @@ public enum ResourceManager
 		FONTMAP.put(FONTMENU3, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
 		FONTMAP.put(FONTMENU4, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
 		FONTMAP.put(FONTMENU5, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONTBOARDMSG, new TrueTypeFont(new Font("SansSerif", Font.BOLD, 30), false));
 	}
 	
 	public static synchronized final void cleanup()

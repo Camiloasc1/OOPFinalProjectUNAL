@@ -103,6 +103,7 @@ public class Sprite implements Serializable
 		GL11.glEnd();
 		
 		// restore the model view matrix to prevent contamination
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
 		GL11.glPopMatrix();
 	}
 	

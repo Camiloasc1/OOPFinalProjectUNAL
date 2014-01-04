@@ -87,7 +87,8 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	protected byte convertX(byte x, byte y)
 	{
-		return (byte) (SIZE - y - 1);
+//		return (byte) (SIZE - y - 1);
+		return x;
 		
 	}
 	
@@ -98,7 +99,8 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	protected byte convertY(byte x, byte y)
 	{
-		return x;
+//		return x;
+		return y;
 	}
 	
 	/**
