@@ -22,6 +22,7 @@ import gui.util.DrawUtil;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 public final class InitGame extends GameState
@@ -51,33 +52,13 @@ public final class InitGame extends GameState
 	{
 		// 2D
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
+// GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT);
 		// 3D
 		// GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-		
-		int pos;
+		GL11.glLoadIdentity();
 		
 		// Draw basic (Board, icons, etc ...)
 		ResourceManager.getSpriteMap().get(ResourceManager.BOARD).draw(0, 0);
-		
-		pos = GUI.HEIGHT;
-		pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getLineHeight();
-		pos /= 2;
-		
-// GL11.glDisable(GL11.GL_DEPTH_TEST);
-// GL11.glPushMatrix();
-// GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-// GL11.glDisable(GL11.GL_TEXTURE_2D);
-// GL11.glEnable(GL11.GL_TEXTURE_2D);
-// GL11.glDisable(GL11.GL_BLEND);
-		
-// GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
-		ResourceManager.getFontMap().get(ResourceManager.FONTBOARDMSG)
-				.drawString(10, pos, "Coloca tus piezas en la parte inferior");
-		
-// GL11.glEnable(GL11.GL_BLEND);
-// GL11.glDisable(GL11.GL_TEXTURE_2D);
-// GL11.glEnable(GL11.GL_TEXTURE_2D);
-// GL11.glPopMatrix();
 		
 		// Draw the pieces
 		Board board = Board.getInstance();
@@ -100,6 +81,32 @@ public final class InitGame extends GameState
 		x = (selectedX / (GUI.WIDTH / Board.SIZE));
 		y = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
 		DrawUtil.drawFlashRectangle(spr.getRectangle(x, y), (byte) 255, (byte) 0, (byte) 0);
+		
+		GL11.glMatrixMode(GL11.GL_PROJECTION);
+		GL11.glLoadIdentity();
+		GL11.glOrtho(0, Display.getDisplayMode().getWidth(), Display.getDisplayMode().getHeight(), 0, -1, 1);
+		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		
+		int pos;
+		pos = GUI.HEIGHT;
+		pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getLineHeight();
+		pos /= 2;
+		
+// GL11.glDisable(GL11.GL_DEPTH_TEST);
+// GL11.glDisable(GL11.GL_LIGHTING);
+// GL11.glPushMatrix();
+// GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+// GL11.glDisable(GL11.GL_TEXTURE_2D);
+// GL11.glEnable(GL11.GL_TEXTURE_2D);
+// GL11.glDisable(GL11.GL_BLEND);
+// GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
+		ResourceManager.getFontMap().get(ResourceManager.FONTBOARDMSG)
+				.drawString(10, pos, "Coloca tus piezas en la parte inferior");
+		
+// GL11.glEnable(GL11.GL_BLEND);
+// GL11.glDisable(GL11.GL_TEXTURE_2D);
+// GL11.glEnable(GL11.GL_TEXTURE_2D);
+// GL11.glPopMatrix();
 	}
 	
 	@Override
@@ -154,26 +161,7 @@ public final class InitGame extends GameState
 					}
 					else
 					{
-						byte x;
-						byte y;
-						byte xPiece;
-						byte yPiece;
-						Board board = Board.getInstance();
-						// Destination
-						x = (byte) (activeX / (GUI.WIDTH / Board.SIZE));
-						y = (byte) ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
-						// Selected Piece
-						xPiece = (byte) (selectedX / (GUI.WIDTH / Board.SIZE));
-						yPiece = (byte) ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-						// Move
-						// TODO this if in Board
-						if (board.getPieceAt(xPiece, yPiece) != null && board.getPieceAt(x, y) == null)
-						{
-							if (y >= 6)
-							{
-								board.movePiece(board.getPieceAt(xPiece, yPiece), x, y);
-							}
-						}
+						moveHandler();
 						selectedX = 0;
 						selectedY = 0;
 					}
@@ -238,28 +226,9 @@ public final class InitGame extends GameState
 					}
 					else
 					{
-						byte x;
-						byte y;
-						byte xPiece;
-						byte yPiece;
 						activeX = Mouse.getX();
 						activeY = Mouse.getY();
-						Board board = Board.getInstance();
-						// Destination
-						x = (byte) (activeX / (GUI.WIDTH / Board.SIZE));
-						y = (byte) ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
-						// Selected Piece
-						xPiece = (byte) (selectedX / (GUI.WIDTH / Board.SIZE));
-						yPiece = (byte) ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-						// Move
-						// TODO this if in Board
-						if (board.getPieceAt(xPiece, yPiece) != null && board.getPieceAt(x, y) == null)
-						{
-							if (y >= 6)
-							{
-								board.movePiece(board.getPieceAt(xPiece, yPiece), x, y);
-							}
-						}
+						moveHandler();
 						selectedX = 0;
 						selectedY = 0;
 					}
@@ -282,6 +251,33 @@ public final class InitGame extends GameState
 		if (activeY > GUI.HEIGHT)
 			activeY = GUI.HEIGHT - 1;
 		checkAllPiecesSorted();
+	}
+	
+	/**
+	 * 
+	 */
+	private void moveHandler()
+	{
+		byte x;
+		byte y;
+		byte xPiece;
+		byte yPiece;
+		Board board = Board.getInstance();
+		// Destination
+		x = (byte) (activeX / (GUI.WIDTH / Board.SIZE));
+		y = (byte) ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
+		// Selected Piece
+		xPiece = (byte) (selectedX / (GUI.WIDTH / Board.SIZE));
+		yPiece = (byte) ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
+		// Move
+		// TODO this if in Board
+		if (board.getPieceAt(xPiece, yPiece) != null && board.getPieceAt(x, y) == null)
+		{
+			if (y >= 6)
+			{
+				board.movePiece(board.getPieceAt(xPiece, yPiece), x, y);
+			}
+		}
 	}
 	
 	private void initPieces()
@@ -388,12 +384,13 @@ public final class InitGame extends GameState
 		*/
 		//@formatter:on
 	}
+	
 	private void checkAllPiecesSorted()
 	{
 		Board board = Board.getInstance();
 		for (Piece piece : board)
 		{
-			if(board.getPieceY(piece) < 6)
+			if (board.getPieceY(piece) < 6)
 			{
 				return;
 			}
