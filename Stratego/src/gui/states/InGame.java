@@ -1,8 +1,6 @@
 
 package gui.states;
 
-import java.awt.Rectangle;
-
 import entities.Board;
 import entities.Piece;
 import gui.GUI;
@@ -13,7 +11,6 @@ import gui.util.DrawUtil;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
-import org.newdawn.slick.opengl.Texture;
 
 public final class InGame extends GameState
 {
@@ -45,22 +42,18 @@ public final class InGame extends GameState
 		
 		int x;
 		int y;
-		Texture tex = Sprite.getPieceSprite().getTexture();
+		Sprite spr = Sprite.getPieceSprite();
 		// Active Piece
 		x = (activeX / (GUI.WIDTH / Board.SIZE));
 		y = ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
 		
 		DrawUtil.flashAlpha();
-		DrawUtil.drawFlashRectangle(
-				new Rectangle(x * tex.getImageWidth(), y * tex.getImageWidth(), tex.getImageWidth(), tex.getImageHeight()),
-				(byte) 0, (byte) 0, (byte) 255);
+		DrawUtil.drawFlashRectangle(spr.getRectangle(x, y), (byte) 0, (byte) 0, (byte) 255);
 		
 		// Selected Piece
 		x = (selectedX / (GUI.WIDTH / Board.SIZE));
 		y = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-		DrawUtil.drawFlashRectangle(
-				new Rectangle(x * tex.getImageWidth(), y * tex.getImageWidth(), tex.getImageWidth(), tex.getImageHeight()),
-				(byte) 255, (byte) 0, (byte) 0);
+		DrawUtil.drawFlashRectangle(spr.getRectangle(x, y), (byte) 255, (byte) 0, (byte) 0);
 	}
 	
 	@Override

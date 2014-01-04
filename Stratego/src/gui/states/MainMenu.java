@@ -31,22 +31,22 @@ public final class MainMenu extends GameState
 		
 		// Title
 		pos = GUI.WIDTH;
-		pos -= ResourceManager.getFontMap().get(ResourceManager.FONT1).getWidth("Menu Principal");
+		pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getWidth("Menu Principal");
 		pos /= 2;
-		ResourceManager.getFontMap().get(ResourceManager.FONT1).drawString(pos, 100, "Menu Principal");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).drawString(pos, 100, "Menu Principal");
 		
 		// Menus whit icons
 		pos = 0;
 		ResourceManager.getSpriteMap().get(ResourceManager.NEWGAME).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT2).drawString(100, rectangles.get(pos).y, "Jugar");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU2).drawString(100, rectangles.get(pos).y, "Jugar");
 		
 		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.LOADGAME).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT3).drawString(100, rectangles.get(pos).y, "Cargar Juego");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU3).drawString(100, rectangles.get(pos).y, "Cargar Juego");
 		
 		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.EXIT).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT4).drawString(100, rectangles.get(pos).y, "Salir");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU4).drawString(100, rectangles.get(pos).y, "Salir");
 		
 		// Selected Menu
 		
@@ -177,7 +177,7 @@ public final class MainMenu extends GameState
 	private MainMenu()
 	{
 		int y = 200;
-		int height = ResourceManager.getFontMap().get(ResourceManager.FONT2).getLineHeight();
+		int height = ResourceManager.getFontMap().get(ResourceManager.FONTMENU2).getLineHeight();
 		
 		rectangles.add(new Rectangle(50, y, 300, height));
 		y += 100;

@@ -1,6 +1,7 @@
 
 package gui;
 
+import java.awt.Rectangle;
 import java.io.Serializable;
 
 import org.lwjgl.opengl.GL11;
@@ -57,6 +58,14 @@ public class Sprite implements Serializable
 	public int getHeight()
 	{
 		return texture.getImageHeight();
+	}
+
+	/**
+	 * @return the sprite rectangle
+	 */
+	public Rectangle getRectangle(int x, int y)
+	{
+		return new Rectangle(x * texture.getImageWidth(), y * texture.getImageWidth(), texture.getImageWidth(), texture.getImageHeight());
 	}
 	
 	/**

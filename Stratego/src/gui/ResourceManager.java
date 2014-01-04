@@ -21,7 +21,7 @@ public enum ResourceManager
 	BOMB, CAPTAIN, COLONEL, FLAG, GENERAL, LIEUTENTANT, MAJOR, MARSHAL, MINER, SCOUT, SERGEANT, SPY,
 	NEWGAME, LOADGAME, SAVEGAME, DRAW, EXIT, PLAYER,
 	SPLASH,
-	FONT1, FONT2, FONT3, FONT4, FONT5;
+	FONTMENU1, FONTMENU2, FONTMENU3, FONTMENU4, FONTMENU5;
 	//@formatter:on
 	
 	/**
@@ -109,11 +109,11 @@ public enum ResourceManager
 	
 	private static synchronized final void populateFontMap()
 	{
-		FONTMAP.put(FONT1, new TrueTypeFont(new Font("SansSerif", Font.BOLD, 32), false));
-		FONTMAP.put(FONT2, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
-		FONTMAP.put(FONT3, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
-		FONTMAP.put(FONT4, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
-		FONTMAP.put(FONT5, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONTMENU1, new TrueTypeFont(new Font("SansSerif", Font.BOLD, 32), false));
+		FONTMAP.put(FONTMENU2, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONTMENU3, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONTMENU4, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
+		FONTMAP.put(FONTMENU5, new TrueTypeFont(new Font("SansSerif", Font.PLAIN, 24), false));
 	}
 	
 	public static synchronized final void cleanup()

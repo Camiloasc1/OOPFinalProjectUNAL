@@ -28,14 +28,18 @@ public class MainClient
 		GUI.init();
 		
 		// TODO delete this
+		//@formatter:off
+		/*
 		Board board = Board.getInstance();
 		for (int i = 0; i < 40; i++)
 		{
 			board.addPiece(new Bomb(true));
 			board.addPiece(new Bomb(false));
 		}
+		*/
+		//@formatter:on
 		
-		GameStates.SetState(GameStates.PAUSEMENU);
+		GameStates.SetState(GameStates.INITGAME);
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !GameStates.isExitFlag())

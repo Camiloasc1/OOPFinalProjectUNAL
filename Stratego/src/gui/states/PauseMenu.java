@@ -31,26 +31,26 @@ public final class PauseMenu extends GameState
 		
 		// Title
 		pos = GUI.WIDTH;
-		pos -= ResourceManager.getFontMap().get(ResourceManager.FONT1).getWidth("Pausa");
+		pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getWidth("Pausa");
 		pos /= 2;
-		ResourceManager.getFontMap().get(ResourceManager.FONT1).drawString(pos, 100, "Pausa");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).drawString(pos, 100, "Pausa");
 		
 		// Menus whit icons
 		pos = 0;
 		ResourceManager.getSpriteMap().get(ResourceManager.PLAYER).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT2).drawString(100, rectangles.get(pos).y, "Continuar");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU2).drawString(100, rectangles.get(pos).y, "Continuar");
 		
 		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.DRAW).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT3).drawString(100, rectangles.get(pos).y, "Declarar Empate");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU3).drawString(100, rectangles.get(pos).y, "Declarar Empate");
 		
 		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.SAVEGAME).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT4).drawString(100, rectangles.get(pos).y, "Guardar");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU4).drawString(100, rectangles.get(pos).y, "Guardar");
 		
 		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.EXIT).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT5).drawString(100, rectangles.get(pos).y, "Menu Principal");
+		ResourceManager.getFontMap().get(ResourceManager.FONTMENU5).drawString(100, rectangles.get(pos).y, "Menu Principal");
 		
 		// Selected Menu
 		
@@ -187,7 +187,7 @@ public final class PauseMenu extends GameState
 	private PauseMenu()
 	{
 		int y = 200;
-		int height = ResourceManager.getFontMap().get(ResourceManager.FONT2).getLineHeight();
+		int height = ResourceManager.getFontMap().get(ResourceManager.FONTMENU2).getLineHeight();
 		
 		rectangles.add(new Rectangle(50, y, 300, height));
 		y += 100;
