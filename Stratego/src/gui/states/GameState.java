@@ -15,7 +15,7 @@ public abstract class GameState implements Cloneable
 	 * Main method to run the game state
 	 */
 	// public abstract void run();
-	public void run()
+	public final void run()
 	{
 		// Only bother rendering if the window is active, visible or dirty
 		if (Display.isActive() || Display.isVisible() || Display.isDirty())

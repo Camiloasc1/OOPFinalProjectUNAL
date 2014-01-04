@@ -20,12 +20,10 @@ public final class SetupGame extends GameState
 	protected void logic()
 	{
 		// TODO Auto-generated method stub
-		
 	}
 	
 	private SetupGame()
 	{
-		// TODO Auto-generated constructor stub
 	}
 	
 	public static GameState getInstance()
