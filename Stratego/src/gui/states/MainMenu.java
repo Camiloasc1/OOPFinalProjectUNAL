@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 public final class MainMenu extends GameState
 {
 	private static volatile GameState INSTANCE = new MainMenu();
-
+	
 	private static byte activeMenu = 0;
 	private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
 	
@@ -40,11 +40,11 @@ public final class MainMenu extends GameState
 		ResourceManager.getSpriteMap().get(ResourceManager.NEWGAME).draw(50, rectangles.get(pos).y);
 		ResourceManager.getFontMap().get(ResourceManager.FONT2).drawString(100, rectangles.get(pos).y, "Jugar");
 		
-		pos ++;
+		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.LOADGAME).draw(50, rectangles.get(pos).y);
 		ResourceManager.getFontMap().get(ResourceManager.FONT3).drawString(100, rectangles.get(pos).y, "Cargar Juego");
-
-		pos ++;
+		
+		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.EXIT).draw(50, rectangles.get(pos).y);
 		ResourceManager.getFontMap().get(ResourceManager.FONT4).drawString(100, rectangles.get(pos).y, "Salir");
 		
@@ -102,7 +102,7 @@ public final class MainMenu extends GameState
 		
 		for (Rectangle rtg : rectangles)
 		{
-			if(rtg.contains(x, y))
+			if (rtg.contains(x, y))
 			{
 				activeMenu = (byte) ((y - 200) / 100);
 			}
@@ -115,7 +115,7 @@ public final class MainMenu extends GameState
 		{
 			for (Rectangle rtg : rectangles)
 			{
-				if(rtg.contains(x, y))
+				if (rtg.contains(x, y))
 				{
 					selectMenu();
 				}
@@ -131,7 +131,7 @@ public final class MainMenu extends GameState
 				{
 					for (Rectangle rtg : rectangles)
 					{
-						if(rtg.contains(x, y))
+						if (rtg.contains(x, y))
 						{
 							selectMenu();
 						}
@@ -178,7 +178,7 @@ public final class MainMenu extends GameState
 	{
 		int y = 200;
 		int height = ResourceManager.getFontMap().get(ResourceManager.FONT2).getLineHeight();
-
+		
 		rectangles.add(new Rectangle(50, y, 300, height));
 		y += 100;
 		rectangles.add(new Rectangle(50, y, 300, height));

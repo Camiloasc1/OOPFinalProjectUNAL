@@ -66,8 +66,6 @@ public class Sprite implements Serializable
 	 *            The x location at which to draw this sprite
 	 * @param y
 	 *            The y location at which to draw this sprite
-	 * @param selected
-	 *            if is actually selected
 	 */
 	public void draw(int x, int y)
 	{
@@ -106,8 +104,6 @@ public class Sprite implements Serializable
 	 *            The x location at which to draw this sprite
 	 * @param y
 	 *            The y location at which to draw this sprite
-	 * @param selected
-	 *            if is actually selected
 	 */
 	public static void drawPiece(int x, int y)
 	{

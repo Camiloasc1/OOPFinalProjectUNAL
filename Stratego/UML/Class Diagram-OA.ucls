@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true">  
-  <class id="1" language="java" name="entities.pieces.Miner" project="Stratego" 
-    file="/Stratego/src/entities/pieces/Miner.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="41" y="613"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="util.MathUtil" project="Stratego" file="/Stratego/src/util/MathUtil.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="203" width="227" x="208" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="entities.pieces.Major" project="Stratego" 
+  <class id="1" language="java" name="entities.pieces.Major" project="Stratego" 
     file="/Stratego/src/entities/pieces/Major.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="212" y="613"/>    
+    <position height="113" width="131" x="663" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="entities.pieces.General" project="Stratego" 
+  <class id="2" language="java" name="entities.pieces.General" project="Stratego" 
     file="/Stratego/src/entities/pieces/General.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="383" y="613"/>    
+    <position height="113" width="131" x="834" y="1172"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="net.Client" project="Stratego" file="/Stratego/src/net/Client.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="77" width="87" x="41" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="entities.pieces.Colonel" project="Stratego" 
+    file="/Stratego/src/entities/pieces/Colonel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="131" x="1176" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,88 +39,88 @@
   </class>  
   <class id="5" language="java" name="entities.pieces.Captain" project="Stratego" 
     file="/Stratego/src/entities/pieces/Captain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="725" y="613"/>    
+    <position height="113" width="131" x="1005" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="entities.pieces.Colonel" project="Stratego" 
-    file="/Stratego/src/entities/pieces/Colonel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="554" y="613"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="7" language="java" name="util.RandomNum" project="Stratego" file="/Stratego/src/util/RandomNum.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="311" width="156" x="643" y="37"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="entities.pieces.Lieutenant" project="Stratego" 
+  <class id="6" language="java" name="entities.pieces.Lieutenant" project="Stratego" 
     file="/Stratego/src/entities/pieces/Lieutenant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="896" y="613"/>    
+    <position height="113" width="131" x="1347" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="entities.Board" project="Stratego" file="/Stratego/src/entities/Board.java" 
+  <class id="7" language="java" name="gui.states.SaveGame" project="Stratego" 
+    file="/Stratego/src/gui/states/SaveGame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="146" x="2423" y="929"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="8" language="java" name="gui.states.GameStates" project="Stratego" 
+    file="/Stratego/src/gui/states/GameStates.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="311" width="157" x="168" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="9" language="java" name="game.Engine" project="Stratego" file="/Stratego/src/game/Engine.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="275" width="194" x="1008" y="37"/>    
+    <position height="167" width="220" x="365" y="37"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="entities.pieces.Bomb" project="Stratego" 
-    file="/Stratego/src/entities/pieces/Bomb.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="131" width="157" x="1067" y="613"/>    
+  <class id="10" language="java" name="gui.Sprite" project="Stratego" file="/Stratego/src/gui/Sprite.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="239" width="144" x="1860" y="1865"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="entities.pieces.Flag" project="Stratego" 
-    file="/Stratego/src/entities/pieces/Flag.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="131" width="157" x="1264" y="613"/>    
+  <class id="11" language="java" name="gui.states.GameState" project="Stratego" 
+    file="/Stratego/src/gui/states/GameState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="149" width="94" x="2423" y="478"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="entities.pieces.Scout" project="Stratego" 
+  <class id="12" language="java" name="gui.util.DrawUtil" project="Stratego" file="/Stratego/src/gui/util/DrawUtil.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="203" width="277" x="625" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="entities.pieces.Scout" project="Stratego" 
     file="/Stratego/src/entities/pieces/Scout.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="131" width="157" x="1461" y="613"/>    
+    <position height="113" width="131" x="1518" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="entities.pieces.Marshal" project="Stratego" 
+  <class id="14" language="java" name="entities.pieces.Marshal" project="Stratego" 
     file="/Stratego/src/entities/pieces/Marshal.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1658" y="613"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="14" language="java" name="entities.pieces.Spy" project="Stratego" 
-    file="/Stratego/src/entities/pieces/Spy.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="1829" y="613"/>    
+    <position height="113" width="131" x="1689" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,7 +129,7 @@
   </class>  
   <class id="15" language="java" name="entities.pieces.Sergeant" project="Stratego" 
     file="/Stratego/src/entities/pieces/Sergeant.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="113" width="131" x="2000" y="613"/>    
+    <position height="113" width="131" x="1860" y="1172"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -138,76 +138,460 @@
   </class>  
   <class id="16" language="java" name="entities.Piece" project="Stratego" file="/Stratego/src/entities/Piece.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="185" width="157" x="1008" y="388"/>    
+    <position height="203" width="153" x="1759" y="929"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="17">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="20">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="23">    
+  <class id="17" language="java" name="gui.states.InGame" project="Stratego" file="/Stratego/src/gui/states/InGame.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="275" width="170" x="1930" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="gui.states.PauseMenu" project="Stratego" 
+    file="/Stratego/src/gui/states/PauseMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="146" x="2140" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="entities.pieces.Miner" project="Stratego" 
+    file="/Stratego/src/entities/pieces/Miner.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="131" x="2031" y="1172"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="net.Action" project="Stratego" file="/Stratego/src/net/Action.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="401" width="131" x="1759" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="entities.Board" project="Stratego" file="/Stratego/src/entities/Board.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="401" width="201" x="1527" y="478"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="game.main.MainClient" project="Stratego" 
+    file="/Stratego/src/game/main/MainClient.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="113" x="942" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="gui.states.LoadGame" project="Stratego" 
+    file="/Stratego/src/gui/states/LoadGame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="146" x="2326" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="game.Rules" project="Stratego" file="/Stratego/src/game/Rules.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="95" width="186" x="1095" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="gui.states.InitGame" project="Stratego" 
+    file="/Stratego/src/gui/states/InitGame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="146" x="2512" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="game.main.MainServer" project="Stratego" 
+    file="/Stratego/src/game/main/MainServer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="77" width="90" x="1321" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="entities.pieces.Bomb" project="Stratego" 
+    file="/Stratego/src/entities/pieces/Bomb.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="131" x="2202" y="1172"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="28" language="java" name="gui.ResourceManager" project="Stratego" 
+    file="/Stratego/src/gui/ResourceManager.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="653" width="308" x="2736" y="1172"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="29" language="java" name="entities.pieces.Flag" project="Stratego" 
+    file="/Stratego/src/entities/pieces/Flag.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="131" x="2373" y="1172"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="net.Server" project="Stratego" file="/Stratego/src/net/Server.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="77" width="87" x="1451" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="gui.states.MainMenu" project="Stratego" 
+    file="/Stratego/src/gui/states/MainMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="185" width="187" x="2698" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="gui.GUI" project="Stratego" file="/Stratego/src/gui/GUI.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="311" width="141" x="1578" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="entities.pieces.Spy" project="Stratego" 
+    file="/Stratego/src/entities/pieces/Spy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="113" width="131" x="2544" y="1172"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="gui.states.SetupGame" project="Stratego" 
+    file="/Stratego/src/gui/states/SetupGame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="131" width="146" x="2925" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
+      visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="35">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="36" name="SPRITE"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="39" name="SPRITE"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="41">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="42" name="SPRITE"/>      
+      <multiplicity id="43" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="45" name="SPRITE"/>      
+      <multiplicity id="46" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="47">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="16"/>  
   </generalization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <association id="26">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="27" name="gameBoard"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
+  <association id="48">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="49" name="INSTANCE"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="4"/>    
+  <association id="51">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="52" name="SPRITE"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="27"/>    
     <end type="TARGET" refId="16"/>  
   </generalization>  
-  <generalization id="30">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="16"/>  
+  <association id="55">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="56" name="INSTANCE"/>      
+      <multiplicity id="57" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="58">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="59" name="INSTANCE"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="61">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="62" name="INSTANCE"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="64">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="65" name="PIECE"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="67">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="68" name="INSTANCE"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="70">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="11"/>  
   </generalization>  
-  <association id="31">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="32" name="map"/>      
-      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
+  <association id="71">    
+    <bendpoint x="1768" y="478"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="72" name="piece"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="34">    
+  <association id="74">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="75" name="SPRITE"/>      
+      <multiplicity id="76" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
+    <bendpoint x="2705" y="1172"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="78" name="sprite"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="81" name="board"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="83">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <association id="86">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="87" name="INSTANCE"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="89">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="90" name="SPRITE"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="93" name="map"/>      
+      <multiplicity id="94" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="95">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="96">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="97" name="SPRITE"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="99">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="100">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <association id="101">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="102" name="INSTANCE"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="105">    
     <end type="SOURCE" refId="5"/>    
     <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="106">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="107">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="108" name="SPRITEMAP"/>      
+      <multiplicity id="109" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="110">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <association id="111">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="112" name="INSTANCE"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="114">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <association id="115">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="116" name="SPRITE"/>      
+      <multiplicity id="117" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="118">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="119" name="SPRITE"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="121">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="122">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <generalization id="123">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="11"/>  
+  </generalization>  
+  <generalization id="124">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="16"/>  
+  </generalization>  
+  <association id="125">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="126" name="SPRITE"/>      
+      <multiplicity id="127" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="128">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="129" name="SPRITE"/>      
+      <multiplicity id="130" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="131">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="11"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    

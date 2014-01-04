@@ -2,5 +2,8 @@ entities
 entities.pieces
 game
 game.main
+gui
+gui.states
+gui.util
 net
 util
