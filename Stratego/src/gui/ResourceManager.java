@@ -19,7 +19,7 @@ public enum ResourceManager
 	BOARD,
 	PIECE, 
 	BOMB, CAPTAIN, COLONEL, FLAG, GENERAL, LIEUTENTANT, MAJOR, MARSHAL, MINER, SCOUT, SERGEANT, SPY,
-	NEWGAME, LOADGAME, SAVEGAME, DRAW, EXIT,
+	NEWGAME, LOADGAME, SAVEGAME, DRAW, EXIT, PLAYER,
 	SPLASH,
 	FONT1, FONT2, FONT3, FONT4, FONT5;
 	//@formatter:on
@@ -87,6 +87,7 @@ public enum ResourceManager
 		loadSprite(SAVEGAME, "res/images/save.png");
 		loadSprite(DRAW, "res/images/draw.png");
 		loadSprite(EXIT, "res/images/skin.png");
+		loadSprite(PLAYER, "res/images/oneplayer.png");
 		
 		loadSprite(SPLASH, "res/images/splash.png");
 	}

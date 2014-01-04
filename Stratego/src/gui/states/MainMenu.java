@@ -64,7 +64,7 @@ public final class MainMenu extends GameState
 		// Polled
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 		{
-			GameStates.activateExitFlag();
+			// GameStates.activateExitFlag();
 		}
 		// Queued
 		while (Keyboard.next())

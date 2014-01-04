@@ -35,7 +35,7 @@ public class MainClient
 			board.addPiece(new Bomb(false));
 		}
 		
-		GameStates.SetState(GameStates.MAINMENU);
+		GameStates.SetState(GameStates.PAUSEMENU);
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !GameStates.isExitFlag())

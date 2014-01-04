@@ -1,11 +1,14 @@
 
 package gui.states;
 
+import java.awt.Rectangle;
+
 import entities.Board;
 import entities.Piece;
 import gui.GUI;
 import gui.ResourceManager;
 import gui.Sprite;
+import gui.util.DrawUtil;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -20,9 +23,6 @@ public final class InGame extends GameState
 	private int activeY = 1;
 	private int selectedX = 0;
 	private int selectedY = 0;
-	private byte flashAlpha = 96; // (32 - 96)
-	private byte flashdA = 5;
-	private boolean selectedAlphaStatus = false;
 	
 	@Override
 	protected void render()
@@ -43,8 +43,6 @@ public final class InGame extends GameState
 			piece.draw();
 		}
 		
-		flashAlpha();
-		
 		int x;
 		int y;
 		Texture tex = Sprite.getPieceSprite().getTexture();
@@ -52,44 +50,17 @@ public final class InGame extends GameState
 		x = (activeX / (GUI.WIDTH / Board.SIZE));
 		y = ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
 		
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x * tex.getImageWidth(), y * tex.getImageHeight(), 0);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-		GL11.glColor4ub((byte) 0, (byte) 0, (byte) 255, (byte) flashAlpha);
-		GL11.glBegin(GL11.GL_QUADS);
-		{
-			GL11.glTexCoord2f(0, 0);
-			GL11.glVertex2f(0, 0);
-			GL11.glTexCoord2f(0, tex.getHeight());
-			GL11.glVertex2f(0, tex.getImageHeight());
-			GL11.glTexCoord2f(tex.getWidth(), tex.getHeight());
-			GL11.glVertex2f(tex.getImageWidth(), tex.getImageHeight());
-			GL11.glTexCoord2f(tex.getWidth(), 0);
-			GL11.glVertex2f(tex.getImageWidth(), 0);
-		}
-		GL11.glEnd();
-		GL11.glPopMatrix();
+		DrawUtil.flashAlpha();
+		DrawUtil.drawFlashRectangle(
+				new Rectangle(x * tex.getImageWidth(), y * tex.getImageWidth(), tex.getImageWidth(), tex.getImageHeight()),
+				(byte) 0, (byte) 0, (byte) 255);
+		
 		// Selected Piece
 		x = (selectedX / (GUI.WIDTH / Board.SIZE));
 		y = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-		
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x * tex.getImageWidth(), y * tex.getImageHeight(), 0);
-		GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-		GL11.glColor4ub((byte) 255, (byte) 0, (byte) 0, (byte) flashAlpha);
-		GL11.glBegin(GL11.GL_QUADS);
-		{
-			GL11.glTexCoord2f(0, 0);
-			GL11.glVertex2f(0, 0);
-			GL11.glTexCoord2f(0, tex.getHeight());
-			GL11.glVertex2f(0, tex.getImageHeight());
-			GL11.glTexCoord2f(tex.getWidth(), tex.getHeight());
-			GL11.glVertex2f(tex.getImageWidth(), tex.getImageHeight());
-			GL11.glTexCoord2f(tex.getWidth(), 0);
-			GL11.glVertex2f(tex.getImageWidth(), 0);
-		}
-		GL11.glEnd();
-		GL11.glPopMatrix();
+		DrawUtil.drawFlashRectangle(
+				new Rectangle(x * tex.getImageWidth(), y * tex.getImageWidth(), tex.getImageWidth(), tex.getImageHeight()),
+				(byte) 255, (byte) 0, (byte) 0);
 	}
 	
 	@Override
@@ -102,7 +73,7 @@ public final class InGame extends GameState
 		// Polled
 		if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE))
 		{
-			GameStates.activateExitFlag();
+			// GameStates.SetState(GameStates.PAUSEMENU);
 		}
 		//@formatter:off
 		/*
@@ -133,7 +104,7 @@ public final class InGame extends GameState
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-					GameStates.activateExitFlag();
+					GameStates.SetState(GameStates.PAUSEMENU);
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
 				{
@@ -240,27 +211,5 @@ public final class InGame extends GameState
 	public static GameState getInstance()
 	{
 		return INSTANCE;
-	}
-	
-	private void flashAlpha()
-	{
-		if (selectedAlphaStatus)
-		{
-			flashAlpha += flashdA;
-			if (flashAlpha > 96)
-			{
-				flashAlpha = 96;
-				selectedAlphaStatus = !selectedAlphaStatus;
-			}
-		}
-		else
-		{
-			flashAlpha -= flashdA;
-			if (flashAlpha < 32)
-			{
-				flashAlpha = 32;
-				selectedAlphaStatus = !selectedAlphaStatus;
-			}
-		}
 	}
 }
