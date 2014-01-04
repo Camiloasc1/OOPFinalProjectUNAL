@@ -39,18 +39,18 @@ public final class PauseMenu extends GameState
 		pos = 0;
 		ResourceManager.getSpriteMap().get(ResourceManager.PLAYER).draw(50, rectangles.get(pos).y);
 		ResourceManager.getFontMap().get(ResourceManager.FONT2).drawString(100, rectangles.get(pos).y, "Continuar");
-
+		
 		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.DRAW).draw(50, rectangles.get(pos).y);
 		ResourceManager.getFontMap().get(ResourceManager.FONT3).drawString(100, rectangles.get(pos).y, "Declarar Empate");
 		
 		pos++;
-		ResourceManager.getSpriteMap().get(ResourceManager.DRAW).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT4).drawString(100, rectangles.get(pos).y, "Rendirse");
+		ResourceManager.getSpriteMap().get(ResourceManager.SAVEGAME).draw(50, rectangles.get(pos).y);
+		ResourceManager.getFontMap().get(ResourceManager.FONT4).drawString(100, rectangles.get(pos).y, "Guardar");
 		
 		pos++;
 		ResourceManager.getSpriteMap().get(ResourceManager.EXIT).draw(50, rectangles.get(pos).y);
-		ResourceManager.getFontMap().get(ResourceManager.FONT5).drawString(100, rectangles.get(pos).y, "Salir");
+		ResourceManager.getFontMap().get(ResourceManager.FONT5).drawString(100, rectangles.get(pos).y, "Menu Principal");
 		
 		// Selected Menu
 		
@@ -155,7 +155,7 @@ public final class PauseMenu extends GameState
 		if (activeMenu >= rectangles.size())
 			activeMenu = (byte) rectangles.size();
 	}
-
+	
 	private void selectMenu()
 	{
 		switch (activeMenu)
@@ -167,16 +167,23 @@ public final class PauseMenu extends GameState
 			}
 			case 1:
 			{
-				GameStates.SetState(GameStates.LOADGAME);
+				// TODO Add draw handler
 				break;
 			}
 			case 2:
 			{
-				GameStates.activateExitFlag();
+				// TODO Add save handler
+				break;
+			}
+			case 3:
+			{
+				GameStates.SetState(GameStates.MAINMENU);
+				// GameStates.activateExitFlag();
 				break;
 			}
 		}
 	}
+	
 	private PauseMenu()
 	{
 		int y = 200;
