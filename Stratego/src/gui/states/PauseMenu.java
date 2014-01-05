@@ -136,13 +136,6 @@ public final class PauseMenu extends GameState
 		// Polled
 		if (Mouse.isButtonDown(0))
 		{
-			for (Rectangle rtg : rectangles)
-			{
-				if (rtg.contains(x, y))
-				{
-					selectMenu();
-				}
-			}
 		}
 		// Queued
 		while (Mouse.next())

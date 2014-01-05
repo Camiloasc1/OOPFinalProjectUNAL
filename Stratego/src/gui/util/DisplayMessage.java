@@ -22,47 +22,116 @@ package gui.util;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
 
 public class DisplayMessage extends JDialog
 {
 	private static final long serialVersionUID = 9101381006883587464L;
 	private final JPanel contentPanel = new JPanel();
+	private boolean ready;
+	private boolean response;
 	
 	/**
-	 * Launch the application.
+	 * Show player message dialog.
+	 * 
+	 * @param str
+	 *            Caption to show
+	 * @return
+	 *         <b>false</b> if !wait
+	 *         <p>
+	 *         <b>true</b> if OK pressed
+	 *         <p>
+	 *         <b>false</b> if Cancel pressed
 	 */
-	public static void main(String[] args)
+	public static boolean show(String str)
 	{
-		try
+		return show(false, false, str);
+	}
+	
+	/**
+	 * Show player message dialog.
+	 * 
+	 * @param wait
+	 *            If wait for response
+	 * @param str
+	 *            Caption to show
+	 * @return
+	 *         <b>false</b> if !wait
+	 *         <p>
+	 *         <b>true</b> if OK pressed
+	 *         <p>
+	 *         <b>false</b> if Cancel pressed
+	 */
+	public static boolean show(boolean wait, String str)
+	{
+		return show(false, false, str);
+	}
+	
+	/**
+	 * Show player message dialog.
+	 * 
+	 * @param cancelOpt
+	 *            If add cancel button
+	 * @param wait
+	 *            If wait for response
+	 * @param str
+	 *            Caption to show
+	 * @return
+	 *         <b>false</b> if !wait
+	 *         <p>
+	 *         <b>true</b> if OK pressed
+	 *         <p>
+	 *         <b>false</b> if Cancel pressed
+	 */
+	public static boolean show(boolean cancelOpt, boolean wait, String str)
+	{
+		DisplayMessage dialog = new DisplayMessage(cancelOpt, str);
+		dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		dialog.setVisible(true);
+		if (wait)
 		{
-			DisplayMessage dialog = new DisplayMessage();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
+			while (!dialog.ready)
+			{
+				try
+				{
+					Thread.sleep(100);
+				}
+				catch (InterruptedException e)
+				{
+				}
+			}
 		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		return (dialog.response && wait);
 	}
 	
 	/**
 	 * Create the dialog.
+	 * 
+	 * @param cancelOpt
+	 *            If add cancel button
+	 * @param str
+	 *            Caption to show
 	 */
-	public DisplayMessage()
+	private DisplayMessage(boolean cancelOpt, String str)
 	{
-		setBounds(100, 100, 300, 150);
+		ready = false;
+		
+		// setModal(true);
+		setAlwaysOnTop(true);
+		setBounds(512, 256, 300, 150);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		{
-			JLabel lblMessage = new JLabel("Message");
+			JLabel lblMessage = new JLabel(str);
 			contentPanel.add(lblMessage);
 		}
 		{
@@ -71,16 +140,36 @@ public class DisplayMessage extends JDialog
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener()
+				{
+					public void actionPerformed(ActionEvent arg0)
+					{
+						response = true;
+						ready = true;
+						dispose();
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
+				if (cancelOpt)
+				{
+					JButton cancelButton = new JButton("Cancel");
+					cancelButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent arg0)
+						{
+							response = false;
+							ready = true;
+							dispose();
+						}
+					});
+					cancelButton.setActionCommand("Cancel");
+					buttonPane.add(cancelButton);
+				}
 			}
 		}
 	}
-	
 }

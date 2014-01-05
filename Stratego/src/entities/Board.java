@@ -204,9 +204,13 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public boolean movePiece(Piece piece, byte x, byte y)
 	{
-		map[Board.getInstance().getPieceX(piece)][Board.getInstance().getPieceY(piece)] = null;
-		map[convertX(x, y)][convertY(x, y)] = piece;
-		return true;
+		if (piece != null && getPieceAt(x, y) == null)
+		{
+			map[getPieceX(piece)][getPieceY(piece)] = null;
+			map[convertX(x, y)][convertY(x, y)] = piece;
+			return true;
+		}
+		return false;
 	}
 	
 	/**

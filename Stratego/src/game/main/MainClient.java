@@ -44,7 +44,7 @@ public class MainClient
 		
 		GUI.init();
 		
-		GameStates.SetState(GameStates.INITGAME);
+		GameStates.SetState(GameStates.MAINMENU);
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !GameStates.isExitFlag())

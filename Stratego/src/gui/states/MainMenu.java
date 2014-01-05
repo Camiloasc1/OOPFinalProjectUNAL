@@ -20,12 +20,12 @@
 
 package gui.states;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import gui.GUI;
 import gui.ResourceManager;
 import gui.util.DrawUtil;
+
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -132,13 +132,6 @@ public final class MainMenu extends GameState
 		// Polled
 		if (Mouse.isButtonDown(0))
 		{
-			for (Rectangle rtg : rectangles)
-			{
-				if (rtg.contains(x, y))
-				{
-					selectMenu();
-				}
-			}
 		}
 		// Queued
 		while (Mouse.next())

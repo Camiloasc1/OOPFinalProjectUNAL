@@ -37,6 +37,7 @@ import entities.pieces.Spy;
 import gui.GUI;
 import gui.ResourceManager;
 import gui.Sprite;
+import gui.util.DisplayMessage;
 import gui.util.DrawUtil;
 
 import org.lwjgl.input.Keyboard;
@@ -270,14 +271,10 @@ public final class InitGame extends GameState
 		// Selected Piece
 		xPiece = (byte) (selectedX / (GUI.WIDTH / Board.SIZE));
 		yPiece = (byte) ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-		// Move
-		// TODO this if in Board
-		if (board.getPieceAt(xPiece, yPiece) != null && board.getPieceAt(x, y) == null)
+		// is valid move
+		if (y >= 6)
 		{
-			if (y >= 6)
-			{
-				board.movePiece(board.getPieceAt(xPiece, yPiece), x, y);
-			}
+			board.movePiece(board.getPieceAt(xPiece, yPiece), x, y);
 		}
 	}
 	
@@ -396,6 +393,8 @@ public final class InitGame extends GameState
 				return;
 			}
 		}
+		// TODO wait for other player
+		DisplayMessage.show(true, "Esperando por el otro jugador");
 		GameStates.SetState(GameStates.INGAME);
 	}
 	
