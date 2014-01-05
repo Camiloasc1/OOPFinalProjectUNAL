@@ -22,7 +22,6 @@ import gui.util.DrawUtil;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 
 public final class InitGame extends GameState
@@ -70,11 +69,12 @@ public final class InitGame extends GameState
 		int x;
 		int y;
 		Sprite spr = Sprite.getPieceSprite();
+		DrawUtil.flashAlpha();
+		
 		// Active Piece
 		x = (activeX / (GUI.WIDTH / Board.SIZE));
 		y = ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
 		
-		DrawUtil.flashAlpha();
 		DrawUtil.drawFlashRectangle(spr.getRectangle(x, y), (byte) 0, (byte) 0, (byte) 255);
 		
 		// Selected Piece
@@ -82,15 +82,22 @@ public final class InitGame extends GameState
 		y = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
 		DrawUtil.drawFlashRectangle(spr.getRectangle(x, y), (byte) 255, (byte) 0, (byte) 0);
 		
-		GL11.glMatrixMode(GL11.GL_PROJECTION);
-		GL11.glLoadIdentity();
-		GL11.glOrtho(0, Display.getDisplayMode().getWidth(), Display.getDisplayMode().getHeight(), 0, -1, 1);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		// Void Spaces
+		for (x = 0; x < Board.SIZE; x++)
+		{
+			for (y = 6; y < Board.SIZE; y++)
+			{
+				if (board.isEmptyPos((byte) x, (byte) y))
+				{
+					DrawUtil.drawFlashRectangle(spr.getRectangle(x, y), (byte) 0, (byte) 255, (byte) 0);
+				}
+			}
+		}
 		
-		int pos;
-		pos = GUI.HEIGHT;
-		pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getLineHeight();
-		pos /= 2;
+// int pos;
+// pos = GUI.HEIGHT;
+// pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getLineHeight();
+// pos /= 2;
 		
 // GL11.glDisable(GL11.GL_DEPTH_TEST);
 // GL11.glDisable(GL11.GL_LIGHTING);
@@ -100,8 +107,8 @@ public final class InitGame extends GameState
 // GL11.glEnable(GL11.GL_TEXTURE_2D);
 // GL11.glDisable(GL11.GL_BLEND);
 // GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
-		ResourceManager.getFontMap().get(ResourceManager.FONTBOARDMSG)
-				.drawString(10, pos, "Coloca tus piezas en la parte inferior");
+		
+// ResourceManager.getFontMap().get(ResourceManager.FONTBOARDMSG).drawString(10, pos, "Coloca tus piezas en la parte inferior");
 		
 // GL11.glEnable(GL11.GL_BLEND);
 // GL11.glDisable(GL11.GL_TEXTURE_2D);
@@ -121,27 +128,6 @@ public final class InitGame extends GameState
 		{
 			// GameStates.SetState(GameStates.PAUSEMENU);
 		}
-		//@formatter:off
-		/*
-		if (Keyboard.isKeyDown(Keyboard.KEY_LEFT))
-		{
-			selectedX -= 0.25f * delta;
-		}
-		if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
-		{
-			selectedX += 0.25f * delta;
-		}
-		
-		if (Keyboard.isKeyDown(Keyboard.KEY_UP))
-		{
-			selectedY += 0.25f * delta;
-		}
-		if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
-		{
-			selectedY -= 0.25f * delta;
-		}
-		*/
-		//@formatter:on
 		// Queued
 		while (Keyboard.next())
 		{
@@ -150,7 +136,7 @@ public final class InitGame extends GameState
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-					GameStates.SetState(GameStates.PAUSEMENU);
+// GameStates.SetState(GameStates.PAUSEMENU);
 				}
 				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
 				{
@@ -166,8 +152,6 @@ public final class InitGame extends GameState
 						selectedY = 0;
 					}
 				}
-				//@formatter:off
-				/**/
 				if (Keyboard.getEventKey() == Keyboard.KEY_RIGHT)
 				{
 					activeX += Sprite.getPieceSprite().getWidth();
@@ -184,8 +168,6 @@ public final class InitGame extends GameState
 				{
 					activeY += Sprite.getPieceSprite().getHeight();
 				}
-				/**/
-				//@formatter:on
 			}
 			else
 			{

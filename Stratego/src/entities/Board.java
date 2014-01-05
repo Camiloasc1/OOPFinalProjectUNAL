@@ -73,14 +73,6 @@ public final class Board implements Serializable, Iterable<Piece>
 	}
 	
 	/**
-	 * @return the size
-	 */
-	public static byte getSize()
-	{
-		return SIZE;
-	}
-	
-	/**
 	 * @param x
 	 * @param y
 	 * @return matrix file for x coordinate
