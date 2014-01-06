@@ -25,6 +25,8 @@ import gui.GUI;
 import org.lwjgl.opengl.Display;
 
 /**
+ * An game state for Stratego game
+ * 
  * @author camiloasc1
  * 
  */
@@ -33,7 +35,6 @@ public abstract class GameState implements Cloneable
 	/**
 	 * Main method to run the game state
 	 */
-	// public abstract void run();
 	public final void run()
 	{
 		// Only bother rendering if the window is active, visible or dirty
@@ -65,12 +66,12 @@ public abstract class GameState implements Cloneable
 	}
 	
 	/**
-	 * 
+	 * Draw Game in OpenGL whit LWJGL
 	 */
 	protected abstract void render();
 	
 	/**
-	 * 
+	 * Game processing
 	 */
 	protected abstract void logic();
 	

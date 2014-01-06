@@ -26,14 +26,38 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * Manager of GUI for Stratego game
+ * 
+ * @author camiloasc1
+ *
+ */
 public class GUI
 {
+	/**
+	 * Width of window
+	 */
 	public static final int WIDTH = 640;
+	/**
+	 * Height of window
+	 */
 	public static final int HEIGHT = 640;
+	/**
+	 * Frame rate (FPS) of window
+	 */
 	public static final int FRAMERATE = 60;
+	/**
+	 * Is full screen activated
+	 */
 	private static final boolean FULL_SCREEN = false;
+	/**
+	 * Window title
+	 */
 	private static final String WINDOW_TITLE = "Stratego";
 	
+	/**
+	 * Internally used for getDelta()
+	 */
 	private static long lastFrame;
 	
 	/**
@@ -69,6 +93,9 @@ public class GUI
 		return delta;
 	}
 	
+	/**
+	 * Initializes the window
+	 */
 	public static void init()
 	{
 		// Creates the Window
@@ -96,6 +123,9 @@ public class GUI
 		loadResources();
 	}
 	
+	/**
+	 * Initializes OpenGL
+	 */
 	private static void initGL()
 	{
 		// Set Up the Canvas
@@ -114,12 +144,18 @@ public class GUI
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 	}
 	
+	/**
+	 * Load the game resources
+	 */
 	private static void loadResources()
 	{
 		ResourceManager.getSpriteMap();
 		
 	}
 	
+	/**
+	 * Free the game resources
+	 */
 	public static void cleanup()
 	{
 		ResourceManager.cleanup();

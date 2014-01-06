@@ -21,6 +21,8 @@
 package gui.states;
 
 /**
+ * Diferent GameStates for Stratego game
+ * 
  * @author camiloasc1
  * 
  */
@@ -28,23 +30,41 @@ public enum GameStates
 {
 	EXITGAME, MAINMENU, PAUSEMENU, SETUPGAME, LOADGAME, SAVEGAME, INITGAME, INGAME;
 	
+	/**
+	 * Singleton Instance
+	 */
 	private static volatile GameStates INSTANCE = MAINMENU;
 	
+	/**
+	 * Activates the EXITGAME status
+	 */
 	public static void activateExitFlag()
 	{
 		INSTANCE = EXITGAME;
 	}
 	
+	/**
+	 * Check for EXITGAME status
+	 * @return is EXITGAME status
+	 */
 	public static boolean isExitFlag()
 	{
 		return (INSTANCE == EXITGAME);
 	}
 	
+	/**
+	 * @return Singleton Instance
+	 */
 	public static synchronized GameStates getState()
 	{
 		return INSTANCE;
 	}
 	
+	/**
+	 * Changes the current state
+	 * 
+	 * @param state
+	 */
 	public static synchronized void SetState(GameStates state)
 	{
 		if (state == EXITGAME)

@@ -24,12 +24,30 @@ import entities.Piece;
 import gui.ResourceManager;
 import gui.Sprite;
 
+/**
+ * Lieutenant Piece for Stratego game
+ * 
+ * @author camiloasc1
+ *
+ */
 public class Lieutenant extends Piece
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 6606290614010021979L;
+	/**
+	 * Level of this piece
+	 */
 	private static final byte LEVEL = 6;
+	/**
+	 * Sprite for this piece
+	 */
 	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.LIEUTENTANT);
 	
+	/**
+	 * @param owner
+	 */
 	public Lieutenant(boolean owner)
 	{
 		super(LEVEL, owner, SPRITE);

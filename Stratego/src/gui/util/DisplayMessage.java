@@ -31,11 +31,31 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Displays a JDialog whit a player message
+ * 
+ * @author camiloasc1
+ * 
+ */
 public class DisplayMessage extends JDialog
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 9101381006883587464L;
+	/**
+	 * JPanel instance
+	 */
 	private final JPanel contentPanel = new JPanel();
+	/**
+	 * Flag for an response selected
+	 */
 	private boolean ready;
+	/**
+	 * <b>true</b> if OK
+	 * <p>
+	 * <b>false</b> if Cancel
+	 */
 	private boolean response;
 	
 	/**

@@ -34,8 +34,17 @@ import java.io.File;
 
 import org.lwjgl.opengl.Display;
 
+/**
+ * Main method for Stratego game client (Player)
+ * 
+ * @author camiloasc1
+ *
+ */
 public class MainClient
 {
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args)
 	{
 		System.setProperty("java.library.path", "lib");

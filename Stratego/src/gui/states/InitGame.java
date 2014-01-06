@@ -44,26 +44,83 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * InitGame state for Stratego game
+ * 
+ * @author camiloasc1
+ * 
+ */
 public final class InitGame extends GameState
 {
+	/**
+	 * Singleton Instance
+	 */
 	private static volatile GameState INSTANCE = new InitGame();
 	
+	/**
+	 * Number of Bombs
+	 */
 	private static final byte NUMBOMB = 6;
+	/**
+	 * Number of Captains
+	 */
 	private static final byte NUMCAPTAIN = 4;
+	/**
+	 * Number of Colonels
+	 */
 	private static final byte NUMCOLONEL = 2;
+	/**
+	 * Number of Flags
+	 */
 	private static final byte NUMFLAG = 1;
+	/**
+	 * Number of Generals
+	 */
 	private static final byte NUMGENERAL = 1;
-	private static final byte NUMLIEUTERNANT = 4;
+	/**
+	 * Number of Lieutenants
+	 */
+	private static final byte NUMLIEUTENANT = 4;
+	/**
+	 * Number of Majors 
+	 */
 	private static final byte NUMMAJOR = 3;
+	/**
+	 * Number of Marshals
+	 */
 	private static final byte NUMMARSHAL = 1;
+	/**
+	 * Number of Miners
+	 */
 	private static final byte NUMMINER = 5;
+	/**
+	 * Number of Scouts
+	 */
 	private static final byte NUMSCOUT = 8;
+	/**
+	 * Number of Sergeants
+	 */
 	private static final byte NUMSERGEANT = 4;
+	/**
+	 * Number of Spies
+	 */
 	private static final byte NUMSPY = 1;
 	
+	/**
+	 * X coordinate of active Piece
+	 */
 	private int activeX = 1;
+	/**
+	 * Y coordinate of active Piece
+	 */
 	private int activeY = 1;
+	/**
+	 * X coordinate of selected Piece
+	 */
 	private int selectedX = 0;
+	/**
+	 * Y coordinate of selected Piece
+	 */
 	private int selectedY = 0;
 	
 	@Override
@@ -278,6 +335,9 @@ public final class InitGame extends GameState
 		}
 	}
 	
+	/**
+	 * Put the player Pieces on the Board
+	 */
 	private void initPieces()
 	{
 		Board board = Board.getInstance();
@@ -301,7 +361,7 @@ public final class InitGame extends GameState
 		{
 			board.addPiece(new General(true));
 		}
-		for (int i = 0; i < NUMLIEUTERNANT; i++)
+		for (int i = 0; i < NUMLIEUTENANT; i++)
 		{
 			board.addPiece(new Lieutenant(true));
 		}
@@ -383,6 +443,9 @@ public final class InitGame extends GameState
 		//@formatter:on
 	}
 	
+	/**
+	 * Check if all pieces was sorted by the player and the ready state of the other player
+	 */
 	private void checkAllPiecesSorted()
 	{
 		Board board = Board.getInstance();
@@ -398,11 +461,17 @@ public final class InitGame extends GameState
 		GameStates.SetState(GameStates.INGAME);
 	}
 	
+	/**
+	 * Singleton Constructor
+	 */
 	private InitGame()
 	{
 		initPieces();
 	}
 	
+	/**
+	 * @return the Singleton Instance
+	 */
 	public static GameState getInstance()
 	{
 		return INSTANCE;

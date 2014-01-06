@@ -19,9 +19,17 @@
  ******************************************************************************/
 
 package gui.states;
-
+/**
+ * SaveGame state for Stratego game
+ * 
+ * @author camiloasc1
+ *
+ */
 public final class SaveGame extends GameState
 {
+	/**
+	 * Singleton Instance
+	 */
 	private static volatile GameState INSTANCE = new SaveGame();
 	
 	@Override
@@ -37,12 +45,18 @@ public final class SaveGame extends GameState
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	/**
+	 * Singleton Constructor
+	 */
 	private SaveGame()
 	{
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	/**
+	 * @return the Singleton Instance
+	 */
 	public static GameState getInstance()
 	{
 		return INSTANCE;

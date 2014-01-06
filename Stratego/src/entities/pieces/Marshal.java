@@ -24,12 +24,30 @@ import entities.Piece;
 import gui.ResourceManager;
 import gui.Sprite;
 
+/**
+ * Marshal Piece for Stratego game
+ * 
+ * @author camiloasc1
+ *
+ */
 public class Marshal extends Piece
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -8968574065529804558L;
+	/**
+	 * Level of this piece
+	 */
 	private static final byte LEVEL = 1;
+	/**
+	 * Sprite for this piece
+	 */
 	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.MARSHAL);
 	
+	/**
+	 * @param owner
+	 */
 	public Marshal(boolean owner)
 	{
 		super(LEVEL, owner, SPRITE);

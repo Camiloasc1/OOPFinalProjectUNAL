@@ -24,12 +24,30 @@ import java.awt.Rectangle;
 
 import org.lwjgl.opengl.GL11;
 
+/**
+ * Draw utilities for OpenGL in LWJGL
+ * 
+ * @author camiloasc1
+ *
+ */
 public final class DrawUtil
 {
+	/**
+	 * Actual value of Alpha
+	 */
 	private static byte flashAlpha = 96; // (32 - 96)
+	/**
+	 * Delta for flashAlpha
+	 */
 	private static byte flashdA = 5;
+	/**
+	 * Is crescent or decrement
+	 */
 	private static boolean selectedAlphaStatus = false;
 	
+	/**
+	 * Updates the value of flashAlpha
+	 */
 	public static void flashAlpha()
 	{
 		if (selectedAlphaStatus)
@@ -52,6 +70,15 @@ public final class DrawUtil
 		}
 	}
 	
+	/**
+	 * Draws a rectangle whit specified color in RGBA
+	 * 
+	 * @param rtg Rectangle to draw
+	 * @param red <b>R</b>GBA
+	 * @param green R<b>G</b>BA
+	 * @param blue RG<b>B</b>A
+	 * @param alpha RGB<b>A</b>
+	 */
 	public static void drawRectangle(Rectangle rtg, byte red, byte green, byte blue, byte alpha)
 	{
 		GL11.glPushMatrix();
@@ -73,16 +100,32 @@ public final class DrawUtil
 		GL11.glPopMatrix();
 	}
 	
+	/**
+	 * Draws a flashAlpha() controlled rectangle whit specified color in RGB
+	 * 
+	 * @param rtg Rectangle to draw
+	 * @param red <b>R</b>GB
+	 * @param green R<b>G</b>B
+	 * @param blue RG<b>B</b>
+	 */
 	public static void drawFlashRectangle(Rectangle rtg, byte red, byte green, byte blue)
 	{
 		drawRectangle(rtg, red, green, blue, (byte) flashAlpha);
 	}
 	
+	/**
+	 * Draws a white flashAlpha() controlled rectangle
+	 * 
+	 * @param rtg Rectangle to draw
+	 */
 	public static void drawFlashRectangle(Rectangle rtg)
 	{
 		drawFlashRectangle(rtg, (byte) 255, (byte) 255, (byte) 255);
 	}
 	
+	/**
+	 * 
+	 */
 	private DrawUtil()
 	{
 	}

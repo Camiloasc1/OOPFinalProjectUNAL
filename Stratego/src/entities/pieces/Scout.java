@@ -24,12 +24,30 @@ import entities.Piece;
 import gui.ResourceManager;
 import gui.Sprite;
 
+/**
+ * Scout Piece for Stratego game
+ * 
+ * @author camiloasc1
+ *
+ */
 public class Scout extends Piece
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 5584437327189831247L;
+	/**
+	 * Level of this piece
+	 */
 	private static final byte LEVEL = 9;
+	/**
+	 * Sprite for this piece
+	 */
 	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.SCOUT);
 	
+	/**
+	 * @param owner
+	 */
 	public Scout(boolean owner)
 	{
 		super(LEVEL, owner, SPRITE);

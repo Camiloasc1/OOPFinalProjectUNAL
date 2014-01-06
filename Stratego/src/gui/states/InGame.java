@@ -31,13 +31,34 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * InGame state for Stratego game
+ * 
+ * @author camiloasc1
+ * 
+ */
 public final class InGame extends GameState
 {
+	/**
+	 * Singleton Instance
+	 */
 	private static volatile GameState INSTANCE = new InGame();
 	
+	/**
+	 * X coordinate of active Piece
+	 */
 	private int activeX = 1;
+	/**
+	 * Y coordinate of active Piece
+	 */
 	private int activeY = 1;
+	/**
+	 * X coordinate of selected Piece
+	 */
 	private int selectedX = 0;
+	/**
+	 * Y coordinate of selected Piece
+	 */
 	private int selectedY = 0;
 	
 	@Override
@@ -216,10 +237,16 @@ public final class InGame extends GameState
 			activeY = GUI.HEIGHT - 1;
 	}
 	
+	/**
+	 * Singleton Constructor
+	 */
 	private InGame()
 	{
 	}
 	
+	/**
+	 * @return the Singleton Instance
+	 */
 	public static GameState getInstance()
 	{
 		return INSTANCE;

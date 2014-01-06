@@ -24,12 +24,27 @@ import entities.Piece;
 import gui.ResourceManager;
 import gui.Sprite;
 
+/**
+ * Flag Piece for Stratego game
+ * 
+ * @author camiloasc1
+ * 
+ */
 public class Flag extends Piece
 {
 	private static final long serialVersionUID = 705086647830144235L;
+	/**
+	 * Level of this piece
+	 */
 	private static final byte LEVEL = -1;
+	/**
+	 * Sprite for this piece
+	 */
 	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.FLAG);
 	
+	/**
+	 * @param owner
+	 */
 	public Flag(boolean owner)
 	{
 		super(LEVEL, owner, SPRITE);

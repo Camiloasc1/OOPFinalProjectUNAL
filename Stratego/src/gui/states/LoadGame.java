@@ -19,9 +19,17 @@
  ******************************************************************************/
 
 package gui.states;
-
+/**
+ * LoadGame state for Stratego game
+ * 
+ * @author camiloasc1
+ *
+ */
 public final class LoadGame extends GameState
 {
+	/**
+	 * Singleton Instance
+	 */
 	private static volatile GameState INSTANCE = new LoadGame();
 	
 	@Override
@@ -37,12 +45,18 @@ public final class LoadGame extends GameState
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	/**
+	 * Singleton Constructor
+	 */
 	private LoadGame()
 	{
 		// TODO Auto-generated constructor stub
 	}
-	
+
+	/**
+	 * @return the Singleton Instance
+	 */
 	public static GameState getInstance()
 	{
 		return INSTANCE;

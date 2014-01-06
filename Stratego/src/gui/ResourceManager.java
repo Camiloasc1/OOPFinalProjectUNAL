@@ -29,6 +29,8 @@ import org.newdawn.slick.opengl.TextureLoader;
 import org.newdawn.slick.util.ResourceLoader;
 
 /**
+ * Resource Manager for Stratego game
+ * 
  * @author camiloasc1
  * 
  */
@@ -45,10 +47,17 @@ public enum ResourceManager
 	//@formatter:on
 	
 	/**
+	 * Contains all sprites
+	 * 
 	 * Need differed init or differed populate
 	 */
 	private static volatile EnumMap<ResourceManager, Sprite> SPRITEMAP = new EnumMap<ResourceManager, Sprite>(
 			ResourceManager.class);
+	/**
+	 * Contains all fonts
+	 * 
+	 * Need differed init or differed populate
+	 */
 	private static volatile EnumMap<ResourceManager, TrueTypeFont> FONTMAP = new EnumMap<ResourceManager, TrueTypeFont>(
 			ResourceManager.class);
 	
@@ -76,6 +85,9 @@ public enum ResourceManager
 		return FONTMAP;
 	}
 	
+	/**
+	 * Load the sprites
+	 */
 	private static synchronized final void populateSpriteMap()
 	{
 		if (!SPRITEMAP.isEmpty())
@@ -112,6 +124,12 @@ public enum ResourceManager
 		loadSprite(SPLASH, "res/images/splash.png");
 	}
 	
+	/**
+	 * Load an sprite
+	 * 
+	 * @param key to store
+	 * @param file to load
+	 */
 	private static synchronized final void loadSprite(ResourceManager key, String file)
 	{
 		try
@@ -127,6 +145,9 @@ public enum ResourceManager
 		}
 	}
 	
+	/**
+	 * Load fonts
+	 */
 	private static synchronized final void populateFontMap()
 	{
 		FONTMAP.put(FONTMENU1, new TrueTypeFont(new Font("SansSerif", Font.BOLD, 32), false));
@@ -137,6 +158,9 @@ public enum ResourceManager
 		FONTMAP.put(FONTBOARDMSG, new TrueTypeFont(new Font("SansSerif", Font.BOLD, 30), false));
 	}
 	
+	/**
+	 * Free resources
+	 */
 	public static synchronized final void cleanup()
 	{
 		if (!SPRITEMAP.isEmpty())

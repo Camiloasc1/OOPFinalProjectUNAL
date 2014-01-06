@@ -26,11 +26,26 @@ import java.io.Serializable;
 import org.lwjgl.opengl.GL11;
 import org.newdawn.slick.opengl.Texture;
 
+/**
+ * Basic graphic unit to display, contains a texture from ResourceManager
+ * 
+ * @author camiloasc1
+ *
+ */
 public class Sprite implements Serializable
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -5820243227474305917L;
+	/**
+	 * Basic piece sprite used for enemy piece
+	 */
 	private static final Sprite PIECE = ResourceManager.getSpriteMap().get(ResourceManager.PIECE);
 	
+	/**
+	 * The texture of this sprite
+	 */
 	private Texture texture;
 	
 	/**
@@ -140,6 +155,9 @@ public class Sprite implements Serializable
 		PIECE.draw(x, y);
 	}
 	
+	/**
+	 * @return the basic piece sprite used for enemy pie
+	 */
 	public static Sprite getPieceSprite()
 	{
 		return PIECE;

@@ -23,9 +23,17 @@ package gui.states;
 import gui.util.DisplayMessage;
 
 import org.lwjgl.opengl.GL11;
-
+/**
+ * SetupGame state for Stratego game
+ * 
+ * @author camiloasc1
+ *
+ */
 public final class SetupGame extends GameState
 {
+	/**
+	 * Singleton Instance
+	 */
 	private static volatile GameState INSTANCE = new SetupGame();
 	
 	@Override
@@ -46,10 +54,16 @@ public final class SetupGame extends GameState
 		DisplayMessage.show("Ordena tus piezas en la parte inferior");
 	}
 	
+	/**
+	 * Singleton Constructor
+	 */
 	private SetupGame()
 	{
 	}
 	
+	/**
+	 * @return the Singleton Instance
+	 */
 	public static GameState getInstance()
 	{
 		return INSTANCE;

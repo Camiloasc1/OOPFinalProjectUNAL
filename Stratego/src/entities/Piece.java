@@ -32,10 +32,22 @@ import java.io.Serializable;
  */
 public class Piece implements Serializable
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -1557972597399797881L;
 	
+	/**
+	 * Level of this piece
+	 */
 	private byte level;
+	/**
+	 * Owner of this piece
+	 */
 	private boolean owner;
+	/**
+	 * Sprite for this piece
+	 */
 	private Sprite sprite;
 	
 	/**
@@ -76,7 +88,7 @@ public class Piece implements Serializable
 	}
 	
 	/**
-	 * draws the sprite
+	 * draws the Sprite
 	 */
 	public void draw()
 	{

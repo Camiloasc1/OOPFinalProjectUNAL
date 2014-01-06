@@ -24,12 +24,30 @@ import entities.Piece;
 import gui.ResourceManager;
 import gui.Sprite;
 
+/**
+ * Bomb Piece for Stratego game
+ * 
+ * @author camiloasc1
+ * 
+ */
 public class Bomb extends Piece
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 7885307608401658657L;
+	/**
+	 * Level of this piece
+	 */
 	private static final byte LEVEL = 0;
+	/**
+	 * Sprite for this piece
+	 */
 	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.BOMB);
 	
+	/**
+	 * @param owner
+	 */
 	public Bomb(boolean owner)
 	{
 		super(LEVEL, owner, SPRITE);

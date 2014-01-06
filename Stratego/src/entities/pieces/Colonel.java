@@ -24,12 +24,30 @@ import entities.Piece;
 import gui.ResourceManager;
 import gui.Sprite;
 
+/**
+ * Colonel Piece for Stratego game
+ * 
+ * @author camiloasc1
+ * 
+ */
 public class Colonel extends Piece
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 6980602123811708487L;
+	/**
+	 * Level of this piece
+	 */
 	private static final byte LEVEL = 3;
+	/**
+	 * Sprite for this piece
+	 */
 	private static final Sprite SPRITE = ResourceManager.getSpriteMap().get(ResourceManager.COLONEL);
 	
+	/**
+	 * @param owner
+	 */
 	public Colonel(boolean owner)
 	{
 		super(LEVEL, owner, SPRITE);

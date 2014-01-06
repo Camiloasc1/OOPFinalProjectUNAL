@@ -31,11 +31,26 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+/**
+ * PauseMenu state for Stratego game
+ * 
+ * @author camiloasc1
+ * 
+ */
 public final class PauseMenu extends GameState
 {
+	/**
+	 * Singleton Instance
+	 */
 	private static volatile GameState INSTANCE = new PauseMenu();
 	
+	/**
+	 * The active menu
+	 */
 	private static byte activeMenu = 0;
+	/**
+	 * Rectangles of menus
+	 */
 	private ArrayList<Rectangle> rectangles = new ArrayList<Rectangle>();
 	
 	@Override
@@ -168,6 +183,9 @@ public final class PauseMenu extends GameState
 			activeMenu = (byte) rectangles.size();
 	}
 	
+	/**
+	 * Select the active menu
+	 */
 	private void selectMenu()
 	{
 		switch (activeMenu)
@@ -196,6 +214,9 @@ public final class PauseMenu extends GameState
 		}
 	}
 	
+	/**
+	 * Singleton Constructor
+	 */
 	private PauseMenu()
 	{
 		int y = 200;
@@ -210,6 +231,9 @@ public final class PauseMenu extends GameState
 		rectangles.add(new Rectangle(50, y, 300, height));
 	}
 	
+	/**
+	 * @return the Singleton Instance
+	 */
 	public static GameState getInstance()
 	{
 		return INSTANCE;

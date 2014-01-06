@@ -45,14 +45,26 @@ import java.util.Iterator;
  */
 public final class Board implements Serializable, Iterable<Piece>
 {
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -333970939198499361L;
+	/**
+	 * Board size for Stratego
+	 */
 	public static final byte SIZE = 10;
+	/**
+	 * Singleton instance
+	 */
 	private static volatile Board INSTANCE = new Board();
 	
+	/**
+	 * Pieces in the board
+	 */
 	private Piece[][] map;
 	
 	/**
-	 * Constructor of the unique instance of Board
+	 * Singleton Constructor
 	 */
 	private Board()
 	{
@@ -68,7 +80,7 @@ public final class Board implements Serializable, Iterable<Piece>
 	}
 	
 	/**
-	 * @return The unique instance of Board
+	 * @return The singleton instance of Board
 	 */
 	public static synchronized Board getInstance()
 	{
@@ -93,7 +105,9 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param x
+	 *            File
 	 * @param y
+	 *            Column
 	 * @return matrix file for x coordinate
 	 */
 	protected byte convertX(byte x, byte y)
@@ -105,7 +119,9 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param x
+	 *            File
 	 * @param y
+	 *            Column
 	 * @return matrix column for y coordinate
 	 */
 	protected byte convertY(byte x, byte y)
@@ -116,8 +132,10 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param x
+	 *            File
 	 * @param y
-	 * @return true if position (x,y) is empty
+	 *            Column
+	 * @return <b>true</b> if position (x,y) is empty
 	 */
 	public boolean isEmptyPos(byte x, byte y)
 	{
@@ -132,8 +150,10 @@ public final class Board implements Serializable, Iterable<Piece>
 	/**
 	 * @param piece
 	 * @param x
+	 *            File
 	 * @param y
-	 * @return true if piece is at (x,y)
+	 *            Column
+	 * @return <b>true</b> if piece is at (x,y)
 	 */
 	public boolean isPieceAt(Piece piece, byte x, byte y)
 	{
@@ -189,7 +209,9 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param x
+	 *            File
 	 * @param y
+	 *            Column
 	 * @return Piece at (x,y)
 	 */
 	public Piece getPieceAt(byte x, byte y)
@@ -199,7 +221,9 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param x
+	 *            File
 	 * @param y
+	 *            Column
 	 * @return true if piece has moved to (x,y)
 	 */
 	public boolean movePiece(Piece piece, byte x, byte y)
@@ -215,7 +239,7 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param piece
-	 * @return true if piece added
+	 * @return <b>true</b> if piece added
 	 */
 	public boolean addPiece(Piece piece)
 	{
@@ -237,7 +261,7 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param piece
-	 * @return true if piece has removed
+	 * @return <b>true</b> if piece has removed
 	 */
 	public boolean removePiece(Piece piece)
 	{
@@ -250,8 +274,10 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param x
+	 *            File
 	 * @param y
-	 * @return true if piece at (x,y) has removed
+	 *            Column
+	 * @return <b>true</b> if piece at (x,y) has removed
 	 */
 	public boolean removePiece(byte x, byte y)
 	{
