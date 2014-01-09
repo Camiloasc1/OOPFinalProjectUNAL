@@ -28,7 +28,7 @@ import org.lwjgl.opengl.GL11;
  * Draw utilities for OpenGL in LWJGL
  * 
  * @author camiloasc1
- *
+ * 
  */
 public final class DrawUtil
 {
@@ -73,11 +73,16 @@ public final class DrawUtil
 	/**
 	 * Draws a rectangle whit specified color in RGBA
 	 * 
-	 * @param rtg Rectangle to draw
-	 * @param red <b>R</b>GBA
-	 * @param green R<b>G</b>BA
-	 * @param blue RG<b>B</b>A
-	 * @param alpha RGB<b>A</b>
+	 * @param rtg
+	 *            Rectangle to draw
+	 * @param red
+	 *            <b>R</b>GBA
+	 * @param green
+	 *            R<b>G</b>BA
+	 * @param blue
+	 *            RG<b>B</b>A
+	 * @param alpha
+	 *            RGB<b>A</b>
 	 */
 	public static void drawRectangle(Rectangle rtg, byte red, byte green, byte blue, byte alpha)
 	{
@@ -103,10 +108,14 @@ public final class DrawUtil
 	/**
 	 * Draws a flashAlpha() controlled rectangle whit specified color in RGB
 	 * 
-	 * @param rtg Rectangle to draw
-	 * @param red <b>R</b>GB
-	 * @param green R<b>G</b>B
-	 * @param blue RG<b>B</b>
+	 * @param rtg
+	 *            Rectangle to draw
+	 * @param red
+	 *            <b>R</b>GB
+	 * @param green
+	 *            R<b>G</b>B
+	 * @param blue
+	 *            RG<b>B</b>
 	 */
 	public static void drawFlashRectangle(Rectangle rtg, byte red, byte green, byte blue)
 	{
@@ -116,7 +125,8 @@ public final class DrawUtil
 	/**
 	 * Draws a white flashAlpha() controlled rectangle
 	 * 
-	 * @param rtg Rectangle to draw
+	 * @param rtg
+	 *            Rectangle to draw
 	 */
 	public static void drawFlashRectangle(Rectangle rtg)
 	{

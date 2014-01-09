@@ -28,7 +28,7 @@ import gui.Sprite;
  * Lieutenant Piece for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Lieutenant extends Piece
 {

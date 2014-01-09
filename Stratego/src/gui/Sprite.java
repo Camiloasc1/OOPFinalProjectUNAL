@@ -30,7 +30,7 @@ import org.newdawn.slick.opengl.Texture;
  * Basic graphic unit to display, contains a texture from ResourceManager
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Sprite implements Serializable
 {

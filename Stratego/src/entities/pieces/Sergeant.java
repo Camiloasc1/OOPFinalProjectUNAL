@@ -28,7 +28,7 @@ import gui.Sprite;
  * Sergeant Piece for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Sergeant extends Piece
 {

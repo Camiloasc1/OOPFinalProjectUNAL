@@ -38,7 +38,7 @@ import org.lwjgl.opengl.Display;
  * Main method for Stratego game client (Player)
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class MainClient
 {

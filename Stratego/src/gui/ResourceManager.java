@@ -127,8 +127,10 @@ public enum ResourceManager
 	/**
 	 * Load an sprite
 	 * 
-	 * @param key to store
-	 * @param file to load
+	 * @param key
+	 *            to store
+	 * @param file
+	 *            to load
 	 */
 	private static synchronized final void loadSprite(ResourceManager key, String file)
 	{

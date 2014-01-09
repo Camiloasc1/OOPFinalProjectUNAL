@@ -234,7 +234,7 @@ public final class PauseMenu extends GameState
 	/**
 	 * @return the Singleton Instance
 	 */
-	public static GameState getInstance()
+	public static synchronized GameState getInstance()
 	{
 		return INSTANCE;
 	}

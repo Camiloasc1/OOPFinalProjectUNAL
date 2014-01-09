@@ -28,7 +28,7 @@ import gui.Sprite;
  * Scout Piece for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Scout extends Piece
 {

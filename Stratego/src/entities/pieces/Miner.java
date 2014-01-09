@@ -28,7 +28,7 @@ import gui.Sprite;
  * Miner Piece for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Miner extends Piece
 {

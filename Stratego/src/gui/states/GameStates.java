@@ -45,6 +45,7 @@ public enum GameStates
 	
 	/**
 	 * Check for EXITGAME status
+	 * 
 	 * @return is EXITGAME status
 	 */
 	public static boolean isExitFlag()

@@ -28,7 +28,7 @@ import gui.Sprite;
  * Major Piece for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Major extends Piece
 {

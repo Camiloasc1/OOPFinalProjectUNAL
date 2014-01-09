@@ -82,7 +82,7 @@ public final class InitGame extends GameState
 	 */
 	private static final byte NUMLIEUTENANT = 4;
 	/**
-	 * Number of Majors 
+	 * Number of Majors
 	 */
 	private static final byte NUMMAJOR = 3;
 	/**
@@ -472,7 +472,7 @@ public final class InitGame extends GameState
 	/**
 	 * @return the Singleton Instance
 	 */
-	public static GameState getInstance()
+	public static synchronized GameState getInstance()
 	{
 		return INSTANCE;
 	}

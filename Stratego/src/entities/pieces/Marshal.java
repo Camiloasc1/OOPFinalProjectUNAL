@@ -28,7 +28,7 @@ import gui.Sprite;
  * Marshal Piece for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Marshal extends Piece
 {

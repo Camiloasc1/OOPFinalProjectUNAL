@@ -30,7 +30,7 @@ import org.lwjgl.opengl.GL11;
  * Manager of GUI for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class GUI
 {

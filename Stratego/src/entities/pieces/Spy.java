@@ -28,7 +28,7 @@ import gui.Sprite;
  * Spy Piece for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public class Spy extends Piece
 {

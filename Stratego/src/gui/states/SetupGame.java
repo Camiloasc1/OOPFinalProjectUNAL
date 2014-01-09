@@ -23,11 +23,12 @@ package gui.states;
 import gui.util.DisplayMessage;
 
 import org.lwjgl.opengl.GL11;
+
 /**
  * SetupGame state for Stratego game
  * 
  * @author camiloasc1
- *
+ * 
  */
 public final class SetupGame extends GameState
 {
@@ -64,7 +65,7 @@ public final class SetupGame extends GameState
 	/**
 	 * @return the Singleton Instance
 	 */
-	public static GameState getInstance()
+	public static synchronized GameState getInstance()
 	{
 		return INSTANCE;
 	}
