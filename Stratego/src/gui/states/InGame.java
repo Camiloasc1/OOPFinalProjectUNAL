@@ -108,27 +108,6 @@ public final class InGame extends GameState
 		{
 			// GameStates.SetState(GameStates.PAUSEMENU);
 		}
-		//@formatter:off
-		/*
-		if (Keyboard.isKeyDown(Keyboard.KEY_LEFT))
-		{
-			selectedX -= 0.25f * delta;
-		}
-		if (Keyboard.isKeyDown(Keyboard.KEY_RIGHT))
-		{
-			selectedX += 0.25f * delta;
-		}
-		
-		if (Keyboard.isKeyDown(Keyboard.KEY_UP))
-		{
-			selectedY += 0.25f * delta;
-		}
-		if (Keyboard.isKeyDown(Keyboard.KEY_DOWN))
-		{
-			selectedY -= 0.25f * delta;
-		}
-		*/
-		//@formatter:on
 		// Queued
 		while (Keyboard.next())
 		{
@@ -137,24 +116,22 @@ public final class InGame extends GameState
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-					GameStates.SetState(GameStates.PAUSEMENU);
+					// GameStates.SetState(GameStates.PAUSEMENU);
 				}
-				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
+				if ((Keyboard.getEventKey() == Keyboard.KEY_RETURN) || (Keyboard.getEventKey() == Keyboard.KEY_SPACE))
 				{
-					if (selectedX == 0 && selectedY == 0)
+					if ((selectedX == 0) && (selectedY == 0))
 					{
 						selectedX = activeX;
 						selectedY = activeY;
 					}
 					else
 					{
-						// TODO Movement event handler
+						moveHandler();
 						selectedX = 0;
 						selectedY = 0;
 					}
 				}
-				//@formatter:off
-				/**/
 				if (Keyboard.getEventKey() == Keyboard.KEY_RIGHT)
 				{
 					activeX += Sprite.getPieceSprite().getWidth();
@@ -171,8 +148,6 @@ public final class InGame extends GameState
 				{
 					activeY += Sprite.getPieceSprite().getHeight();
 				}
-				/**/
-				//@formatter:on
 			}
 			else
 			{
@@ -203,7 +178,7 @@ public final class InGame extends GameState
 				}
 				if (Mouse.getEventButton() == 1)
 				{
-					if (selectedX == 0 && selectedY == 0)
+					if ((selectedX == 0) && (selectedY == 0))
 					{
 						activeX = Mouse.getX();
 						activeY = Mouse.getY();
@@ -213,7 +188,9 @@ public final class InGame extends GameState
 					}
 					else
 					{
-						// TODO Movement event handler
+						activeX = Mouse.getX();
+						activeY = Mouse.getY();
+						moveHandler();
 						selectedX = 0;
 						selectedY = 0;
 					}
@@ -228,13 +205,43 @@ public final class InGame extends GameState
 		// Verifications
 		
 		if (activeX < 0)
+		{
 			activeX = 0 + 1;
+		}
 		if (activeX > GUI.WIDTH)
+		{
 			activeX = GUI.WIDTH - 1;
+		}
 		if (activeY < 0)
+		{
 			activeY = 0 + 1;
+		}
 		if (activeY > GUI.HEIGHT)
+		{
 			activeY = GUI.HEIGHT - 1;
+		}
+	}
+	
+	/**
+	 * 
+	 */
+	private void moveHandler()
+	{
+		byte x;
+		byte y;
+		byte xPiece;
+		byte yPiece;
+		Board board = Board.getInstance();
+		// Destination
+		x = (byte) (activeX / (GUI.WIDTH / Board.SIZE));
+		y = (byte) ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
+		// Selected Piece
+		xPiece = (byte) (selectedX / (GUI.WIDTH / Board.SIZE));
+		yPiece = (byte) ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
+		if (board.movePiece(board.getPieceAt(xPiece, yPiece), x, y))
+		{
+			// TODO
+		}
 	}
 	
 	/**

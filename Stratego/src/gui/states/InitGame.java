@@ -64,47 +64,47 @@ public final class InitGame extends GameState
 	/**
 	 * Number of Captains
 	 */
-	private static final byte NUMCAPTAIN = 4;
+	private static final int NUMCAPTAIN = 4;
 	/**
 	 * Number of Colonels
 	 */
-	private static final byte NUMCOLONEL = 2;
+	private static final int NUMCOLONEL = 2;
 	/**
 	 * Number of Flags
 	 */
-	private static final byte NUMFLAG = 1;
+	private static final int NUMFLAG = 1;
 	/**
 	 * Number of Generals
 	 */
-	private static final byte NUMGENERAL = 1;
+	private static final int NUMGENERAL = 1;
 	/**
 	 * Number of Lieutenants
 	 */
-	private static final byte NUMLIEUTENANT = 4;
+	private static final int NUMLIEUTENANT = 4;
 	/**
 	 * Number of Majors
 	 */
-	private static final byte NUMMAJOR = 3;
+	private static final int NUMMAJOR = 3;
 	/**
 	 * Number of Marshals
 	 */
-	private static final byte NUMMARSHAL = 1;
+	private static final int NUMMARSHAL = 1;
 	/**
 	 * Number of Miners
 	 */
-	private static final byte NUMMINER = 5;
+	private static final int NUMMINER = 5;
 	/**
 	 * Number of Scouts
 	 */
-	private static final byte NUMSCOUT = 8;
+	private static final int NUMSCOUT = 8;
 	/**
 	 * Number of Sergeants
 	 */
-	private static final byte NUMSERGEANT = 4;
+	private static final int NUMSERGEANT = 4;
 	/**
 	 * Number of Spies
 	 */
-	private static final byte NUMSPY = 1;
+	private static final int NUMSPY = 1;
 	
 	/**
 	 * X coordinate of active Piece
@@ -128,7 +128,7 @@ public final class InitGame extends GameState
 	{
 		// 2D
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
-// GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT);
+		// GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_STENCIL_BUFFER_BIT);
 		// 3D
 		// GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		GL11.glLoadIdentity();
@@ -164,33 +164,33 @@ public final class InitGame extends GameState
 		{
 			for (y = 6; y < Board.SIZE; y++)
 			{
-				if (board.isEmptyPos((byte) x, (byte) y))
+				if (board.isEmptyPos(x, y))
 				{
 					DrawUtil.drawFlashRectangle(spr.getRectangle(x, y), (byte) 0, (byte) 255, (byte) 0);
 				}
 			}
 		}
 		
-// int pos;
-// pos = GUI.HEIGHT;
-// pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getLineHeight();
-// pos /= 2;
+		// int pos;
+		// pos = GUI.HEIGHT;
+		// pos -= ResourceManager.getFontMap().get(ResourceManager.FONTMENU1).getLineHeight();
+		// pos /= 2;
 		
-// GL11.glDisable(GL11.GL_DEPTH_TEST);
-// GL11.glDisable(GL11.GL_LIGHTING);
-// GL11.glPushMatrix();
-// GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
-// GL11.glDisable(GL11.GL_TEXTURE_2D);
-// GL11.glEnable(GL11.GL_TEXTURE_2D);
-// GL11.glDisable(GL11.GL_BLEND);
-// GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
+		// GL11.glDisable(GL11.GL_DEPTH_TEST);
+		// GL11.glDisable(GL11.GL_LIGHTING);
+		// GL11.glPushMatrix();
+		// GL11.glBindTexture(GL11.GL_TEXTURE_2D, 0);
+		// GL11.glDisable(GL11.GL_TEXTURE_2D);
+		// GL11.glEnable(GL11.GL_TEXTURE_2D);
+		// GL11.glDisable(GL11.GL_BLEND);
+		// GL11.glColor4ub((byte) 255, (byte) 255, (byte) 255, (byte) 255);
 		
-// ResourceManager.getFontMap().get(ResourceManager.FONTBOARDMSG).drawString(10, pos, "Coloca tus piezas en la parte inferior");
+		// ResourceManager.getFontMap().get(ResourceManager.FONTBOARDMSG).drawString(10, pos, "Coloca tus piezas en la parte inferior");
 		
-// GL11.glEnable(GL11.GL_BLEND);
-// GL11.glDisable(GL11.GL_TEXTURE_2D);
-// GL11.glEnable(GL11.GL_TEXTURE_2D);
-// GL11.glPopMatrix();
+		// GL11.glEnable(GL11.GL_BLEND);
+		// GL11.glDisable(GL11.GL_TEXTURE_2D);
+		// GL11.glEnable(GL11.GL_TEXTURE_2D);
+		// GL11.glPopMatrix();
 	}
 	
 	@Override
@@ -213,11 +213,11 @@ public final class InitGame extends GameState
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-// GameStates.SetState(GameStates.PAUSEMENU);
+					// GameStates.SetState(GameStates.PAUSEMENU);
 				}
-				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
+				if ((Keyboard.getEventKey() == Keyboard.KEY_RETURN) || (Keyboard.getEventKey() == Keyboard.KEY_SPACE))
 				{
-					if (selectedX == 0 && selectedY == 0)
+					if ((selectedX == 0) && (selectedY == 0))
 					{
 						selectedX = activeX;
 						selectedY = activeY;
@@ -275,7 +275,7 @@ public final class InitGame extends GameState
 				}
 				if (Mouse.getEventButton() == 1)
 				{
-					if (selectedX == 0 && selectedY == 0)
+					if ((selectedX == 0) && (selectedY == 0))
 					{
 						activeX = Mouse.getX();
 						activeY = Mouse.getY();
@@ -302,13 +302,21 @@ public final class InitGame extends GameState
 		// Verifications
 		
 		if (activeX < 0)
+		{
 			activeX = 0 + 1;
+		}
 		if (activeX > GUI.WIDTH)
+		{
 			activeX = GUI.WIDTH - 1;
+		}
 		if (activeY < 0)
+		{
 			activeY = 0 + 1;
+		}
 		if (activeY > GUI.HEIGHT)
+		{
 			activeY = GUI.HEIGHT - 1;
+		}
 		checkAllPiecesSorted();
 	}
 	
@@ -317,21 +325,21 @@ public final class InitGame extends GameState
 	 */
 	private void moveHandler()
 	{
-		byte x;
-		byte y;
-		byte xPiece;
-		byte yPiece;
+		int x;
+		int y;
+		int xPiece;
+		int yPiece;
 		Board board = Board.getInstance();
 		// Destination
-		x = (byte) (activeX / (GUI.WIDTH / Board.SIZE));
-		y = (byte) ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
+		x = (activeX / (GUI.WIDTH / Board.SIZE));
+		y = ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
 		// Selected Piece
-		xPiece = (byte) (selectedX / (GUI.WIDTH / Board.SIZE));
-		yPiece = (byte) ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
+		xPiece = (selectedX / (GUI.WIDTH / Board.SIZE));
+		yPiece = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
 		// is valid move
 		if (y >= 6)
 		{
-			board.movePiece(board.getPieceAt(xPiece, yPiece), x, y);
+			board.setPiecePos(board.getPieceAt(xPiece, yPiece), x, y);
 		}
 	}
 	
@@ -452,9 +460,7 @@ public final class InitGame extends GameState
 		for (Piece piece : board)
 		{
 			if (board.getPieceY(piece) < 6)
-			{
 				return;
-			}
 		}
 		// TODO wait for other player
 		DisplayMessage.show(true, "Esperando por el otro jugador");

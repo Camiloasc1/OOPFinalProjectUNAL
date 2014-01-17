@@ -37,22 +37,6 @@ import entities.pieces.Spy;
 public class Engine
 {
 	/**
-	 * Initialize the game
-	 */
-	public static void initGame()
-	{
-		
-	}
-	
-	/**
-	 * Ends the game
-	 */
-	public static void endGame()
-	{
-		
-	}
-	
-	/**
 	 * Moves the piece to the specified position
 	 * 
 	 * @param piece
@@ -60,7 +44,7 @@ public class Engine
 	 * @param y
 	 * @return true if piece has moved to (x,y)
 	 */
-	public static boolean movePiece(Piece piece, byte x, byte y)
+	public static boolean movePiece(Piece piece, int x, int y)
 	{
 		if (!Rules.isValidMove(piece, x, y))
 			return false;
@@ -73,7 +57,7 @@ public class Engine
 				return false;
 		}
 		
-		return board.movePiece(piece, x, y);
+		return board.setPiecePos(piece, x, y);
 	}
 	
 	/**
@@ -86,6 +70,7 @@ public class Engine
 	 * @return true if piece in (xi,yi) has moved to (xf,yf)
 	 * @deprecated
 	 */
+	@Deprecated
 	public static boolean movePiece(byte xi, byte yi, byte xf, byte yf)
 	{
 		Board board = Board.getInstance();
@@ -119,29 +104,42 @@ public class Engine
 		if (enemy instanceof Bomb)
 		{
 			if (ally instanceof Miner)
+			{
 				result = true;
+			}
 			else
+			{
 				result = false;
+			}
 		}
 		
 		if (ally instanceof Spy)
 		{
 			if (enemy instanceof Marshal)
+			{
 				result = true;
+			}
 			else
+			{
 				result = false;
+			}
 		}
 		
 		if (enemy instanceof Flag) // Game ends
 		{
 			result = true;
-			endGame();
+			// TODO
+			// endGame();
 		}
 		
 		if (result)
+		{
 			board.removePiece(enemy);
+		}
 		else
+		{
 			board.removePiece(ally);
+		}
 		
 		return result;
 	}

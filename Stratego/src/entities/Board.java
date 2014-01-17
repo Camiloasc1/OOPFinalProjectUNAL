@@ -20,22 +20,11 @@
 
 package entities;
 
+import game.Engine;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
-
-/*
- * RecomendacionesSingleton
- * 1. Ocultar el constructor (solo debe existir uno). Ponerlo "private"
- * 2. Tener una referencia oculta y con un punto de acceso global.
- * Una referencia "private static" y un método "public" para acceder a ella
- * 3. El método de acceso:
- * Debe revisar si es null la referencia al singleton y si es así, instanciarla
- * Debe ser synchronized
- * 4. Proteger el singleton contra clonación, sobre escribiendo "clone"
- * Se puede retornar lo que devuelve el método de acceso global.
- * ó lanzar una excepción.
- */
 
 /**
  * Game board for Stratego game
@@ -52,7 +41,7 @@ public final class Board implements Serializable, Iterable<Piece>
 	/**
 	 * Board size for Stratego
 	 */
-	public static final byte SIZE = 10;
+	public static final int SIZE = 10;
 	/**
 	 * Singleton instance
 	 */
@@ -97,38 +86,11 @@ public final class Board implements Serializable, Iterable<Piece>
 	/**
 	 * @return Board singleton even if was previously serialized
 	 */
-	@SuppressWarnings("unused")
-	private Board readResolve()
-	{
-		return INSTANCE;
-	}
-	
-	/**
-	 * @param x
-	 *            File
-	 * @param y
-	 *            Column
-	 * @return matrix file for x coordinate
-	 */
-	protected byte convertX(byte x, byte y)
-	{
-// return (byte) (SIZE - y - 1);
-		return x;
-		
-	}
-	
-	/**
-	 * @param x
-	 *            File
-	 * @param y
-	 *            Column
-	 * @return matrix column for y coordinate
-	 */
-	protected byte convertY(byte x, byte y)
-	{
-// return x;
-		return y;
-	}
+	// @SuppressWarnings("unused")
+	// private Board readResolve()
+	// {
+	// return INSTANCE;
+	// }
 	
 	/**
 	 * @param x
@@ -137,14 +99,15 @@ public final class Board implements Serializable, Iterable<Piece>
 	 *            Column
 	 * @return <b>true</b> if position (x,y) is empty
 	 */
-	public boolean isEmptyPos(byte x, byte y)
+	public boolean isEmptyPos(int x, int y)
 	{
-		if ((y == 4 || y == 5) && (x == 2 || x == 3 || x == 6 || x == 7))
+		if (((y == 4) || (y == 5)) && ((x == 2) || (x == 3) || (x == 6) || (x == 7)))
 			return false;
 		
-		if ((y == 4 || y == 5) && (x == 2 || x == 3 || x == 6 || x == 7))
+		if (((y == 4) || (y == 5)) && ((x == 2) || (x == 3) || (x == 6) || (x == 7)))
 			return false;
-		return (map[convertX(x, y)][convertY(x, y)] == null);
+		
+		return (map[x][y] == null);
 	}
 	
 	/**
@@ -155,31 +118,29 @@ public final class Board implements Serializable, Iterable<Piece>
 	 *            Column
 	 * @return <b>true</b> if piece is at (x,y)
 	 */
-	public boolean isPieceAt(Piece piece, byte x, byte y)
+	public boolean isPieceAt(Piece piece, int x, int y)
 	{
 		if (piece == null)
 			return false;
 		
-		return (map[convertX(x, y)][convertY(x, y)] == piece);
+		return (map[x][y] == piece);
 	}
 	
 	/**
 	 * @param piece
 	 * @return (x) position of piece
 	 */
-	public byte getPieceX(Piece piece)
+	public int getPieceX(Piece piece)
 	{
 		if (piece == null)
 			return -1;
 		
-		for (byte i = 0; i < SIZE; i++)
+		for (int i = 0; i < SIZE; i++)
 		{
-			for (byte j = 0; j < SIZE; j++)
+			for (int j = 0; j < SIZE; j++)
 			{
 				if (isPieceAt(piece, i, j))
-				{
 					return i;
-				}
 			}
 		}
 		return -1;
@@ -189,19 +150,17 @@ public final class Board implements Serializable, Iterable<Piece>
 	 * @param piece
 	 * @return (y) position of piece
 	 */
-	public byte getPieceY(Piece piece)
+	public int getPieceY(Piece piece)
 	{
 		if (piece == null)
 			return -1;
 		
-		for (byte i = 0; i < SIZE; i++)
+		for (int i = 0; i < SIZE; i++)
 		{
-			for (byte j = 0; j < SIZE; j++)
+			for (int j = 0; j < SIZE; j++)
 			{
 				if (isPieceAt(piece, i, j))
-				{
 					return j;
-				}
 			}
 		}
 		return -1;
@@ -214,9 +173,9 @@ public final class Board implements Serializable, Iterable<Piece>
 	 *            Column
 	 * @return Piece at (x,y)
 	 */
-	public Piece getPieceAt(byte x, byte y)
+	public Piece getPieceAt(int x, int y)
 	{
-		return map[convertX(x, y)][convertY(x, y)];
+		return map[x][y];
 	}
 	
 	/**
@@ -224,34 +183,49 @@ public final class Board implements Serializable, Iterable<Piece>
 	 *            File
 	 * @param y
 	 *            Column
-	 * @return true if piece has moved to (x,y)
+	 * @return <code>true</code> if piece has moved to (x,y)
 	 */
-	public boolean movePiece(Piece piece, byte x, byte y)
+	public boolean setPiecePos(Piece piece, int x, int y)
 	{
-		if (piece != null && getPieceAt(x, y) == null)
+		if ((piece != null) && (getPieceAt(x, y) == null))
 		{
 			map[getPieceX(piece)][getPieceY(piece)] = null;
-			map[convertX(x, y)][convertY(x, y)] = piece;
+			map[x][y] = piece;
 			return true;
 		}
 		return false;
 	}
 	
 	/**
+	 * @param x
+	 *            File
+	 * @param y
+	 *            Column
+	 * @return <code>true</code> if piece has moved to (x,y)
+	 */
+	public boolean movePiece(Piece piece, int x, int y)
+	{
+		return Engine.movePiece(piece, x, y);
+	}
+	
+	/**
 	 * @param piece
-	 * @return <b>true</b> if piece added
+	 * @return <code>true</code> if piece added
 	 */
 	public boolean addPiece(Piece piece)
 	{
-		for (byte j = 0; j < SIZE; j++)
+		for (int j = 0; j < SIZE; j++)
 		{
-			if (j == 4 || j == 5)
+			if ((j == 4) || (j == 5))
+			{
 				continue;
-			for (byte i = 0; i < SIZE; i++)
+			}
+			
+			for (int i = 0; i < SIZE; i++)
 			{
 				if (isEmptyPos(i, j))
 				{
-					map[convertX(i, j)][convertY(i, j)] = piece;
+					map[i][j] = piece;
 					return true;
 				}
 			}
@@ -261,14 +235,14 @@ public final class Board implements Serializable, Iterable<Piece>
 	
 	/**
 	 * @param piece
-	 * @return <b>true</b> if piece has removed
+	 * @return <code>true</code> if piece has removed
 	 */
 	public boolean removePiece(Piece piece)
 	{
 		if (piece == null)
 			return false;
 		
-		map[Board.getInstance().getPieceX(piece)][Board.getInstance().getPieceY(piece)] = null;
+		map[getPieceX(piece)][getPieceY(piece)] = null;
 		return true;
 	}
 	
@@ -277,21 +251,26 @@ public final class Board implements Serializable, Iterable<Piece>
 	 *            File
 	 * @param y
 	 *            Column
-	 * @return <b>true</b> if piece at (x,y) has removed
+	 * @return <code>true</code> if piece at (x,y) has removed
 	 */
-	public boolean removePiece(byte x, byte y)
+	public boolean removePiece(int x, int y)
 	{
 		return removePiece(getPieceAt(x, y));
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Iterable#iterator()
+	 */
 	@Override
 	public Iterator<Piece> iterator()
 	{
 		ArrayList<Piece> pieces = new ArrayList<Piece>();
 		Piece piece;
-		for (byte j = 0; j < SIZE; j++)
+		for (int j = 0; j < SIZE; j++)
 		{
-			for (byte i = 0; i < SIZE; i++)
+			for (int i = 0; i < SIZE; i++)
 			{
 				piece = getPieceAt(i, j);
 				if (piece != null)
