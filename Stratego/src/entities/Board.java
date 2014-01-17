@@ -84,6 +84,31 @@ public final class Board implements Serializable, Iterable<Piece>
 	}
 	
 	/**
+	 * @param owner
+	 * @return
+	 */
+	public static Board getBoardPrint(boolean owner)
+	{
+		if (!owner)
+		{
+			Board enemy = new Board();
+			
+			for (int i = SIZE - 1; i >= 0; i--)
+			{
+				for (int j = SIZE - 1; j >= 0; j--)
+				{
+					Piece piece = INSTANCE.map[i][j];
+					enemy.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = new Piece(piece.getLevel(), !piece.getOwner(),
+							piece.getSprite());
+				}
+			}
+			
+			return enemy;
+		}
+		return INSTANCE;
+	}
+	
+	/**
 	 * @return Board singleton even if was previously serialized
 	 */
 	// @SuppressWarnings("unused")

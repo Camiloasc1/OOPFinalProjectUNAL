@@ -26,6 +26,8 @@ import gui.GUI;
 import gui.ResourceManager;
 import gui.Sprite;
 import gui.util.DrawUtil;
+import net.Action;
+import net.Actions;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -227,21 +229,19 @@ public final class InGame extends GameState
 	 */
 	private void moveHandler()
 	{
-		byte x;
-		byte y;
-		byte xPiece;
-		byte yPiece;
+		int x;
+		int y;
+		int xPiece;
+		int yPiece;
 		Board board = Board.getInstance();
 		// Destination
-		x = (byte) (activeX / (GUI.WIDTH / Board.SIZE));
-		y = (byte) ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
+		x = (activeX / (GUI.WIDTH / Board.SIZE));
+		y = ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));
 		// Selected Piece
-		xPiece = (byte) (selectedX / (GUI.WIDTH / Board.SIZE));
-		yPiece = (byte) ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-		if (board.movePiece(board.getPieceAt(xPiece, yPiece), x, y))
-		{
-			// TODO
-		}
+		xPiece = (selectedX / (GUI.WIDTH / Board.SIZE));
+		yPiece = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
+		// TODO socket handler
+		Action action = new Action(Actions.MOVE, board.getPieceAt(xPiece, yPiece), x, y);
 	}
 	
 	/**
