@@ -34,11 +34,14 @@ import entities.pieces.Miner;
 import entities.pieces.Scout;
 import entities.pieces.Sergeant;
 import entities.pieces.Spy;
+import game.main.MainClient;
 import gui.GUI;
 import gui.ResourceManager;
 import gui.Sprite;
 import gui.util.DisplayMessage;
 import gui.util.DrawUtil;
+import net.Action;
+import net.Actions;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -52,6 +55,8 @@ import org.lwjgl.opengl.GL11;
  */
 public final class InitGame extends GameState
 {
+	private static final boolean AUTOSORT = true;
+	
 	/**
 	 * Singleton Instance
 	 */
@@ -456,12 +461,31 @@ public final class InitGame extends GameState
 	 */
 	private void checkAllPiecesSorted()
 	{
+		if (AUTOSORT)
+		{
+			Board board = Board.getInstance();
+			for (Piece piece : board)
+			{
+				if (board.getPieceY(piece) < 6)
+				{
+					for (int x = 0; x < Board.SIZE; x++)
+					{
+						for (int y = 6; y < Board.SIZE; y++)
+						{
+							board.setPiecePos(piece, x, y);
+						}
+					}
+				}
+			}
+		}
+		
 		Board board = Board.getInstance();
 		for (Piece piece : board)
 		{
 			if (board.getPieceY(piece) < 6)
 				return;
 		}
+		MainClient.getClientThread().getSocketClient().writeObject(new Action(Actions.INIT, board));
 		// TODO wait for other player
 		DisplayMessage.show(true, "Esperando por el otro jugador");
 		GameStates.SetState(GameStates.INGAME);

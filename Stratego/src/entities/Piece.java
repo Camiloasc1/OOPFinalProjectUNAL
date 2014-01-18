@@ -20,6 +20,18 @@
 
 package entities;
 
+import entities.pieces.Bomb;
+import entities.pieces.Captain;
+import entities.pieces.Colonel;
+import entities.pieces.Flag;
+import entities.pieces.General;
+import entities.pieces.Lieutenant;
+import entities.pieces.Major;
+import entities.pieces.Marshal;
+import entities.pieces.Miner;
+import entities.pieces.Scout;
+import entities.pieces.Sergeant;
+import entities.pieces.Spy;
 import gui.Sprite;
 
 import java.io.Serializable;
@@ -30,7 +42,7 @@ import java.io.Serializable;
  * @author Camilo Sanchez
  * 
  */
-public class Piece implements Serializable
+public class Piece implements Cloneable, Serializable
 {
 	/**
 	 * 
@@ -48,7 +60,7 @@ public class Piece implements Serializable
 	/**
 	 * Sprite for this piece
 	 */
-	private Sprite sprite;
+	private transient Sprite sprite;
 	
 	/**
 	 * @param level
@@ -80,6 +92,14 @@ public class Piece implements Serializable
 	}
 	
 	/**
+	 * @return
+	 */
+	public boolean swapOwner()
+	{
+		return (owner = !owner);
+	}
+	
+	/**
 	 * @return the sprite
 	 */
 	public Sprite getSprite()
@@ -104,5 +124,40 @@ public class Piece implements Serializable
 			Sprite.drawPiece(x, y);
 		}
 		return;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#clone()
+	 */
+	@Override
+	public Piece clone()// throws CloneNotSupportedException
+	{
+		if (this instanceof Bomb)
+			return new Bomb(owner);
+		if (this instanceof Captain)
+			return new Captain(owner);
+		if (this instanceof Colonel)
+			return new Colonel(owner);
+		if (this instanceof Flag)
+			return new Flag(owner);
+		if (this instanceof General)
+			return new General(owner);
+		if (this instanceof Lieutenant)
+			return new Lieutenant(owner);
+		if (this instanceof Major)
+			return new Major(owner);
+		if (this instanceof Marshal)
+			return new Marshal(owner);
+		if (this instanceof Miner)
+			return new Miner(owner);
+		if (this instanceof Scout)
+			return new Scout(owner);
+		if (this instanceof Sergeant)
+			return new Sergeant(owner);
+		if (this instanceof Spy)
+			return new Spy(owner);
+		return new Piece(level, owner, sprite);
 	}
 }

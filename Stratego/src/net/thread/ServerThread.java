@@ -79,7 +79,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 	public void run()
 	{
 		Run:
-		while (run && (socketClient != null) && !socketClient.getSocket().isClosed())
+		while (run && (socketClient.getSocket() != null) && !socketClient.getSocket().isClosed())
 		{
 			socketClient.writeObject(new Action(Actions.TURN, hasTurn));
 			socketClient.writeObject(Board.getInstance());
@@ -175,6 +175,11 @@ public final class ServerThread extends Thread implements AutoCloseable
 					// socketClient.writeObject(new Action(Actions.EXIT));
 					// close();
 				}
+				break;
+			}
+			case INIT:
+			{
+				Board.addPlayerPieces(action.getPlayer(), action.getBoard());
 				break;
 			}
 			case EXIT:

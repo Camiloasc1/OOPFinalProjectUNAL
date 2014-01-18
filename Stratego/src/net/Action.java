@@ -80,6 +80,17 @@ public final class Action implements Serializable
 	}
 	
 	/**
+	 * @param action
+	 * @param board
+	 */
+	public Action(Actions action, Board board)
+	{
+		super();
+		this.action = action;
+		this.board = board;
+	}
+	
+	/**
 	 * @return the action
 	 */
 	public Actions getAction()

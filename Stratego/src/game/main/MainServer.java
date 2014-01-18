@@ -6,6 +6,10 @@
 
 package game.main;
 
+import gui.GUI;
+
+import java.io.File;
+
 import net.Action;
 import net.Actions;
 import net.socket.SocketClient;
@@ -26,20 +30,25 @@ public final class MainServer
 	 */
 	public static void main(String[] args)
 	{
+		System.setProperty("java.library.path", "lib");
+		// Init libraries
+		System.setProperty("org.lwjgl.librarypath", new File("lib/lwjgl-2.9.0/native/linux/").getAbsolutePath());
+		
+		GUI.init();
+		
 		SocketServer socketServer = new SocketServer();
 		
 		clients[0] = socketServer.accept();
-		clients[1] = socketServer.accept();
-		
-		System.out.println("Playing");
-		
 		clients[0].writeObject(new Action(Actions.TURN, true));
 		threads[0] = new ServerThread(clients[0]);
 		threads[0].start();
 		
+		clients[1] = socketServer.accept();
 		clients[1].writeObject(new Action(Actions.TURN, false));
 		threads[1] = new ServerThread(clients[1]);
 		threads[1].start();
+		
+		System.out.println("Playing");
 		
 		boolean status = true;
 		while (status)

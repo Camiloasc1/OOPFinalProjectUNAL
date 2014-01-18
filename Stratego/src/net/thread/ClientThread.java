@@ -9,6 +9,7 @@ package net.thread;
 import net.Action;
 import net.Actions;
 import net.socket.SocketClient;
+import util.ThreadUtil;
 import entities.Board;
 
 /**
@@ -88,7 +89,7 @@ public final class ClientThread extends Thread implements AutoCloseable
 	public void run()
 	{
 		Run:
-		while (run && (socketClient != null) && !socketClient.getSocket().isClosed())
+		while (run && (socketClient.getSocket() != null) && !socketClient.getSocket().isClosed())
 		{
 			Object object = socketClient.readObject(false);
 			if (object == null)
@@ -152,6 +153,7 @@ public final class ClientThread extends Thread implements AutoCloseable
 	{
 		run = false;
 		socketClient.writeObject(new Action(Actions.EXIT));
+		ThreadUtil.wait(500);
 		socketClient.close();
 	}
 }

@@ -76,6 +76,11 @@ public final class Board implements Serializable, Iterable<Piece>
 		return INSTANCE;
 	}
 	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#clone()
+	 */
 	@Override
 	public Object clone() throws CloneNotSupportedException
 	{
@@ -91,16 +96,42 @@ public final class Board implements Serializable, Iterable<Piece>
 	{
 		Board swaped = new Board();
 		
-		for (int i = SIZE - 1; i >= 0; i--)
+		for (int i = SIZE; i > 0; i--)
 		{
-			for (int j = SIZE - 1; j >= 0; j--)
+			for (int j = SIZE; j > 0; j--)
 			{
-				Piece piece = INSTANCE.map[i][j];
-				swaped.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = new Piece(piece.getLevel(), !piece.getOwner(), piece.getSprite());
+				Piece piece = INSTANCE.map[i][j].clone();
+				piece.swapOwner();
+				swaped.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece;
 			}
 		}
 		
 		return swaped;
+	}
+	
+	/**
+	 * @param owner
+	 */
+	public static void addPlayerPieces(boolean owner, Board board)
+	{
+		for (int i = SIZE - 1; i >= 0; i--)
+		{
+			for (int j = SIZE - 1; j >= 0; j--)
+			{
+				if (owner)
+				{
+					Piece piece = board.map[i][j];
+					
+					INSTANCE.map[i][j] = piece.clone();
+				}
+				else
+				{
+					Piece piece = board.map[i][j];
+					
+					INSTANCE.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece.clone();
+				}
+			}
+		}
 	}
 	
 	/**

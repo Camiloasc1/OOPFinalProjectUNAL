@@ -75,8 +75,7 @@ public final class InGame extends GameState
 		ResourceManager.getSpriteMap().get(ResourceManager.BOARD).draw(0, 0);
 		
 		// Draw the pieces
-		// TODO Get the board from socket
-		Board board = Board.getInstance();
+		Board board = MainClient.getClientThread().getBoard();
 		for (Piece piece : board)
 		{
 			piece.draw();
