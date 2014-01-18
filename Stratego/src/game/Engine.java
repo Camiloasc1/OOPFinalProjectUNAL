@@ -53,7 +53,10 @@ public class Engine
 		
 		if (!board.isEmptyPos(x, y)) // Is a Battle
 		{
-			if (!battle(piece, board.getPieceAt(x, y)))
+			int res = battle(piece, board.getPieceAt(x, y));
+			if ((res == 1) || (res == 2))
+				return true;
+			else
 				return false;
 		}
 		
@@ -87,17 +90,22 @@ public class Engine
 	 * 
 	 * @param ally
 	 * @param enemy
-	 * @return <code>true</code> if ally lives
+	 * @return <code>2</code> if draw (both die)
 	 *         <p>
-	 *         <code>false</code> if ally dies or friend fire or invalid ally (Bomb and Flag can't attack)
+	 *         <code>1</code> if ally live & enemy die
+	 *         <p>
+	 *         <code>0</code> if friend fire, invalid ally (Bomb and Flag can't attack)
+	 *         <p>
+	 *         <code>-1</code> if ally die & enemy live
 	 */
-	public static boolean battle(Piece ally, Piece enemy)
+	public static int battle(Piece ally, Piece enemy)
 	{
+		if ((ally == null) || (enemy == null))
+			return 0;
 		if (ally.getOwner() == enemy.getOwner())
-			return false;
-		
+			return 0;
 		if ((ally instanceof Bomb) || (ally instanceof Flag))
-			return false;
+			return 0;
 		
 		Board board = Board.getInstance();
 		
@@ -109,7 +117,7 @@ public class Engine
 				board.removePiece(ally);
 			}
 			
-			return false;
+			return 2;
 		}
 		
 		boolean result;
@@ -165,6 +173,6 @@ public class Engine
 			}
 		}
 		
-		return result;
+		return ((result) ? 1 : -1);
 	}
 }

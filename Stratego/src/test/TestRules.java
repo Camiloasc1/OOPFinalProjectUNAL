@@ -6,6 +6,7 @@
 
 package test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -144,46 +145,46 @@ public class TestRules
 	public final void testBattle()
 	{
 		// Friend Fire
-		assertTrue(!Engine.battle(new Scout(true), new Miner(true)));
-		assertTrue(!Engine.battle(new Marshal(true), new Flag(true)));
+		assertEquals(Engine.battle(new Scout(true), new Miner(true)), 0);
+		assertEquals(Engine.battle(new Marshal(true), new Flag(true)), 0);
 		// BOOOM!!!
-		assertTrue(!Engine.battle(new Scout(true), new Bomb(false)));
+		assertEquals(Engine.battle(new Scout(true), new Bomb(false)), -1);
 		// Deactivate
-		assertTrue(Engine.battle(new Miner(true), new Bomb(false)));
+		assertEquals(Engine.battle(new Miner(true), new Bomb(false)), 1);
 		// Spy attack
-		assertTrue(Engine.battle(new Spy(true), new Marshal(false)));
+		assertEquals(Engine.battle(new Spy(true), new Marshal(false)), 1);
 		// Spy die
-		assertTrue(Engine.battle(new Marshal(true), new Spy(false)));
-		assertTrue(Engine.battle(new Scout(true), new Spy(false)));
-		assertTrue(Engine.battle(new Miner(true), new Spy(false)));
-		assertTrue(!Engine.battle(new Spy(true), new Scout(false)));
-		assertTrue(!Engine.battle(new Spy(true), new Miner(false)));
-		assertTrue(!Engine.battle(new Spy(true), new Bomb(false)));
+		assertEquals(Engine.battle(new Marshal(true), new Spy(false)), 1);
+		assertEquals(Engine.battle(new Scout(true), new Spy(false)), 1);
+		assertEquals(Engine.battle(new Miner(true), new Spy(false)), 1);
+		assertEquals(Engine.battle(new Spy(true), new Scout(false)), -1);
+		assertEquals(Engine.battle(new Spy(true), new Miner(false)), -1);
+		assertEquals(Engine.battle(new Spy(true), new Bomb(false)), -1);
 		// Invalid
-		assertTrue(!Engine.battle(new Bomb(true), new Flag(false)));
-		assertTrue(!Engine.battle(new Bomb(true), new Miner(false)));
-		assertTrue(!Engine.battle(new Flag(true), new Bomb(false)));
-		assertTrue(!Engine.battle(new Flag(true), new Marshal(false)));
+		assertEquals(Engine.battle(new Bomb(true), new Flag(false)), 0);
+		assertEquals(Engine.battle(new Bomb(true), new Miner(false)), 0);
+		assertEquals(Engine.battle(new Flag(true), new Bomb(false)), 0);
+		assertEquals(Engine.battle(new Flag(true), new Marshal(false)), 0);
 		// Sequence
-		assertTrue(Engine.battle(new Scout(true), new Spy(false)));
-		assertTrue(Engine.battle(new Miner(true), new Scout(false)));
-		assertTrue(Engine.battle(new Sergeant(true), new Miner(false)));
-		assertTrue(Engine.battle(new Lieutenant(true), new Sergeant(false)));
-		assertTrue(Engine.battle(new Captain(true), new Lieutenant(false)));
-		assertTrue(Engine.battle(new Major(true), new Captain(false)));
-		assertTrue(Engine.battle(new Colonel(true), new Major(false)));
-		assertTrue(Engine.battle(new General(true), new Colonel(false)));
-		assertTrue(Engine.battle(new Marshal(true), new General(false)));
+		assertEquals(Engine.battle(new Scout(true), new Spy(false)), 1);
+		assertEquals(Engine.battle(new Miner(true), new Scout(false)), 1);
+		assertEquals(Engine.battle(new Sergeant(true), new Miner(false)), 1);
+		assertEquals(Engine.battle(new Lieutenant(true), new Sergeant(false)), 1);
+		assertEquals(Engine.battle(new Captain(true), new Lieutenant(false)), 1);
+		assertEquals(Engine.battle(new Major(true), new Captain(false)), 1);
+		assertEquals(Engine.battle(new Colonel(true), new Major(false)), 1);
+		assertEquals(Engine.battle(new General(true), new Colonel(false)), 1);
+		assertEquals(Engine.battle(new Marshal(true), new General(false)), 1);
 		// Important
-		assertTrue(Engine.battle(new Marshal(true), new Scout(false)));
-		assertTrue(Engine.battle(new Marshal(true), new Miner(false)));
+		assertEquals(Engine.battle(new Marshal(true), new Scout(false)), 1);
+		assertEquals(Engine.battle(new Marshal(true), new Miner(false)), 1);
 		// Same
-		assertTrue(!Engine.battle(new Scout(true), new Scout(false)));
-		assertTrue(!Engine.battle(new Miner(true), new Miner(false)));
-		assertTrue(!Engine.battle(new Marshal(true), new Marshal(false)));
+		assertEquals(Engine.battle(new Scout(true), new Scout(false)), 2);
+		assertEquals(Engine.battle(new Miner(true), new Miner(false)), 2);
+		assertEquals(Engine.battle(new Marshal(true), new Marshal(false)), 2);
 		// End
-		assertTrue(Engine.battle(new Spy(true), new Flag(false)));
-		assertTrue(Engine.battle(new Miner(true), new Flag(false)));
-		assertTrue(Engine.battle(new Marshal(true), new Flag(false)));
+		assertEquals(Engine.battle(new Spy(true), new Flag(false)), 1);
+		assertEquals(Engine.battle(new Miner(true), new Flag(false)), 1);
+		assertEquals(Engine.battle(new Marshal(true), new Flag(false)), 1);
 	}
 }

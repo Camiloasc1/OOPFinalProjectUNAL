@@ -87,25 +87,20 @@ public final class Board implements Serializable, Iterable<Piece>
 	 * @param owner
 	 * @return
 	 */
-	public static Board getBoardPrint(boolean owner)
+	public static Board swapBoard(boolean owner)
 	{
-		if (!owner)
+		Board swaped = new Board();
+		
+		for (int i = SIZE - 1; i >= 0; i--)
 		{
-			Board enemy = new Board();
-			
-			for (int i = SIZE - 1; i >= 0; i--)
+			for (int j = SIZE - 1; j >= 0; j--)
 			{
-				for (int j = SIZE - 1; j >= 0; j--)
-				{
-					Piece piece = INSTANCE.map[i][j];
-					enemy.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = new Piece(piece.getLevel(), !piece.getOwner(),
-							piece.getSprite());
-				}
+				Piece piece = INSTANCE.map[i][j];
+				swaped.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = new Piece(piece.getLevel(), !piece.getOwner(), piece.getSprite());
 			}
-			
-			return enemy;
 		}
-		return INSTANCE;
+		
+		return swaped;
 	}
 	
 	/**

@@ -86,8 +86,29 @@ public final class SocketClient implements AutoCloseable
 	 */
 	public Object readObject()
 	{
+		return readObject(true);
+	}
+	
+	/**
+	 * @see java.io.ObjectInputStream#readObject()
+	 */
+	public Object readObject(boolean wait)
+	{
 		if (isClosed())
 			return null;
+		
+		if (!wait)
+		{
+			try
+			{
+				if (socket.getInputStream().available() == 0)
+					return null;
+			}
+			catch (IOException e)
+			{
+				System.err.println(e);
+			}
+		}
 		
 		Object object = null;
 		

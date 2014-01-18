@@ -32,6 +32,8 @@ import gui.states.SetupGame;
 
 import java.io.File;
 
+import net.thread.ClientThread;
+
 import org.lwjgl.opengl.Display;
 
 /**
@@ -42,6 +44,8 @@ import org.lwjgl.opengl.Display;
  */
 public class MainClient
 {
+	private static ClientThread clientThread;
+	
 	/**
 	 * @param args
 	 */
@@ -52,6 +56,9 @@ public class MainClient
 		System.setProperty("org.lwjgl.librarypath", new File("lib/lwjgl-2.9.0/native/linux/").getAbsolutePath());
 		
 		GUI.init();
+		
+		clientThread = new ClientThread();
+		clientThread.start();
 		
 		GameStates.SetState(GameStates.MAINMENU);
 		
@@ -102,10 +109,22 @@ public class MainClient
 			}
 		}
 		
+		// Close Socket
+		clientThread.close();
+		
 		// Game Exit
 		GUI.cleanup();
 		
 		System.exit(0);
 		// return;
 	}
+	
+	/**
+	 * @return the clientThread
+	 */
+	public static ClientThread getClientThread()
+	{
+		return clientThread;
+	}
+	
 }

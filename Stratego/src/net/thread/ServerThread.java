@@ -6,11 +6,10 @@
 
 package net.thread;
 
-import java.net.SocketException;
-
 import net.Action;
 import net.Actions;
 import net.socket.SocketClient;
+import util.ThreadUtil;
 import entities.Board;
 import game.main.MainServer;
 
@@ -20,7 +19,6 @@ import game.main.MainServer;
  */
 public final class ServerThread extends Thread implements AutoCloseable
 {
-	public static final int WAITTIME = 10;
 	public static final int DELAY = 50;
 	
 	private volatile boolean run;
@@ -35,14 +33,6 @@ public final class ServerThread extends Thread implements AutoCloseable
 		super();
 		socketClient = null;
 		run = true;
-		try
-		{
-			socketClient.getSocket().setSoLinger(true, WAITTIME);
-		}
-		catch (SocketException e)
-		{
-			System.err.println(e);
-		}
 	}
 	
 	/**
@@ -53,14 +43,6 @@ public final class ServerThread extends Thread implements AutoCloseable
 		super();
 		this.socketClient = socketClient;
 		run = true;
-		try
-		{
-			socketClient.getSocket().setSoLinger(true, WAITTIME);
-		}
-		catch (SocketException e)
-		{
-			System.err.println(e);
-		}
 	}
 	
 	/**
@@ -80,6 +62,14 @@ public final class ServerThread extends Thread implements AutoCloseable
 		this.hasTurn = hasTurn;
 	}
 	
+	/**
+	 * @return the socketClient
+	 */
+	public SocketClient getSocketClient()
+	{
+		return socketClient;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -88,110 +78,113 @@ public final class ServerThread extends Thread implements AutoCloseable
 	@Override
 	public void run()
 	{
+		Run:
 		while (run && (socketClient != null) && !socketClient.getSocket().isClosed())
 		{
-			// socketClient.writeObject(new Action(hasTurn));
+			socketClient.writeObject(new Action(Actions.TURN, hasTurn));
 			socketClient.writeObject(Board.getInstance());
 			
-			if (hasTurn)
+			Object object = socketClient.readObject(false);
+			if (object == null)
 			{
-				Object object = socketClient.readObject();
-				if (object != null)
-				{
-					if (object instanceof Action)
-					{
-						Action action = (Action) object;
-						switch (action.getAction())
-						{
-							case MOVE:
-							{
-								Board board = Board.getInstance();
-								
-								if (board.movePiece(action.getPiece(), action.getX(), action.getY()))
-								{
-									changeTurn();
-								}
-								
-								int status = -1;
-								if ((status = board.check()) != -1)
-								{
-									switch (status)
-									{
-										case 0:
-											for (ServerThread thread : MainServer.getThreads())
-											{
-												thread.socketClient.writeObject(Board.getInstance());
-												if (this == thread)
-												{
-													thread.socketClient.writeObject(new Action(Actions.WIN));
-												}
-												else
-												{
-													thread.socketClient.writeObject(new Action(Actions.LOSE));
-												}
-											}
-											break;
-										case 1:
-											for (ServerThread thread : MainServer.getThreads())
-											{
-												thread.socketClient.writeObject(Board.getInstance());
-												if (this == thread)
-												{
-													thread.socketClient.writeObject(new Action(Actions.WIN));
-												}
-												else
-												{
-													thread.socketClient.writeObject(new Action(Actions.LOSE));
-												}
-											}
-											break;
-										case 2:
-											for (ServerThread thread : MainServer.getThreads())
-											{
-												thread.socketClient.writeObject(new Action(Actions.DRAW));
-											}
-											break;
-										
-										default:
-											break;
-									}
-									// Restart
-									Board.reset();
-									socketClient.ignoreInput();
-									// socketClient.writeObject(new Action(Actions.EXIT));
-									// close();
-								}
-								// changeTurn();
-								break;
-							}
-							case EXIT:
-							{
-								for (ServerThread thread : MainServer.getThreads())
-								{
-									if (thread != this) // do not close my self
-									{
-										thread.socketClient.writeObject(new Action(Actions.EXIT));
-										thread.close();
-									}
-								}
-								socketClient.writeObject(new Action(Actions.EXIT));
-								close();
-								break;
-							}
-							default:
-								break;
-						}
-					}
-				}
-			}
-			else
-			{
-				socketClient.ignoreInput();
+				continue Run;
 			}
 			
-			wait(DELAY);
+			if (object instanceof Action)
+			{
+				Action action = (Action) object;
+				handleAction(action);
+			}
+			// socketClient.ignoreInput();
+			
+			ThreadUtil.wait(DELAY);
 		}
 		close();
+	}
+	
+	/**
+	 * @param action
+	 */
+	private void handleAction(Action action)
+	{
+		switch (action.getAction())
+		{
+			case MOVE:
+			{
+				if (!hasTurn)
+					return;
+				
+				Board board = Board.getInstance();
+				
+				if (board.movePiece(action.getPiece(), action.getX(), action.getY()))
+				{
+					changeTurn();
+				}
+				
+				int status = -1;
+				if ((status = board.check()) != -1)
+				{
+					switch (status)
+					{
+						case 0:
+						{
+							for (ServerThread thread : MainServer.getThreads())
+							{
+								thread.socketClient.writeObject(Board.getInstance());
+								if (this == thread)
+								{
+									thread.socketClient.writeObject(new Action(Actions.WIN));
+								}
+								else
+								{
+									thread.socketClient.writeObject(new Action(Actions.LOSE));
+								}
+							}
+							break;
+						}
+						case 1:
+						{
+							for (ServerThread thread : MainServer.getThreads())
+							{
+								thread.socketClient.writeObject(Board.getInstance());
+								if (this == thread)
+								{
+									thread.socketClient.writeObject(new Action(Actions.WIN));
+								}
+								else
+								{
+									thread.socketClient.writeObject(new Action(Actions.LOSE));
+								}
+							}
+							break;
+						}
+						case 2:
+						{
+							for (ServerThread thread : MainServer.getThreads())
+							{
+								thread.socketClient.writeObject(new Action(Actions.DRAW));
+							}
+							break;
+						}
+						default:
+							break;
+					}
+					// Restart
+					Board.reset();
+					socketClient.ignoreInput();
+					// socketClient.writeObject(new Action(Actions.EXIT));
+					// close();
+				}
+				break;
+			}
+			case EXIT:
+			{
+				close();
+				break;
+			}
+			default:
+				break;
+		}
 	}
 	
 	/**
@@ -203,7 +196,6 @@ public final class ServerThread extends Thread implements AutoCloseable
 		{
 			thread.hasTurn = !thread.hasTurn;
 			thread.socketClient.writeObject(new Action(Actions.TURN, thread.hasTurn));
-			// thread.socketClient.writeObject(Board.getInstance());
 		}
 	}
 	
@@ -217,22 +209,5 @@ public final class ServerThread extends Thread implements AutoCloseable
 	{
 		run = false;
 		socketClient.close();
-	}
-	
-	/**
-	 * @param t
-	 *            the length of time to sleep in milliseconds
-	 */
-	private static void wait(int t)
-	{
-		try
-		{
-			Thread.sleep(t);
-		}
-		catch (InterruptedException e)
-		{
-			e.printStackTrace();
-		}
-		return;
 	}
 }

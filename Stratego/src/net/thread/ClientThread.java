@@ -7,6 +7,7 @@
 package net.thread;
 
 import net.Action;
+import net.Actions;
 import net.socket.SocketClient;
 import entities.Board;
 
@@ -27,6 +28,23 @@ public final class ClientThread extends Thread implements AutoCloseable
 	 */
 	public ClientThread()
 	{
+		super();
+		run = true;
+		player = false;
+		hasTurn = false;
+		socketClient = new SocketClient();
+	}
+	
+	/**
+	 * @param socketClient
+	 */
+	public ClientThread(SocketClient socketClient)
+	{
+		super();
+		run = true;
+		player = false;
+		hasTurn = false;
+		this.socketClient = socketClient;
 	}
 	
 	/**
@@ -37,6 +55,30 @@ public final class ClientThread extends Thread implements AutoCloseable
 		return board;
 	}
 	
+	/**
+	 * @return the socketClient
+	 */
+	public SocketClient getSocketClient()
+	{
+		return socketClient;
+	}
+	
+	/**
+	 * @return the player
+	 */
+	public boolean getPlayer()
+	{
+		return player;
+	}
+	
+	/**
+	 * @return the hasTurn
+	 */
+	public boolean getHasTurn()
+	{
+		return hasTurn;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -45,48 +87,59 @@ public final class ClientThread extends Thread implements AutoCloseable
 	@Override
 	public void run()
 	{
+		Run:
 		while (run && (socketClient != null) && !socketClient.getSocket().isClosed())
 		{
-			Object object = socketClient.readObject();
-			if (object != null)
+			Object object = socketClient.readObject(false);
+			if (object == null)
 			{
-				if (object instanceof Board)
-				{
-					board = (Board) object;
-				}
-				else if (object instanceof Action)
-				{
-					Action action = (Action) object;
-					switch (action.getAction())
-					{
-						case EXIT:
-						{
-							close();
-							break;
-						}
-						case INIT:
-						{
-							player = action.getPlayer();
-							break;
-						}
-						case TURN:
-						{
-							hasTurn = action.getTurn();
-							break;
-						}
-						case DRAW:
-							break;
-						case LOSE:
-							break;
-						case WIN:
-							break;
-						default:
-							break;
-					}
-				}
+				continue Run;
+			}
+			
+			if (object instanceof Board)
+			{
+				board = (Board) object;
+			}
+			else if (object instanceof Action)
+			{
+				Action action = (Action) object;
+				handleAction(action);
 			}
 		}
 		close();
+	}
+	
+	/**
+	 * @param action
+	 */
+	private void handleAction(Action action)
+	{
+		switch (action.getAction())
+		{
+			case EXIT:
+			{
+				close();
+				break;
+			}
+			case INIT:
+			{
+				player = action.getPlayer();
+				break;
+			}
+			case TURN:
+			{
+				hasTurn = action.getTurn();
+				break;
+			}
+			case DRAW:
+				break;
+			case LOSE:
+				break;
+			case WIN:
+				break;
+			default:
+				break;
+		}
 	}
 	
 	/*
@@ -98,23 +151,7 @@ public final class ClientThread extends Thread implements AutoCloseable
 	public void close()// throws Exception
 	{
 		run = false;
+		socketClient.writeObject(new Action(Actions.EXIT));
 		socketClient.close();
-	}
-	
-	/**
-	 * @param t
-	 *            the length of time to sleep in milliseconds
-	 */
-	private static void wait(int t)
-	{
-		try
-		{
-			Thread.sleep(t);
-		}
-		catch (InterruptedException e)
-		{
-			e.printStackTrace();
-		}
-		return;
 	}
 }

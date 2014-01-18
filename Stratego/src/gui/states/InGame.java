@@ -22,6 +22,7 @@ package gui.states;
 
 import entities.Board;
 import entities.Piece;
+import game.main.MainClient;
 import gui.GUI;
 import gui.ResourceManager;
 import gui.Sprite;
@@ -239,8 +240,8 @@ public final class InGame extends GameState
 		// Selected Piece
 		xPiece = (selectedX / (GUI.WIDTH / Board.SIZE));
 		yPiece = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-		// TODO socket handler
-		Action action = new Action(board.getPieceAt(xPiece, yPiece), x, y);
+		// TODO more short
+		MainClient.getClientThread().getSocketClient().writeObject(new Action(board.getPieceAt(xPiece, yPiece), x, y));
 	}
 	
 	/**
