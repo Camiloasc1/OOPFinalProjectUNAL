@@ -28,11 +28,8 @@ public abstract class SocketHandler
 	 * @param board
 	 *            the board to set
 	 */
-	public void setBoard(Board board)
+	protected void setBoard(Board board)
 	{
 		this.board = board;
 	}
-	
-	// TODO
-	public abstract void sendAction(Action action);
 }

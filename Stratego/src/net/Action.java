@@ -65,12 +65,11 @@ public final class Action implements Serializable
 	}
 	
 	/**
-	 * @param action
-	 *            the action to set
+	 * @return the board
 	 */
-	public void setAction(Actions action)
+	public Board getBoard()
 	{
-		this.action = action;
+		return board;
 	}
 	
 	/**
@@ -82,15 +81,6 @@ public final class Action implements Serializable
 	}
 	
 	/**
-	 * @param piece
-	 *            the piece to set
-	 */
-	public void setPiece(Piece piece)
-	{
-		this.piece = piece;
-	}
-	
-	/**
 	 * @return the x
 	 */
 	public int getX()
@@ -99,29 +89,11 @@ public final class Action implements Serializable
 	}
 	
 	/**
-	 * @param x
-	 *            the x to set
-	 */
-	public void setX(int x)
-	{
-		this.x = x;
-	}
-	
-	/**
 	 * @return the y
 	 */
 	public int getY()
 	{
 		return y;
-	}
-	
-	/**
-	 * @param y
-	 *            the y to set
-	 */
-	public void setY(int y)
-	{
-		this.y = y;
 	}
 	
 }

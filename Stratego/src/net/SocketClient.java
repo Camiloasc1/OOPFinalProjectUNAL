@@ -176,6 +176,6 @@ public final class SocketClient implements AutoCloseable
 	 */
 	public boolean isClosed()
 	{
-		return (socket == null || socket.isClosed());
+		return ((socket == null) || socket.isClosed());
 	}
 }
