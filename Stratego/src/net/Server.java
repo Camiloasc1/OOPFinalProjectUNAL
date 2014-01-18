@@ -8,6 +8,7 @@ package net;
 
 import net.socket.SocketClient;
 import net.socket.SocketServer;
+import net.thread.ServerThread;
 
 /**
  * @author camiloasc1

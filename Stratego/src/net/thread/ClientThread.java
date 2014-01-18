@@ -4,8 +4,9 @@
  * Creation: 17/01/2014 at 20:22:05
  */
 
-package net;
+package net.thread;
 
+import net.Action;
 import net.socket.SocketClient;
 import entities.Board;
 

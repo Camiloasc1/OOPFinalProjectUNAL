@@ -82,14 +82,14 @@ public final class SocketClient implements AutoCloseable
 	}
 	
 	/**
-	 * @return Object the object read from the socket stream
+	 * @see java.io.ObjectInputStream#readObject()
 	 */
-	public final Object readObject()
+	public Object readObject()
 	{
-		Object object = null;
-		
 		if (isClosed())
 			return null;
+		
+		Object object = null;
 		
 		try
 		{
@@ -115,7 +115,7 @@ public final class SocketClient implements AutoCloseable
 	}
 	
 	/**
-	 * @throws IOException
+	 * skip all buffered data
 	 */
 	public void ignoreInput()
 	{
@@ -131,10 +131,9 @@ public final class SocketClient implements AutoCloseable
 	}
 	
 	/**
-	 * @param object
-	 *            the object to be written
+	 * @see java.io.ObjectOutputStream#writeObject(Object)
 	 */
-	public final void writeObject(Object object)
+	public void writeObject(Object object)
 	{
 		if (isClosed())
 			return;
@@ -156,7 +155,7 @@ public final class SocketClient implements AutoCloseable
 	 * @see java.lang.AutoCloseable#close()
 	 */
 	@Override
-	public final void close()// throws Exception
+	public void close()// throws Exception
 	{
 		if (isClosed())
 			return;
@@ -172,7 +171,7 @@ public final class SocketClient implements AutoCloseable
 	}
 	
 	/**
-	 * @return true if the socket has been closed
+	 * @see java.net.Socket#isClosed()
 	 */
 	public boolean isClosed()
 	{

@@ -28,16 +28,7 @@ public final class SocketServer implements AutoCloseable
 	 */
 	public SocketServer()
 	{
-		try
-		{
-			serverSocket = new ServerSocket(PORT);
-		}
-		catch (IOException e)
-		{
-			System.err.println(e);
-			close();
-			System.exit(1);
-		}
+		this(PORT);
 	}
 	
 	/**
@@ -45,6 +36,7 @@ public final class SocketServer implements AutoCloseable
 	 */
 	public SocketServer(int port)
 	{
+		super();
 		try
 		{
 			serverSocket = new ServerSocket(port);
@@ -67,8 +59,6 @@ public final class SocketServer implements AutoCloseable
 	}
 	
 	/**
-	 * @return
-	 * @throws IOException
 	 * @see java.net.ServerSocket#accept()
 	 */
 	public SocketClient accept()// throws IOException
@@ -110,11 +100,11 @@ public final class SocketServer implements AutoCloseable
 	}
 	
 	/**
-	 * @return true if the socket has been closed
+	 * @see java.net.ServerSocket#isClosed()
 	 */
 	private boolean isClosed()
 	{
-		return serverSocket == null || serverSocket.isClosed();
+		return (serverSocket == null) || serverSocket.isClosed();
 	}
 	
 }

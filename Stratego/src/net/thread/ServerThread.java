@@ -4,10 +4,13 @@
  * Creation: 13/01/2014 at 17:41:59
  */
 
-package net;
+package net.thread;
 
 import java.net.SocketException;
 
+import net.Action;
+import net.Actions;
+import net.Server;
 import net.socket.SocketClient;
 import entities.Board;
 
