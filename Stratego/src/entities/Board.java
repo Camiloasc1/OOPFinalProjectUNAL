@@ -82,9 +82,28 @@ public final class Board implements Serializable, Iterable<Piece>
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
-	public Object clone() throws CloneNotSupportedException
+	public Board clone()// throws CloneNotSupportedException
 	{
-		throw new CloneNotSupportedException();
+		Board cloned = new Board();
+		
+		for (int i = 0; i < SIZE; i++)
+		{
+			for (int j = 0; j < SIZE; j++)
+			{
+				Piece piece = map[i][j];
+				if (piece == null)
+				{
+					cloned.map[i][j] = null;
+				}
+				else
+				{
+					cloned.map[i][j] = piece.clone();
+				}
+			}
+		}
+		
+		return cloned;
+		// throw new CloneNotSupportedException();
 		// return getInstance();
 	}
 	
@@ -114,21 +133,33 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public static void addPlayerPieces(boolean owner, Board board)
 	{
-		for (int i = SIZE - 1; i >= 0; i--)
+		for (int i = 0; i < SIZE; i++)
 		{
-			for (int j = SIZE - 1; j >= 0; j--)
+			for (int j = 0; j < SIZE; j++)
 			{
 				if (owner)
 				{
 					Piece piece = board.map[i][j];
-					
-					INSTANCE.map[i][j] = piece.clone();
+					if (piece == null)
+					{
+						INSTANCE.map[i][j] = null;
+					}
+					else
+					{
+						INSTANCE.map[i][j] = piece.clone();
+					}
 				}
 				else
 				{
 					Piece piece = board.map[i][j];
-					
-					INSTANCE.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece.clone();
+					if (piece == null)
+					{
+						INSTANCE.map[i][j] = null;
+					}
+					else
+					{
+						INSTANCE.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece.clone();
+					}
 				}
 			}
 		}
@@ -152,9 +183,6 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public boolean isEmptyPos(int x, int y)
 	{
-		if (((y == 4) || (y == 5)) && ((x == 2) || (x == 3) || (x == 6) || (x == 7)))
-			return false;
-		
 		if (((y == 4) || (y == 5)) && ((x == 2) || (x == 3) || (x == 6) || (x == 7)))
 			return false;
 		
@@ -417,5 +445,28 @@ public final class Board implements Serializable, Iterable<Piece>
 	{
 		// TODO Auto-generated method stub
 		return -1;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString()
+	{
+		// TODO delete
+		String str = "\n";
+		for (int i = 0; i < SIZE; i++)
+		{
+			for (int j = 0; j < SIZE; j++)
+			{
+				if (map[i][j] != null)
+				{
+					str += "[" + i + "][" + j + "]" + map[i][j].toString() + "\t";
+				}
+			}
+		}
+		return str + "\n";
 	}
 }

@@ -76,6 +76,12 @@ public final class InGame extends GameState
 		
 		// Draw the pieces
 		Board board = MainClient.getClientThread().getBoard();
+		if (board == null)
+		{
+			System.err.println("No board recibed");
+			board = Board.getInstance();
+		}
+		System.out.println(board);
 		for (Piece piece : board)
 		{
 			piece.draw();

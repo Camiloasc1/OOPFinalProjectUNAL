@@ -99,7 +99,8 @@ public final class ClientThread extends Thread implements AutoCloseable
 			
 			if (object instanceof Board)
 			{
-				board = (Board) object;
+				Board tmp = (Board) object;
+				board = tmp.clone();
 			}
 			else if (object instanceof Action)
 			{
