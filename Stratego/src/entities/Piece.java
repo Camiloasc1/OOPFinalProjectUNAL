@@ -32,7 +32,6 @@ import entities.pieces.Miner;
 import entities.pieces.Scout;
 import entities.pieces.Sergeant;
 import entities.pieces.Spy;
-import gui.ResourceManager;
 import gui.Sprite;
 
 import java.io.Serializable;
@@ -114,9 +113,8 @@ public class Piece implements Cloneable, Serializable
 	public void draw()
 	{
 		Board board = Board.getInstance();
-		Sprite sprite = ResourceManager.getSpriteMap().get(ResourceManager.BOMB);
-		int x = board.getPieceX(this) * sprite.getWidth();
-		int y = board.getPieceY(this) * sprite.getHeight();
+		int x = board.getPieceX(this) * Sprite.getPieceSprite().getWidth();
+		int y = board.getPieceY(this) * Sprite.getPieceSprite().getHeight();
 		if (owner)
 		{
 			sprite.draw(x, y);
@@ -162,17 +160,4 @@ public class Piece implements Cloneable, Serializable
 			return new Spy(owner);
 		return new Piece(level, owner, sprite);
 	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		// TODO delete
-		return "[lvl=" + level + ", own=" + owner + "]";
-	}
-	
 }

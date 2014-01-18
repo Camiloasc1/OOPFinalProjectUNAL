@@ -75,13 +75,7 @@ public final class InGame extends GameState
 		ResourceManager.getSpriteMap().get(ResourceManager.BOARD).draw(0, 0);
 		
 		// Draw the pieces
-		Board board = MainClient.getClientThread().getBoard();
-		if (board == null)
-		{
-			System.err.println("No board recibed");
-			board = Board.getInstance();
-		}
-		System.out.println(board);
+		Board board = Board.getInstance();
 		for (Piece piece : board)
 		{
 			piece.draw();
@@ -245,7 +239,7 @@ public final class InGame extends GameState
 		// Selected Piece
 		xPiece = (selectedX / (GUI.WIDTH / Board.SIZE));
 		yPiece = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
-		// TODO more short
+		
 		MainClient.getClientThread().getSocketClient().writeObject(new Action(board.getPieceAt(xPiece, yPiece), x, y));
 	}
 	

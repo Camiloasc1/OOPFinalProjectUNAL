@@ -50,7 +50,6 @@ public final class SetupGame extends GameState
 	protected void logic()
 	{
 		// TODO Auto-generated method stub
-		// TODO delete this
 		GameStates.SetState(GameStates.INITGAME);
 		DisplayMessage.show("Ordena tus piezas en la parte inferior");
 	}

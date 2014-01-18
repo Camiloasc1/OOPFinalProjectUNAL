@@ -76,6 +76,15 @@ public final class Board implements Serializable, Iterable<Piece>
 		return INSTANCE;
 	}
 	
+	/**
+	 * @param iNSTANCE
+	 *            the iNSTANCE to set
+	 */
+	public static void setInstance(Board board)
+	{
+		INSTANCE = board;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -113,15 +122,32 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public static Board swapBoard(boolean owner)
 	{
+		return swapBoard(owner, INSTANCE);
+	}
+	
+	/**
+	 * @param owner
+	 * @param board
+	 * @return
+	 */
+	public static Board swapBoard(boolean owner, Board board)
+	{
 		Board swaped = new Board();
 		
-		for (int i = SIZE; i > 0; i--)
+		for (int i = 0; i < SIZE; i++)
 		{
-			for (int j = SIZE; j > 0; j--)
+			for (int j = 0; j < SIZE; j++)
 			{
-				Piece piece = INSTANCE.map[i][j].clone();
-				piece.swapOwner();
-				swaped.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece;
+				Piece piece = board.map[i][j];
+				if (piece != null)
+				{
+					piece = piece.clone();
+					if (owner)
+					{
+						piece.swapOwner();
+					}
+					swaped.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece;
+				}
 			}
 		}
 		
@@ -133,33 +159,24 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public static void addPlayerPieces(boolean owner, Board board)
 	{
+		Board playerBoard = board;
+		if (owner)
+		{
+			playerBoard = swapBoard(owner, board);
+		}
 		for (int i = 0; i < SIZE; i++)
 		{
 			for (int j = 0; j < SIZE; j++)
 			{
-				if (owner)
+				Piece piece = playerBoard.map[i][j];
+				if (piece != null)
 				{
-					Piece piece = board.map[i][j];
-					if (piece == null)
+					piece = piece.clone();
+					if (owner)
 					{
-						INSTANCE.map[i][j] = null;
+						piece.swapOwner();
 					}
-					else
-					{
-						INSTANCE.map[i][j] = piece.clone();
-					}
-				}
-				else
-				{
-					Piece piece = board.map[i][j];
-					if (piece == null)
-					{
-						INSTANCE.map[i][j] = null;
-					}
-					else
-					{
-						INSTANCE.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece.clone();
-					}
+					INSTANCE.map[i][j] = piece;
 				}
 			}
 		}
@@ -268,8 +285,8 @@ public final class Board implements Serializable, Iterable<Piece>
 	{
 		if ((piece != null) && (getPieceAt(x, y) == null))
 		{
-			map[getPieceX(piece)][getPieceY(piece)] = null;
 			map[x][y] = piece;
+			map[getPieceX(piece)][getPieceY(piece)] = null;
 			return true;
 		}
 		return false;
@@ -371,9 +388,7 @@ public final class Board implements Serializable, Iterable<Piece>
 		return getArrayList().iterator();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see java.util.Collection#clear()
 	 */
 	public void clear()
@@ -387,9 +402,7 @@ public final class Board implements Serializable, Iterable<Piece>
 		}
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see java.util.Collection#clear()
 	 */
 	public static void reset()
@@ -397,9 +410,7 @@ public final class Board implements Serializable, Iterable<Piece>
 		INSTANCE.clear();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see java.util.Collection#isEmpty()
 	 */
 	public boolean isEmpty()
@@ -416,9 +427,7 @@ public final class Board implements Serializable, Iterable<Piece>
 		return getArrayList().isEmpty();
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see java.util.Collection#remove(java.lang.Object)
 	 */
 	public boolean remove(Object arg0)
@@ -428,9 +437,7 @@ public final class Board implements Serializable, Iterable<Piece>
 		return false;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
+	/**
 	 * @see java.util.Collection#contains(java.lang.Object)
 	 */
 	public boolean contains(Object o)
@@ -445,28 +452,5 @@ public final class Board implements Serializable, Iterable<Piece>
 	{
 		// TODO Auto-generated method stub
 		return -1;
-	}
-	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString()
-	{
-		// TODO delete
-		String str = "\n";
-		for (int i = 0; i < SIZE; i++)
-		{
-			for (int j = 0; j < SIZE; j++)
-			{
-				if (map[i][j] != null)
-				{
-					str += "[" + i + "][" + j + "]" + map[i][j].toString() + "\t";
-				}
-			}
-		}
-		return str + "\n";
 	}
 }

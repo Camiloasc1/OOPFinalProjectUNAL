@@ -82,12 +82,14 @@ public final class Action implements Serializable
 	/**
 	 * @param action
 	 * @param board
+	 * @param player
 	 */
-	public Action(Actions action, Board board)
+	public Action(Actions action, Board board, boolean player)
 	{
 		super();
 		this.action = action;
 		this.board = board;
+		this.player = player;
 	}
 	
 	/**

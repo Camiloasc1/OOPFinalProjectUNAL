@@ -40,8 +40,6 @@ import gui.ResourceManager;
 import gui.Sprite;
 import gui.util.DisplayMessage;
 import gui.util.DrawUtil;
-import net.Action;
-import net.Actions;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -485,7 +483,7 @@ public final class InitGame extends GameState
 			if (board.getPieceY(piece) < 6)
 				return;
 		}
-		MainClient.getClientThread().getSocketClient().writeObject(new Action(Actions.INIT, board));
+		MainClient.getClientThread().writeBoard(board);
 		// TODO wait for other player
 		DisplayMessage.show(true, "Esperando por el otro jugador");
 		GameStates.SetState(GameStates.INGAME);

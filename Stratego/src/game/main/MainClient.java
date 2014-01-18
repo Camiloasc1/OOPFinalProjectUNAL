@@ -60,9 +60,7 @@ public class MainClient
 		clientThread = new ClientThread();
 		clientThread.start();
 		
-		// TODO
-		// GameStates.SetState(GameStates.MAINMENU);
-		GameStates.SetState(GameStates.INGAME);
+		GameStates.SetState(GameStates.MAINMENU);
 		
 		// Main Loop
 		while (!Display.isCloseRequested() && !GameStates.isExitFlag())

@@ -6,8 +6,6 @@
 
 package game.main;
 
-import entities.Board;
-import entities.pieces.Bomb;
 import gui.GUI;
 
 import java.io.File;
@@ -36,23 +34,20 @@ public final class MainServer
 		// Init libraries
 		System.setProperty("org.lwjgl.librarypath", new File("lib/lwjgl-2.9.0/native/linux/").getAbsolutePath());
 		
-		GUI.init();
-		
-		Board board = Board.getInstance();
-		board.addPiece(new Bomb(true));
-		board.addPiece(new Bomb(false));
-		System.out.println(board);
+		GUI.initServer();
 		
 		SocketServer socketServer = new SocketServer();
 		
 		clients[0] = socketServer.accept();
+		clients[0].writeObject(new Action(Actions.INIT, true));
 		clients[0].writeObject(new Action(Actions.TURN, true));
-		threads[0] = new ServerThread(clients[0]);
+		threads[0] = new ServerThread(clients[0], true);
 		threads[0].start();
 		
 		clients[1] = socketServer.accept();
+		clients[1].writeObject(new Action(Actions.INIT, false));
 		clients[1].writeObject(new Action(Actions.TURN, false));
-		threads[1] = new ServerThread(clients[1]);
+		threads[1] = new ServerThread(clients[1], false);
 		threads[1].start();
 		
 		System.out.println("Playing");

@@ -124,6 +124,36 @@ public class GUI
 	}
 	
 	/**
+	 * Initializes the window
+	 */
+	public static void initServer()
+	{
+		// Creates the Window
+		try
+		{
+			Display.setDisplayMode(new DisplayMode(64, 64));
+			Display.setTitle("Stratego Server");
+			Display.setFullscreen(false);
+			Display.setVSyncEnabled(true);
+			
+			Display.create();
+		}
+		catch (LWJGLException e)
+		{
+			e.printStackTrace();
+			Display.destroy();
+			System.exit(1);
+		}
+		
+		// Init
+		initGL();
+		getDelta();
+		
+		// Load Resources
+		loadResources();
+	}
+	
+	/**
 	 * Initializes OpenGL
 	 */
 	private static void initGL()

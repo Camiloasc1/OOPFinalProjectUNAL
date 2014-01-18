@@ -20,7 +20,6 @@ public final class ClientThread extends Thread implements AutoCloseable
 {
 	private volatile boolean run;
 	private SocketClient socketClient;
-	private Board board;
 	private boolean player;
 	private boolean hasTurn;
 	
@@ -46,14 +45,6 @@ public final class ClientThread extends Thread implements AutoCloseable
 		player = false;
 		hasTurn = false;
 		this.socketClient = socketClient;
-	}
-	
-	/**
-	 * @return the board
-	 */
-	public Board getBoard()
-	{
-		return board;
 	}
 	
 	/**
@@ -99,8 +90,8 @@ public final class ClientThread extends Thread implements AutoCloseable
 			
 			if (object instanceof Board)
 			{
-				Board tmp = (Board) object;
-				board = tmp.clone();
+				Board board = (Board) object;
+				Board.setInstance(board.clone());
 			}
 			else if (object instanceof Action)
 			{
@@ -156,5 +147,13 @@ public final class ClientThread extends Thread implements AutoCloseable
 		socketClient.writeObject(new Action(Actions.EXIT));
 		ThreadUtil.wait(500);
 		socketClient.close();
+	}
+	
+	/**
+	 * @param board
+	 */
+	public void writeBoard(Board board)
+	{
+		socketClient.writeObject(new Action(Actions.INIT, board, player));
 	}
 }
