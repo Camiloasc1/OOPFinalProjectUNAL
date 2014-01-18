@@ -336,6 +336,16 @@ public final class Board implements Serializable, Iterable<Piece>
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see java.util.Collection#clear()
+	 */
+	public static void reset()
+	{
+		INSTANCE.clear();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.util.Collection#isEmpty()
 	 */
 	public boolean isEmpty()
@@ -360,9 +370,7 @@ public final class Board implements Serializable, Iterable<Piece>
 	public boolean remove(Object arg0)
 	{
 		if (arg0 instanceof Piece)
-		{
-			removePiece((Piece) arg0);
-		}
+			return removePiece((Piece) arg0);
 		return false;
 	}
 	
@@ -374,5 +382,14 @@ public final class Board implements Serializable, Iterable<Piece>
 	public boolean contains(Object o)
 	{
 		return getArrayList().contains(o);
+	}
+	
+	/**
+	 * @return
+	 */
+	public int check()
+	{
+		// TODO Auto-generated method stub
+		return -1;
 	}
 }

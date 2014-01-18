@@ -12,7 +12,7 @@ import entities.Board;
  * @author camiloasc1
  * 
  */
-public abstract class SocketHandler
+public final class SocketHandler
 {
 	private Board board;
 	
@@ -22,14 +22,5 @@ public abstract class SocketHandler
 	public Board getBoard()
 	{
 		return board;
-	}
-	
-	/**
-	 * @param board
-	 *            the board to set
-	 */
-	protected void setBoard(Board board)
-	{
-		this.board = board;
 	}
 }

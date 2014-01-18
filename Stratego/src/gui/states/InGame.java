@@ -27,7 +27,6 @@ import gui.ResourceManager;
 import gui.Sprite;
 import gui.util.DrawUtil;
 import net.Action;
-import net.Actions;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -241,7 +240,7 @@ public final class InGame extends GameState
 		xPiece = (selectedX / (GUI.WIDTH / Board.SIZE));
 		yPiece = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
 		// TODO socket handler
-		Action action = new Action(Actions.MOVE, board.getPieceAt(xPiece, yPiece), x, y);
+		Action action = new Action(board.getPieceAt(xPiece, yPiece), x, y);
 	}
 	
 	/**

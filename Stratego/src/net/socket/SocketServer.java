@@ -4,7 +4,7 @@
  * Creation: 12/01/2014 at 20:03:13
  */
 
-package net;
+package net.socket;
 
 import java.io.IOException;
 import java.net.ServerSocket;

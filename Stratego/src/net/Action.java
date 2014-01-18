@@ -38,8 +38,31 @@ public final class Action implements Serializable
 	private Actions action;
 	private Board board;
 	private Piece piece;
+	private boolean player;
+	private boolean turn;
+	private int value;
 	private int x;
 	private int y;
+	
+	/**
+	 * @param action
+	 */
+	public Action(Actions action)
+	{
+		super();
+		this.action = action;
+	}
+	
+	/**
+	 * @param action
+	 * @param player
+	 */
+	public Action(Actions action, boolean player)
+	{
+		super();
+		this.action = action;
+		this.player = player;
+	}
 	
 	/**
 	 * @param action
@@ -47,10 +70,10 @@ public final class Action implements Serializable
 	 * @param x
 	 * @param y
 	 */
-	public Action(Actions action, Piece piece, int x, int y)
+	public Action(Piece piece, int x, int y)
 	{
 		super();
-		this.action = action;
+		action = Actions.MOVE;
 		this.piece = piece;
 		this.x = x;
 		this.y = y;
@@ -78,6 +101,30 @@ public final class Action implements Serializable
 	public Piece getPiece()
 	{
 		return piece;
+	}
+	
+	/**
+	 * @return the player
+	 */
+	public boolean getPlayer()
+	{
+		return player;
+	}
+	
+	/**
+	 * @return the turn
+	 */
+	public boolean getTurn()
+	{
+		return turn;
+	}
+	
+	/**
+	 * @return the value
+	 */
+	public int getValue()
+	{
+		return value;
 	}
 	
 	/**
