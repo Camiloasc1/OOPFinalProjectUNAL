@@ -22,6 +22,7 @@ package net;
 
 import java.io.Serializable;
 
+import entities.Board;
 import entities.Piece;
 
 /**
@@ -35,6 +36,7 @@ public final class Action implements Serializable
 	private static final long serialVersionUID = 1793969592233254860L;
 	
 	private Actions action;
+	private Board board;
 	private Piece piece;
 	private int x;
 	private int y;

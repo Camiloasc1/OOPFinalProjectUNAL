@@ -12,5 +12,5 @@ package net;
  */
 public enum Actions
 {
-	MOVE, DRAW, EXIT;
+	INIT, MOVE, DRAW, EXIT;
 }
