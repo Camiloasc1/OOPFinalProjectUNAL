@@ -39,7 +39,7 @@ public class Spy extends Piece
 	/**
 	 * Level of this piece
 	 */
-	private static final byte LEVEL = 10;
+	private static final byte LEVEL = 1;
 	/**
 	 * Sprite for this piece
 	 */

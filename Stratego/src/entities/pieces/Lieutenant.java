@@ -39,7 +39,7 @@ public class Lieutenant extends Piece
 	/**
 	 * Level of this piece
 	 */
-	private static final byte LEVEL = 6;
+	private static final byte LEVEL = 5;
 	/**
 	 * Sprite for this piece
 	 */

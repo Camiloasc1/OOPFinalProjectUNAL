@@ -36,7 +36,7 @@ public class General extends Piece
 	/**
 	 * Level of this piece
 	 */
-	private static final byte LEVEL = 2;
+	private static final byte LEVEL = 9;
 	/**
 	 * Sprite for this piece
 	 */

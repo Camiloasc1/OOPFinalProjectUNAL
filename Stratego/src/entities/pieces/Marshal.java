@@ -39,7 +39,7 @@ public class Marshal extends Piece
 	/**
 	 * Level of this piece
 	 */
-	private static final byte LEVEL = 1;
+	private static final byte LEVEL = 10;
 	/**
 	 * Sprite for this piece
 	 */

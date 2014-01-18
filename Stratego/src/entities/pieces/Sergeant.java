@@ -39,7 +39,7 @@ public class Sergeant extends Piece
 	/**
 	 * Level of this piece
 	 */
-	private static final byte LEVEL = 7;
+	private static final byte LEVEL = 4;
 	/**
 	 * Sprite for this piece
 	 */

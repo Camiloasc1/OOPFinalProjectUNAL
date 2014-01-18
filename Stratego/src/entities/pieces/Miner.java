@@ -39,7 +39,7 @@ public class Miner extends Piece
 	/**
 	 * Level of this piece
 	 */
-	private static final byte LEVEL = 8;
+	private static final byte LEVEL = 3;
 	/**
 	 * Sprite for this piece
 	 */

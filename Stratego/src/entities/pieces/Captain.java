@@ -36,7 +36,7 @@ public class Captain extends Piece
 	/**
 	 * Level of this piece
 	 */
-	private static final byte LEVEL = 5;
+	private static final byte LEVEL = 6;
 	/**
 	 * Sprite for this piece
 	 */
