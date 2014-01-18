@@ -43,6 +43,8 @@ public final class Action implements Serializable
 	private int value;
 	private int x;
 	private int y;
+	private int x2;
+	private int y2;
 	
 	/**
 	 * @param action
@@ -65,18 +67,18 @@ public final class Action implements Serializable
 	}
 	
 	/**
-	 * @param action
-	 * @param piece
 	 * @param x
 	 * @param y
+	 * @param x2
+	 * @param y2
 	 */
-	public Action(Piece piece, int x, int y)
+	public Action(int x, int y, int x2, int y2)
 	{
 		super();
-		action = Actions.MOVE;
-		this.piece = piece;
 		this.x = x;
 		this.y = y;
+		this.x2 = x2;
+		this.y2 = y2;
 	}
 	
 	/**
@@ -154,6 +156,22 @@ public final class Action implements Serializable
 	public int getY()
 	{
 		return y;
+	}
+	
+	/**
+	 * @return the x2
+	 */
+	public int getX2()
+	{
+		return x2;
+	}
+	
+	/**
+	 * @return the y2
+	 */
+	public int getY2()
+	{
+		return y2;
 	}
 	
 }

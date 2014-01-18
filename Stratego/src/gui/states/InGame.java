@@ -240,7 +240,7 @@ public final class InGame extends GameState
 		xPiece = (selectedX / (GUI.WIDTH / Board.SIZE));
 		yPiece = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
 		
-		MainClient.getClientThread().getSocketClient().writeObject(new Action(board.getPieceAt(xPiece, yPiece), x, y));
+		MainClient.getClientThread().getSocketClient().writeObject(new Action(xPiece, yPiece, x, y));
 	}
 	
 	/**

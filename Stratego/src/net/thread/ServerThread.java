@@ -39,7 +39,6 @@ public final class ServerThread extends Thread implements AutoCloseable
 	/**
 	 * @param socketClient
 	 * @param hasTurn
-	 *            TODO
 	 */
 	public ServerThread(SocketClient socketClient, boolean hasTurn)
 	{
@@ -71,7 +70,8 @@ public final class ServerThread extends Thread implements AutoCloseable
 			ThreadUtil.wait(DELAY);
 			
 			socketClient.writeObject(new Action(Actions.TURN, hasTurn));
-			socketClient.writeObject(Board.swapBoard(player));
+			// socketClient.writeObject(Board.swapBoard(!player));
+			socketClient.writeObject(Board.getInstance());
 			
 			Object object = socketClient.readObject(false);
 			if (object == null)
@@ -103,7 +103,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 				
 				Board board = Board.getInstance();
 				
-				if (board.movePiece(action.getPiece(), action.getX(), action.getY()))
+				if (board.movePiece(action.getX(), action.getY(), action.getX2(), action.getY2()))
 				{
 					changeTurn();
 				}
@@ -167,7 +167,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 			case INIT:
 			{
 				player = action.getPlayer();
-				Board.addPlayerPieces(action.getPlayer(), action.getBoard());
+				Board.addPlayerPieces(!action.getPlayer(), action.getBoard());
 				break;
 			}
 			case EXIT:

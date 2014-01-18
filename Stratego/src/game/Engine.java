@@ -43,7 +43,9 @@ public class Engine
 	 * @param x
 	 * @param y
 	 * @return true if piece has moved to (x,y)
+	 * @deprecated
 	 */
+	@Deprecated
 	public static boolean movePiece(Piece piece, int x, int y)
 	{
 		if (!Rules.isValidMove(piece, x, y))
@@ -54,7 +56,9 @@ public class Engine
 		if (!board.isEmptyPos(x, y)) // Is a Battle
 		{
 			int res = battle(piece, board.getPieceAt(x, y));
-			if ((res == 1) || (res == 2))
+			if (res == 1)
+				return board.setPiecePos(piece, x, y);
+			else if (res == 2)
 				return true;
 			else
 				return false;
@@ -66,22 +70,20 @@ public class Engine
 	/**
 	 * Moves the piece in (xi, yi) to the specified position
 	 * 
-	 * @param xi
-	 * @param yi
-	 * @param xf
-	 * @param yf
+	 * @param x
+	 * @param y
+	 * @param x2
+	 * @param y2
 	 * @return true if piece in (xi,yi) has moved to (xf,yf)
-	 * @deprecated
 	 */
-	@Deprecated
-	public static boolean movePiece(byte xi, byte yi, byte xf, byte yf)
+	public static boolean movePiece(int x, int y, int x2, int y2)
 	{
 		Board board = Board.getInstance();
 		
-		if (board.isEmptyPos(xi, yi))
+		if (board.isEmptyPos(x, y))
 			return false;
 		
-		return movePiece(board.getPieceAt(xi, yi), xf, yf);
+		return movePiece(board.getPieceAt(x, y), x2, y2);
 	}
 	
 	/**

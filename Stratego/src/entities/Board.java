@@ -172,24 +172,11 @@ public final class Board implements Serializable, Iterable<Piece>
 				if (piece != null)
 				{
 					piece = piece.clone();
-					if (owner)
-					{
-						piece.swapOwner();
-					}
 					INSTANCE.map[i][j] = piece;
 				}
 			}
 		}
 	}
-	
-	/**
-	 * @return Board singleton even if was previously serialized
-	 */
-	// @SuppressWarnings("unused")
-	// private Board readResolve()
-	// {
-	// return INSTANCE;
-	// }
 	
 	/**
 	 * @param x
@@ -285,25 +272,34 @@ public final class Board implements Serializable, Iterable<Piece>
 	{
 		if ((piece != null) && (getPieceAt(x, y) == null))
 		{
-			map[x][y] = piece;
 			map[getPieceX(piece)][getPieceY(piece)] = null;
+			map[x][y] = piece;
 			return true;
 		}
 		return false;
 	}
 	
 	/**
+	 * @param piece
 	 * @param x
-	 *            File
 	 * @param y
-	 *            Column
 	 * @return <code>true</code> if piece has moved to (x,y)
 	 */
 	public boolean movePiece(Piece piece, int x, int y)
 	{
-		if (piece == null)
-			return false;
-		return Engine.movePiece(piece, x, y);
+		return Engine.movePiece(getPieceX(piece), getPieceY(piece), x, y);
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 * @param x2
+	 * @param y2
+	 * @return <code>true</code> if piece has moved to (x,y)
+	 */
+	public boolean movePiece(int x, int y, int x2, int y2)
+	{
+		return Engine.movePiece(x, y, x2, y2);
 	}
 	
 	/**
@@ -452,5 +448,37 @@ public final class Board implements Serializable, Iterable<Piece>
 	{
 		// TODO Auto-generated method stub
 		return -1;
+	}
+	
+	public void draw()
+	{
+		
+		System.out.println();
+		for (byte i = 0; i < 10; i++)
+		{
+			for (byte j = 0; j < 10; j++)
+			{
+				Piece piece = getPieceAt(i, j);
+				if (piece != null)
+					if (piece.getOwner())
+					{
+						System.out.format("[%2d]", piece.getLevel());
+					}
+					else
+					{
+						System.out.format("[[]]", piece.getLevel());
+					}
+				else if (((i == 4) || (i == 5)) && ((j == 2) || (j == 3) || (j == 6) || (j == 7)))
+				{
+					System.out.format("[##]");
+				}
+				else
+				{
+					System.out.format("[  ]");
+				}
+			}
+			System.out.println();
+		}
+		System.out.println();
 	}
 }

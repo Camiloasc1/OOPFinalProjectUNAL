@@ -11,6 +11,7 @@ import net.Actions;
 import net.socket.SocketClient;
 import util.ThreadUtil;
 import entities.Board;
+import gui.states.GameStates;
 
 /**
  * @author camiloasc1
@@ -90,8 +91,11 @@ public final class ClientThread extends Thread implements AutoCloseable
 			
 			if (object instanceof Board)
 			{
-				Board board = (Board) object;
-				Board.setInstance(board.clone());
+				if (GameStates.getState() == GameStates.INGAME)
+				{
+					Board board = (Board) object;
+					Board.setInstance(board.clone());
+				}
 			}
 			else if (object instanceof Action)
 			{
