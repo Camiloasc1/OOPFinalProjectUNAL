@@ -1,26 +1,114 @@
-/*******************************************************************************
- * File: MainServer.java
- * Project: Stratego
- * 
- * Copyright (C) 2014 Camiloasc1.
- * 
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- ******************************************************************************/
+/**
+ * File: Server.java
+ * Package: Sockets.tictactoe.Server
+ * Creation: 11/01/2014 at 16:24:15
+ */
 
 package game.main;
 
-public class MainServer
+import net.Action;
+import net.Actions;
+import net.socket.SocketClient;
+import net.socket.SocketServer;
+import net.thread.ServerThread;
+
+/**
+ * @author camiloasc1
+ * 
+ */
+public final class MainServer
 {
+	private static SocketClient[] clients = new SocketClient[2];
+	private static ServerThread[] threads = new ServerThread[2];
+	
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args)
+	{
+		SocketServer socketServer = new SocketServer();
+		
+		clients[0] = socketServer.accept();
+		clients[1] = socketServer.accept();
+		
+		System.out.println("Playing");
+		
+		clients[0].writeObject(new Action(Actions.TURN, true));
+		threads[0] = new ServerThread(clients[0]);
+		threads[0].start();
+		
+		clients[1].writeObject(new Action(Actions.TURN, false));
+		threads[1] = new ServerThread(clients[1]);
+		threads[1].start();
+		
+		boolean status = true;
+		while (status)
+		{
+			status = false;
+			for (ServerThread thread : threads)
+			{
+				if (thread.isAlive())
+				{
+					status = true;
+				}
+				else
+				{
+					// thread.close();
+				}
+			}
+		}
+		
+		for (SocketClient client : clients)
+		{
+			client.close();
+		}
+		for (ServerThread thread : threads)
+		{
+			thread.close();
+		}
+		
+		socketServer.close();
+	}
+	
+	/**
+	 * 
+	 */
+	private MainServer()
+	{
+	}
+	
+	/**
+	 * @return the threads
+	 */
+	public static ServerThread[] getThreads()
+	{
+		return threads;
+	}
+	
+	/**
+	 * @param threads
+	 *            the threads to set
+	 */
+	public static void setThreads(ServerThread[] threads)
+	{
+		MainServer.threads = threads;
+	}
+	
+	/**
+	 * @return the clients
+	 */
+	public static SocketClient[] getClients()
+	{
+		return clients;
+	}
+	
+	/**
+	 * @param clients
+	 *            the clients to set
+	 */
+	public static void setClients(SocketClient[] clients)
+	{
+		MainServer.clients = clients;
+	}
 	
 }

@@ -10,9 +10,9 @@ import java.net.SocketException;
 
 import net.Action;
 import net.Actions;
-import net.Server;
 import net.socket.SocketClient;
 import entities.Board;
+import game.main.MainServer;
 
 /**
  * @author camiloasc1
@@ -118,7 +118,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 									switch (status)
 									{
 										case 0:
-											for (ServerThread thread : Server.getThreads())
+											for (ServerThread thread : MainServer.getThreads())
 											{
 												thread.socketClient.writeObject(Board.getInstance());
 												if (this == thread)
@@ -132,7 +132,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 											}
 											break;
 										case 1:
-											for (ServerThread thread : Server.getThreads())
+											for (ServerThread thread : MainServer.getThreads())
 											{
 												thread.socketClient.writeObject(Board.getInstance());
 												if (this == thread)
@@ -146,7 +146,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 											}
 											break;
 										case 2:
-											for (ServerThread thread : Server.getThreads())
+											for (ServerThread thread : MainServer.getThreads())
 											{
 												thread.socketClient.writeObject(new Action(Actions.DRAW));
 											}
@@ -166,7 +166,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 							}
 							case EXIT:
 							{
-								for (ServerThread thread : Server.getThreads())
+								for (ServerThread thread : MainServer.getThreads())
 								{
 									if (thread != this) // do not close my self
 									{
@@ -199,7 +199,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 	 */
 	private static void changeTurn()
 	{
-		for (ServerThread thread : Server.getThreads())
+		for (ServerThread thread : MainServer.getThreads())
 		{
 			thread.hasTurn = !thread.hasTurn;
 			thread.socketClient.writeObject(new Action(Actions.TURN, thread.hasTurn));
