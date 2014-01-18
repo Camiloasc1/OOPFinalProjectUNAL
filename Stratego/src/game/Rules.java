@@ -47,11 +47,42 @@ public final class Rules
 		if ((piece instanceof Bomb) || (piece instanceof Flag))
 			return false;
 		
+		Board board = Board.getInstance();
+		int xp = board.getPieceX(piece);
+		int yp = board.getPieceY(piece);
+		
 		if (piece instanceof Scout)
-			return ((Board.getInstance().getPieceX(piece) == x) || (Board.getInstance().getPieceY(piece) == y));
+			return isFreeScoutRoute(xp, yp, x, y);
+		
+		return ((Math.abs(xp - x) == 1) || (Math.abs(yp - y) == 1));
+	}
+	
+	/**
+	 * @param xi
+	 * @param yi
+	 * @param xf
+	 * @param yf
+	 * @return
+	 */
+	private static boolean isFreeScoutRoute(int xi, int yi, int xf, int yf)
+	{
+		boolean movX = (xi != xf);
+		boolean movY = (yi != yf);
+		
+		if (movX && movY)
+			return false;
+		
+		Board board = Board.getInstance();
+		
+		// No Remote Attack
+		if (!board.isEmptyPos(xf, yf))
+			return ((Math.abs(xi - xf) == 1) || (Math.abs(yi - yf) == 1));
+		
+		for (int i = ((movX) ? xi : yi) + 1; i < ((movX) ? xf : yf); i++)
+		{
+			if (board.getPieceAt(((movX) ? i : xi), ((movY) ? i : yi)) != null)
+				return false;
+		}
 		return true;
-		// return MathUtil.isEqualsDouble2(
-		// MathUtil.getDistance(Board.getInstance().getPieceX(piece), Board.getInstance().getPieceY(piece), x, y), 1);
-		// return (Math.abs(Board.getBoard().getPieceX(piece) - x) == 1 || Math.abs(Board.getBoard().getPieceY(piece) - y) == 1);
 	}
 }

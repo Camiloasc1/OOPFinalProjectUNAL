@@ -230,6 +230,8 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public boolean movePiece(Piece piece, int x, int y)
 	{
+		if (piece == null)
+			return false;
 		return Engine.movePiece(piece, x, y);
 	}
 	
@@ -283,13 +285,10 @@ public final class Board implements Serializable, Iterable<Piece>
 		return removePiece(getPieceAt(x, y));
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Iterable#iterator()
+	/**
+	 * @return
 	 */
-	@Override
-	public Iterator<Piece> iterator()
+	private ArrayList<Piece> getArrayList()
 	{
 		ArrayList<Piece> pieces = new ArrayList<Piece>();
 		Piece piece;
@@ -304,6 +303,76 @@ public final class Board implements Serializable, Iterable<Piece>
 				}
 			}
 		}
-		return pieces.iterator();
+		return pieces;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Iterable#iterator()
+	 */
+	@Override
+	public Iterator<Piece> iterator()
+	{
+		return getArrayList().iterator();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Collection#clear()
+	 */
+	public void clear()
+	{
+		for (int i = 0; i < SIZE; i++)
+		{
+			for (int j = 0; j < SIZE; j++)
+			{
+				map[i][j] = null;
+			}
+		}
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Collection#isEmpty()
+	 */
+	public boolean isEmpty()
+	{
+		// for (int i = 0; i < SIZE; i++)
+		// {
+		// for (int j = 0; j < SIZE; j++)
+		// {
+		// if (map[i][j] != null)
+		// return false;
+		// }
+		// }
+		// return true;
+		return getArrayList().isEmpty();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Collection#remove(java.lang.Object)
+	 */
+	public boolean remove(Object arg0)
+	{
+		if (arg0 instanceof Piece)
+		{
+			removePiece((Piece) arg0);
+		}
+		return false;
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.Collection#contains(java.lang.Object)
+	 */
+	public boolean contains(Object o)
+	{
+		return getArrayList().contains(o);
 	}
 }

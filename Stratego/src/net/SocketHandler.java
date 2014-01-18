@@ -33,5 +33,6 @@ public abstract class SocketHandler
 		this.board = board;
 	}
 	
+	// TODO
 	public abstract void sendAction(Action action);
 }

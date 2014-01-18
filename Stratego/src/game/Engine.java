@@ -87,19 +87,34 @@ public class Engine
 	 * 
 	 * @param ally
 	 * @param enemy
-	 * @return true if ally wins
+	 * @return <code>true</code> if ally lives
 	 *         <p>
-	 *         false if ally loses
+	 *         <code>false</code> if ally dies or friend fire or invalid ally (Bomb and Flag can't attack)
 	 */
 	public static boolean battle(Piece ally, Piece enemy)
 	{
 		if (ally.getOwner() == enemy.getOwner())
 			return false;
 		
+		if ((ally instanceof Bomb) || (ally instanceof Flag))
+			return false;
+		
 		Board board = Board.getInstance();
+		
+		if (ally.getLevel() == enemy.getLevel())
+		{
+			if (!board.isEmpty())
+			{
+				board.removePiece(enemy);
+				board.removePiece(ally);
+			}
+			
+			return false;
+		}
+		
 		boolean result;
 		
-		result = (ally.getLevel() <= enemy.getLevel());
+		result = (ally.getLevel() > enemy.getLevel());
 		
 		if (enemy instanceof Bomb)
 		{
@@ -128,17 +143,26 @@ public class Engine
 		if (enemy instanceof Flag) // Game ends
 		{
 			result = true;
-			// TODO
-			// endGame();
+			if (!board.isEmpty())
+			{
+				// TODO
+				// endGame();
+			}
 		}
 		
 		if (result)
 		{
-			board.removePiece(enemy);
+			if (!board.isEmpty())
+			{
+				board.removePiece(enemy);
+			}
 		}
 		else
 		{
-			board.removePiece(ally);
+			if (!board.isEmpty())
+			{
+				board.removePiece(ally);
+			}
 		}
 		
 		return result;
