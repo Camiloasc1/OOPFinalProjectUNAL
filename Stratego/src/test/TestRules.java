@@ -92,7 +92,7 @@ public class TestRules
 	{
 		Piece[] pieces = new Piece[6];
 		
-		pieces[0] = new Scout(true);
+		pieces[0] = new Marshal(true);
 		board.addPiece(pieces[0]);
 		board.setPiecePos(pieces[0], 0, 0);
 		
@@ -134,6 +134,8 @@ public class TestRules
 		assertTrue(!board.movePiece(pieces[4], 9, 5));
 		// Not remote attack
 		assertTrue(!board.movePiece(pieces[1], 0, 9));
+		assertTrue(!board.movePiece(pieces[0], 0, 2));
+		assertTrue(!board.movePiece(pieces[0], 2, 0));
 		// Valid Movements
 		assertTrue(board.movePiece(pieces[1], 0, 2));
 		assertTrue(board.movePiece(pieces[1], 0, 4));

@@ -107,7 +107,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 					if (board.movePiece(Board.SIZE - 1 - action.getX(), Board.SIZE - 1 - action.getY(),
 							Board.SIZE - 1 - action.getX2(), Board.SIZE - 1 - action.getY2()))
 					{
-						// changeTurn();
+						changeTurn();
 					}
 				}
 				else
@@ -115,7 +115,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 					
 					if (board.movePiece(action.getX(), action.getY(), action.getX2(), action.getY2()))
 					{
-						// changeTurn();
+						changeTurn();
 					}
 				}
 				
@@ -198,6 +198,10 @@ public final class ServerThread extends Thread implements AutoCloseable
 	{
 		for (ServerThread thread : MainServer.getThreads())
 		{
+			if (thread == null)
+			{
+				continue;
+			}
 			thread.hasTurn = !thread.hasTurn;
 			thread.socketClient.writeObject(new Action(Actions.TURN, thread.hasTurn));
 		}

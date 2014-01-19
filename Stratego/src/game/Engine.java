@@ -155,8 +155,8 @@ public class Engine
 			result = true;
 			if (!board.isEmpty())
 			{
-				// TODO End Game
-				// endGame();
+				board.removePiece(enemy);
+				board.endGame();
 			}
 		}
 		

@@ -20,6 +20,7 @@
 
 package game;
 
+import util.MathUtil;
 import entities.Board;
 import entities.Piece;
 import entities.pieces.Bomb;
@@ -53,12 +54,9 @@ public final class Rules
 		
 		if (piece instanceof Scout)
 			return isFreeScoutRoute(xp, yp, x, y);
-		System.out.println(x + "," + y + "|" + xp + "," + yp);
 		
-		if ((x != xp) && (y != yp))
-			return false;
+		return MathUtil.isEqualsDouble2(MathUtil.getDistance(xp, yp, x, y), 1);
 		
-		return (((Math.abs(x - xp) == 1)) || (Math.abs(y - yp) == 1));
 	}
 	
 	/**

@@ -20,6 +20,7 @@
 
 package entities;
 
+import entities.pieces.Flag;
 import game.Engine;
 
 import java.io.Serializable;
@@ -51,6 +52,7 @@ public final class Board implements Serializable, Iterable<Piece>
 	 * Pieces in the board
 	 */
 	private Piece[][] map;
+	private int gameEnd;
 	
 	/**
 	 * Singleton Constructor
@@ -66,6 +68,7 @@ public final class Board implements Serializable, Iterable<Piece>
 				map[i][j] = null;
 			}
 		}
+		gameEnd = -1;
 	}
 	
 	/**
@@ -443,10 +446,31 @@ public final class Board implements Serializable, Iterable<Piece>
 	/**
 	 * @return
 	 */
+	public void endGame()
+	{
+		for (byte i = 0; i < 10; i++)
+		{
+			for (byte j = 0; j < 10; j++)
+			{
+				if (map[i][j] == null)
+				{
+					continue;
+				}
+				if (map[i][j] instanceof Flag)
+				{
+					gameEnd = ((map[i][j].getOwner()) ? 0 : 1);
+					return;
+				}
+			}
+		}
+	}
+	
+	/**
+	 * @return
+	 */
 	public int check()
 	{
-		// TODO Auto-generated method stub
-		return -1;
+		return gameEnd;
 	}
 	
 	public void draw()
