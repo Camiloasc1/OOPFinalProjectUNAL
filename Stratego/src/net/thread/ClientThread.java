@@ -160,4 +160,12 @@ public final class ClientThread extends Thread implements AutoCloseable
 	{
 		socketClient.writeObject(new Action(Actions.INIT, board, player));
 	}
+	
+	public void writeMovement(int x, int y, int x2, int y2)
+	{
+		if (Board.getInstance().getPieceAt(x, y).getOwner() == player)
+		{
+			socketClient.writeObject(new Action(x, y, x2, y2));
+		}
+	}
 }

@@ -27,7 +27,6 @@ import gui.GUI;
 import gui.ResourceManager;
 import gui.Sprite;
 import gui.util.DrawUtil;
-import net.Action;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -239,7 +238,7 @@ public final class InGame extends GameState
 		xPiece = (selectedX / (GUI.WIDTH / Board.SIZE));
 		yPiece = ((GUI.HEIGHT - selectedY) / (GUI.HEIGHT / Board.SIZE));
 		
-		MainClient.getClientThread().getSocketClient().writeObject(new Action(xPiece, yPiece, x, y));
+		MainClient.getClientThread().writeMovement(xPiece, yPiece, x, y);
 	}
 	
 	/**

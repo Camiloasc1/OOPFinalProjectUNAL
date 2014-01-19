@@ -127,7 +127,11 @@ public class TestRules
 		assertTrue(!board.movePiece(pieces[3], 0, 0));
 		// Not Jump
 		assertTrue(!board.movePiece(pieces[1], 0, 8));
-		assertTrue(board.movePiece(pieces[4], 9, 5));
+		assertTrue(!board.movePiece(pieces[4], 9, 5));
+		assertTrue(board.movePiece(pieces[4], 0, 7));
+		assertTrue(!board.movePiece(pieces[4], 9, 5));
+		assertTrue(board.movePiece(pieces[4], 9, 7));
+		assertTrue(!board.movePiece(pieces[4], 9, 5));
 		// Not remote attack
 		assertTrue(!board.movePiece(pieces[1], 0, 9));
 		// Valid Movements

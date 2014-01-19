@@ -55,7 +55,10 @@ public final class Rules
 			return isFreeScoutRoute(xp, yp, x, y);
 		System.out.println(x + "," + y + "|" + xp + "," + yp);
 		
-		return !((x != xp) && (y != yp));
+		if ((x != xp) && (y != yp))
+			return false;
+		
+		return (((Math.abs(x - xp) == 1)) || (Math.abs(y - yp) == 1));
 	}
 	
 	/**
