@@ -232,7 +232,6 @@ public final class InGame extends GameState
 		int y;
 		int xPiece;
 		int yPiece;
-		Board board = Board.getInstance();
 		// Destination
 		x = (activeX / (GUI.WIDTH / Board.SIZE));
 		y = ((GUI.HEIGHT - activeY) / (GUI.HEIGHT / Board.SIZE));

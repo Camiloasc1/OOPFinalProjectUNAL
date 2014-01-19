@@ -53,8 +53,9 @@ public final class Rules
 		
 		if (piece instanceof Scout)
 			return isFreeScoutRoute(xp, yp, x, y);
+		System.out.println(x + "," + y + "|" + xp + "," + yp);
 		
-		return ((Math.abs(xp - x) == 1) || (Math.abs(yp - y) == 1));
+		return !((x != xp) && (y != yp));
 	}
 	
 	/**
@@ -77,10 +78,16 @@ public final class Rules
 		// No Remote Attack
 		if (!board.isEmptyPos(xf, yf))
 			return ((Math.abs(xi - xf) == 1) || (Math.abs(yi - yf) == 1));
-		
+		// Forward
 		for (int i = ((movX) ? xi : yi) + 1; i < ((movX) ? xf : yf); i++)
 		{
-			if (board.getPieceAt(((movX) ? i : xi), ((movY) ? i : yi)) != null)
+			if (!board.isEmptyPos(((movX) ? i : xi), ((movY) ? i : yi)))
+				return false;
+		}
+		// Backward
+		for (int i = ((movX) ? xf : yf) + 1; i < ((movX) ? xi : yi); i++)
+		{
+			if (!board.isEmptyPos(((movX) ? i : xi), ((movY) ? i : yi)))
 				return false;
 		}
 		return true;

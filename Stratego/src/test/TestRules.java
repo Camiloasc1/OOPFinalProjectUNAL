@@ -136,6 +136,8 @@ public class TestRules
 		assertTrue(board.movePiece(pieces[1], 0, 8));
 		// move&attack
 		assertTrue(board.movePiece(pieces[1], 0, 9));
+		// TODO Test over lake
+		// TODO Test Scout backward
 	}
 	
 	/**

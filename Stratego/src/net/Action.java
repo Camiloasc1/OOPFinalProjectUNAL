@@ -75,6 +75,7 @@ public final class Action implements Serializable
 	public Action(int x, int y, int x2, int y2)
 	{
 		super();
+		action = Actions.MOVE;
 		this.x = x;
 		this.y = y;
 		this.x2 = x2;

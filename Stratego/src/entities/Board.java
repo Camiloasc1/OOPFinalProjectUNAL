@@ -122,15 +122,17 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public static Board swapBoard(boolean owner)
 	{
-		return swapBoard(owner, INSTANCE);
+		if (owner)
+			return INSTANCE;
+		else
+			return swapBoard(INSTANCE);
 	}
 	
 	/**
-	 * @param owner
 	 * @param board
 	 * @return
 	 */
-	public static Board swapBoard(boolean owner, Board board)
+	public static Board swapBoard(Board board)
 	{
 		Board swaped = new Board();
 		
@@ -142,10 +144,7 @@ public final class Board implements Serializable, Iterable<Piece>
 				if (piece != null)
 				{
 					piece = piece.clone();
-					if (owner)
-					{
-						piece.swapOwner();
-					}
+					piece.swapOwner();
 					swaped.map[(SIZE - 1 - i)][(SIZE - 1 - j)] = piece;
 				}
 			}
@@ -160,9 +159,9 @@ public final class Board implements Serializable, Iterable<Piece>
 	public static void addPlayerPieces(boolean owner, Board board)
 	{
 		Board playerBoard = board;
-		if (owner)
+		if (!owner)
 		{
-			playerBoard = swapBoard(owner, board);
+			playerBoard = swapBoard(board);
 		}
 		for (int i = 0; i < SIZE; i++)
 		{

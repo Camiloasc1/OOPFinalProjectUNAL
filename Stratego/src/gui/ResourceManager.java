@@ -91,9 +91,7 @@ public enum ResourceManager
 	private static synchronized final void populateSpriteMap()
 	{
 		if (!SPRITEMAP.isEmpty())
-		{
 			return;
-		}
 		
 		// Load Resources
 		
@@ -101,18 +99,18 @@ public enum ResourceManager
 		
 		loadSprite(PIECE, "res/images/piece.png");
 		
-		loadSprite(BOMB, "res/images/b.png");
+		loadSprite(MARSHAL, "res/images/9.png");
+		loadSprite(GENERAL, "res/images/8.png");
+		loadSprite(COLONEL, "res/images/7.png");
+		loadSprite(MAJOR, "res/images/6.png");
 		loadSprite(CAPTAIN, "res/images/5.png");
-		loadSprite(COLONEL, "res/images/3.png");
-		loadSprite(FLAG, "res/images/f.png");
-		loadSprite(GENERAL, "res/images/2.png");
-		loadSprite(LIEUTENTANT, "res/images/6.png");
-		loadSprite(MAJOR, "res/images/4.png");
-		loadSprite(MARSHAL, "res/images/1.png");
-		loadSprite(MINER, "res/images/8.png");
-		loadSprite(SCOUT, "res/images/9.png");
-		loadSprite(SERGEANT, "res/images/7.png");
+		loadSprite(LIEUTENTANT, "res/images/4.png");
+		loadSprite(SERGEANT, "res/images/3.png");
+		loadSprite(MINER, "res/images/2.png");
+		loadSprite(SCOUT, "res/images/1.png");
 		loadSprite(SPY, "res/images/s.png");
+		loadSprite(BOMB, "res/images/b.png");
+		loadSprite(FLAG, "res/images/f.png");
 		
 		loadSprite(NEWGAME, "res/images/web.png");
 		loadSprite(LOADGAME, "res/images/open.png");
