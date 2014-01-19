@@ -52,7 +52,6 @@ public final class Board implements Serializable, Iterable<Piece>
 	 * Pieces in the board
 	 */
 	private Piece[][] map;
-	private int gameEnd;
 	
 	/**
 	 * Singleton Constructor
@@ -68,7 +67,6 @@ public final class Board implements Serializable, Iterable<Piece>
 				map[i][j] = null;
 			}
 		}
-		gameEnd = -1;
 	}
 	
 	/**
@@ -448,6 +446,16 @@ public final class Board implements Serializable, Iterable<Piece>
 	 */
 	public void endGame()
 	{
+	}
+	
+	/**
+	 * @return
+	 */
+	public int check()
+	{
+		boolean player1 = false;
+		boolean player2 = false;
+		
 		for (byte i = 0; i < 10; i++)
 		{
 			for (byte j = 0; j < 10; j++)
@@ -458,19 +466,24 @@ public final class Board implements Serializable, Iterable<Piece>
 				}
 				if (map[i][j] instanceof Flag)
 				{
-					gameEnd = ((map[i][j].getOwner()) ? 0 : 1);
-					return;
+					if ((map[i][j].getOwner()))
+					{
+						player1 = true;
+					}
+					else
+					{
+						player2 = true;
+					}
 				}
 			}
 		}
-	}
-	
-	/**
-	 * @return
-	 */
-	public int check()
-	{
-		return gameEnd;
+		if (!player1 && !player2)
+			return 2;
+		if (!player1)
+			return 1;
+		if (!player2)
+			return 0;
+		return -1;
 	}
 	
 	public void draw()

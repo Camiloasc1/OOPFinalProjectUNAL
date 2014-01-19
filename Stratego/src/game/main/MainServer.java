@@ -16,6 +16,10 @@ import net.socket.SocketClient;
 import net.socket.SocketServer;
 import net.thread.ServerThread;
 
+import org.lwjgl.opengl.Display;
+
+import util.ThreadUtil;
+
 /**
  * @author camiloasc1
  * 
@@ -52,22 +56,26 @@ public final class MainServer
 		
 		System.out.println("Playing");
 		
-		boolean status = true;
-		while (status)
+		while (!Display.isCloseRequested())
 		{
-			status = false;
-			for (ServerThread thread : threads)
-			{
-				if (thread.isAlive())
-				{
-					status = true;
-				}
-				else
-				{
-					// thread.close();
-				}
-			}
+			ThreadUtil.wait(50);
 		}
+		// boolean status = true;
+		// while (status)
+		// {
+		// status = false;
+		// for (ServerThread thread : threads)
+		// {
+		// if (thread.isAlive())
+		// {
+		// status = true;
+		// }
+		// else
+		// {
+		// // thread.close();
+		// }
+		// }
+		// }
 		
 		for (SocketClient client : clients)
 		{

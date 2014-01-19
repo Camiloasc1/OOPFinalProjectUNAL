@@ -91,7 +91,7 @@ public class DisplayMessage extends JDialog
 	 */
 	public static boolean show(boolean wait, String str)
 	{
-		return show(false, false, str);
+		return show(false, wait, str);
 	}
 	
 	/**
@@ -144,7 +144,7 @@ public class DisplayMessage extends JDialog
 		ready = false;
 		
 		// setModal(true);
-		setAlwaysOnTop(true);
+		// setAlwaysOnTop(true);
 		setBounds(512, 256, 300, 150);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -162,6 +162,7 @@ public class DisplayMessage extends JDialog
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener()
 				{
+					@Override
 					public void actionPerformed(ActionEvent arg0)
 					{
 						response = true;
@@ -179,6 +180,7 @@ public class DisplayMessage extends JDialog
 					JButton cancelButton = new JButton("Cancel");
 					cancelButton.addActionListener(new ActionListener()
 					{
+						@Override
 						public void actionPerformed(ActionEvent arg0)
 						{
 							response = false;

@@ -58,7 +58,7 @@ public class Engine
 			int res = battle(piece, board.getPieceAt(x, y));
 			if (res == 1)
 				return board.setPiecePos(piece, x, y);
-			else if (res == 2)
+			else if ((res == 2) || (res == -1))
 				return true;
 			else
 				return false;
@@ -153,11 +153,6 @@ public class Engine
 		if (enemy instanceof Flag) // Game ends
 		{
 			result = true;
-			if (!board.isEmpty())
-			{
-				board.removePiece(enemy);
-				board.endGame();
-			}
 		}
 		
 		if (result)

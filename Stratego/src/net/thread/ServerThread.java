@@ -126,40 +126,19 @@ public final class ServerThread extends Thread implements AutoCloseable
 					{
 						case 0:
 						{
-							for (ServerThread thread : MainServer.getThreads())
-							{
-								thread.socketClient.writeObject(Board.getInstance());
-								if (this == thread)
-								{
-									thread.socketClient.writeObject(new Action(Actions.WIN));
-								}
-								else
-								{
-									thread.socketClient.writeObject(new Action(Actions.LOSE));
-								}
-							}
+							endGame();
 							break;
 						}
 						case 1:
 						{
-							for (ServerThread thread : MainServer.getThreads())
-							{
-								thread.socketClient.writeObject(Board.getInstance());
-								if (this == thread)
-								{
-									thread.socketClient.writeObject(new Action(Actions.WIN));
-								}
-								else
-								{
-									thread.socketClient.writeObject(new Action(Actions.LOSE));
-								}
-							}
+							endGame();
 							break;
 						}
 						case 2:
 						{
 							for (ServerThread thread : MainServer.getThreads())
 							{
+								socketClient.writeObject(Board.swapBoard(!player));
 								thread.socketClient.writeObject(new Action(Actions.DRAW));
 							}
 							break;
@@ -168,7 +147,8 @@ public final class ServerThread extends Thread implements AutoCloseable
 							break;
 					}
 					// Restart
-					Board.reset();
+					// TODO
+					// Board.reset();
 					socketClient.ignoreInput();
 					// socketClient.writeObject(new Action(Actions.EXIT));
 					// close();
@@ -194,6 +174,25 @@ public final class ServerThread extends Thread implements AutoCloseable
 	/**
 	 * 
 	 */
+	private void endGame()
+	{
+		for (ServerThread thread : MainServer.getThreads())
+		{
+			socketClient.writeObject(Board.swapBoard(!player));
+			if (this == thread)
+			{
+				thread.socketClient.writeObject(new Action(Actions.WIN));
+			}
+			else
+			{
+				thread.socketClient.writeObject(new Action(Actions.LOSE));
+			}
+		}
+	}
+	
+	/**
+	 * 
+	 */
 	private static void changeTurn()
 	{
 		for (ServerThread thread : MainServer.getThreads())
@@ -203,7 +202,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 				continue;
 			}
 			thread.hasTurn = !thread.hasTurn;
-			thread.socketClient.writeObject(new Action(Actions.TURN, thread.hasTurn));
+			// thread.socketClient.writeObject(new Action(Actions.TURN, thread.hasTurn));
 		}
 	}
 	

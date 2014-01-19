@@ -12,6 +12,7 @@ import net.socket.SocketClient;
 import util.ThreadUtil;
 import entities.Board;
 import gui.states.GameStates;
+import gui.util.DisplayMessage;
 
 /**
  * @author camiloasc1
@@ -129,10 +130,13 @@ public final class ClientThread extends Thread implements AutoCloseable
 				break;
 			}
 			case DRAW:
+				DisplayMessage.show("Empate");
 				break;
 			case LOSE:
+				DisplayMessage.show("Pierde");
 				break;
 			case WIN:
+				DisplayMessage.show("Gana");
 				break;
 			default:
 				break;
@@ -163,7 +167,7 @@ public final class ClientThread extends Thread implements AutoCloseable
 	
 	public void writeMovement(int x, int y, int x2, int y2)
 	{
-		System.out.println(x + "," + y + "|" + x2 + "," + y2);
+		// System.out.println(x + "," + y + "|" + x2 + "," + y2);
 		if (Board.getInstance().isEmptyPos(x, y))
 			return;
 		if (Board.getInstance().getPieceAt(x, y).getOwner())
