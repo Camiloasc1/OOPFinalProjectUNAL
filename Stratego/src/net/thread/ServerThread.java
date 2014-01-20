@@ -148,7 +148,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 					}
 					// Restart
 					// TODO
-					// Board.reset();
+					Board.reset();
 					socketClient.ignoreInput();
 					// socketClient.writeObject(new Action(Actions.EXIT));
 					// close();

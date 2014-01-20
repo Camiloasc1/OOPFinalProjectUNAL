@@ -131,12 +131,15 @@ public final class ClientThread extends Thread implements AutoCloseable
 			}
 			case DRAW:
 				DisplayMessage.show("Empate");
+				GameStates.SetState(GameStates.MAINMENU);
 				break;
 			case LOSE:
 				DisplayMessage.show("Pierde");
+				GameStates.SetState(GameStates.MAINMENU);
 				break;
 			case WIN:
 				DisplayMessage.show("Gana");
+				GameStates.SetState(GameStates.MAINMENU);
 				break;
 			default:
 				break;

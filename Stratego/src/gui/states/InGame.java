@@ -116,7 +116,7 @@ public final class InGame extends GameState
 				// Pressed
 				if (Keyboard.getEventKey() == Keyboard.KEY_ESCAPE)
 				{
-					// GameStates.SetState(GameStates.PAUSEMENU);
+					GameStates.SetState(GameStates.PAUSEMENU);
 				}
 				if ((Keyboard.getEventKey() == Keyboard.KEY_RETURN) || (Keyboard.getEventKey() == Keyboard.KEY_SPACE))
 				{
