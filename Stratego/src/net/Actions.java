@@ -12,5 +12,5 @@ package net;
  */
 public enum Actions
 {
-	TURN, INIT, MOVE, WIN, LOSE, DRAW, EXIT;
+	TURN, INIT, MOVE, WIN, LOSE, DRAW, EXIT, LOAD, SAVE;
 }

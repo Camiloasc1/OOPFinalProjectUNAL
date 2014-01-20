@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 /**
@@ -62,6 +63,7 @@ public final class SocketClient implements AutoCloseable
 			close();
 			System.exit(1);
 		}
+		setSoLinger(socket);
 	}
 	
 	/**
@@ -71,6 +73,22 @@ public final class SocketClient implements AutoCloseable
 	{
 		super();
 		this.socket = socket;
+		setSoLinger(this.socket);
+	}
+	
+	/**
+	 * @param socket
+	 */
+	private void setSoLinger(Socket socket)
+	{
+		try
+		{
+			socket.setSoLinger(true, 10);
+		}
+		catch (SocketException e)
+		{
+			System.err.println(e);
+		}
 	}
 	
 	/**
@@ -130,6 +148,7 @@ public final class SocketClient implements AutoCloseable
 		catch (IOException e)
 		{
 			System.err.println(e);
+			close();
 		}
 		
 		return object;

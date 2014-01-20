@@ -9,7 +9,6 @@ package net.thread;
 import net.Action;
 import net.Actions;
 import net.socket.SocketClient;
-import util.ThreadUtil;
 import entities.Board;
 import gui.states.GameStates;
 import gui.util.DisplayMessage;
@@ -156,7 +155,7 @@ public final class ClientThread extends Thread implements AutoCloseable
 	{
 		run = false;
 		socketClient.writeObject(new Action(Actions.EXIT));
-		ThreadUtil.wait(500);
+		// ThreadUtil.wait(5000);
 		socketClient.close();
 	}
 	

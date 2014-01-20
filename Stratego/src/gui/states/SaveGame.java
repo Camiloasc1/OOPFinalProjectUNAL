@@ -20,6 +20,10 @@
 
 package gui.states;
 
+import game.main.MainClient;
+import net.Action;
+import net.Actions;
+
 /**
  * SaveGame state for Stratego game
  * 
@@ -43,8 +47,8 @@ public final class SaveGame extends GameState
 	@Override
 	protected void logic()
 	{
-		// TODO Auto-generated method stub
-		
+		MainClient.getClientThread().getSocketClient().writeObject(new Action(Actions.SAVE));
+		GameStates.SetState(GameStates.INGAME);
 	}
 	
 	/**

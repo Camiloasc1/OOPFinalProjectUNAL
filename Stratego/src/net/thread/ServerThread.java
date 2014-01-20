@@ -9,6 +9,7 @@ package net.thread;
 import net.Action;
 import net.Actions;
 import net.socket.SocketClient;
+import util.SaveAndLoad;
 import util.ThreadUtil;
 import entities.Board;
 import game.main.MainServer;
@@ -46,6 +47,7 @@ public final class ServerThread extends Thread implements AutoCloseable
 		this.socketClient = socketClient;
 		this.hasTurn = hasTurn;
 		run = true;
+		
 	}
 	
 	/**
@@ -81,6 +83,10 @@ public final class ServerThread extends Thread implements AutoCloseable
 			if (object instanceof Action)
 			{
 				Action action = (Action) object;
+				if (action.getAction() == Actions.EXIT)
+				{
+					break Run;
+				}
 				handleAction(action);
 			}
 			// socketClient.ignoreInput();
@@ -159,6 +165,18 @@ public final class ServerThread extends Thread implements AutoCloseable
 			{
 				player = action.getPlayer();
 				Board.addPlayerPieces(!action.getPlayer(), action.getBoard());
+				break;
+			}
+			case LOAD:
+			{
+				System.out.println("Load");
+				SaveAndLoad.loadGame();
+				break;
+			}
+			case SAVE:
+			{
+				System.out.println("Save");
+				SaveAndLoad.saveGame();
 				break;
 			}
 			case EXIT:

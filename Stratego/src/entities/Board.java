@@ -78,8 +78,8 @@ public final class Board implements Serializable, Iterable<Piece>
 	}
 	
 	/**
-	 * @param iNSTANCE
-	 *            the iNSTANCE to set
+	 * @param board
+	 *            the INSTANCE to set
 	 */
 	public static void setInstance(Board board)
 	{

@@ -20,6 +20,10 @@
 
 package gui.states;
 
+import game.main.MainClient;
+import net.Action;
+import net.Actions;
+
 /**
  * LoadGame state for Stratego game
  * 
@@ -43,8 +47,8 @@ public final class LoadGame extends GameState
 	@Override
 	protected void logic()
 	{
-		// TODO Auto-generated method stub
-		
+		MainClient.getClientThread().getSocketClient().writeObject(new Action(Actions.LOAD));
+		GameStates.SetState(GameStates.INGAME);
 	}
 	
 	/**

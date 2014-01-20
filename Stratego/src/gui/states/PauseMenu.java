@@ -20,12 +20,12 @@
 
 package gui.states;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import gui.GUI;
 import gui.ResourceManager;
 import gui.util.DrawUtil;
+
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -114,7 +114,7 @@ public final class PauseMenu extends GameState
 				{
 					GameStates.SetState(GameStates.INGAME);
 				}
-				if (Keyboard.getEventKey() == Keyboard.KEY_RETURN || Keyboard.getEventKey() == Keyboard.KEY_SPACE)
+				if ((Keyboard.getEventKey() == Keyboard.KEY_RETURN) || (Keyboard.getEventKey() == Keyboard.KEY_SPACE))
 				{
 					selectMenu();
 				}
@@ -178,9 +178,13 @@ public final class PauseMenu extends GameState
 		// Verifications
 		
 		if (activeMenu < 0)
+		{
 			activeMenu = 0;
+		}
 		if (activeMenu >= rectangles.size())
+		{
 			activeMenu = (byte) rectangles.size();
+		}
 	}
 	
 	/**
@@ -202,7 +206,7 @@ public final class PauseMenu extends GameState
 			}
 			case 2:
 			{
-				// TODO Add save handler
+				GameStates.SetState(GameStates.SAVEGAME);
 				break;
 			}
 			case 3:
