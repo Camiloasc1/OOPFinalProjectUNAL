@@ -1,4 +1,5 @@
-StrategoPOOUnal
+Object Oriented Programming Final Project (UNAL)
 ===============
 
-Stratego Game - POO - Unal
+Simple Stratego Game in Java using the LWJGL library made as object oriented programming final project at UNAL.
+
